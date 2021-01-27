@@ -1,6 +1,26 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class LoadingPage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:my_health/pages/login.dart';
+
+class LoadingPage extends StatefulWidget {
+  static const String id = 'loadingPage';
+  @override
+  _LoadingPageState createState() => _LoadingPageState();
+}
+
+class _LoadingPageState extends State<LoadingPage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      Navigator.push(
+        context, new MaterialPageRoute(builder: (context) => new Login(),),
+      );
+    }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
