@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:my_health/pages/register.dart';
 
 class Login extends StatefulWidget {
   static const String id = 'loginPage';
@@ -71,6 +73,45 @@ class _LoginState extends State<Login> {
                       LoginTextFieldUsr(),
                       SizedBox(height: 10.0,),
                       LoginTextFieldPass(),
+                      SizedBox(height: 25.0,),
+                      Center(
+                        child: PageButtons(buttonTitle: "Login",onPressed: (){},),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: RichText(
+                              textAlign: TextAlign.end,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: "Don't have an account? ",
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.grey[700],
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(
+                                    text: "Register Now",
+                                    style: TextStyle(
+                                        fontSize: 16.0,
+                                        color: mainColor,
+                                        fontWeight: FontWeight.bold),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                      Navigator.pushNamed(context, Register.id);
+
+                                      },
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -90,11 +131,6 @@ class LoginTextFieldPass extends StatefulWidget {
 }
 FocusNode focusNode1 = FocusNode();
 class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
-  @override
-  void initState() {
-    super.initState();
-    FocusNode focusNode1 = FocusNode();
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -126,11 +162,6 @@ class LoginTextFieldUsr extends StatefulWidget {
 }
 FocusNode focusNode = FocusNode();
 class _LoginTextFieldUsrState extends State<LoginTextFieldUsr> {
-  @override
-  void initState() {
-    super.initState();
-     FocusNode focusNode = FocusNode();
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
