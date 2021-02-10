@@ -39,20 +39,41 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: mainColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 70.0,
-                width: double.infinity,
-                // TODO: Need to create a background image and add if possible.
+              Stack(
+                children: [
+                  Container(
+                    height: 130,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0, top: 50.0),
+                      child: Text(
+                        "Register",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 46.0,
+                            fontWeight: FontWeight.w900),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                      icon: Icon(Icons.arrow_back,color: Colors.white,),
+                      iconSize: 30.0,
+                      onPressed: (){
+                        Navigator.pop(context);
+                      }
+                  ),
+                ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.95,
+                height: MediaQuery.of(context).size.height * 0.79,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -73,15 +94,6 @@ class _RegisterState extends State<Register> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      /*Login Title Label*/
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15.0, top: 15.0),
-                        child: Text(
-                          "Register",
-                          style: TextStyle(
-                              fontSize: 40.0, fontWeight: FontWeight.bold),
-                        ),
-                      ),
                       SizedBox(
                         height: 30.0,
                       ),
@@ -105,13 +117,13 @@ class _RegisterState extends State<Register> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.0),
                               color: Colors.white,
-                              border: Border.all(width: 1.0,
+                              border: Border.all(width: 0.7,
                                 color: Colors.grey[700],)),
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton(
                                 style: TextStyle(
                                   fontSize: 18.0,
-                                  color: Colors.black,
+                                  color: Colors.grey[800],
                                 ),
                                 hint: Text("Select Gender"),
                                 value: _selectedItem,
@@ -181,7 +193,7 @@ class _DOBPickerState extends State<DOBPicker> {
           height: 58.0,
           decoration: BoxDecoration(
               border: Border.all(
-                width: 1.0,
+                width: 0.7,
                 color: Colors.grey[700],
               ),
               borderRadius:
@@ -201,7 +213,7 @@ class _DOBPickerState extends State<DOBPicker> {
                         : "Date of Birth: ${dateTime.year}-${dateTime.month}-${dateTime.day}",
                     style: TextStyle(
                         fontSize: 17.0,
-                        fontWeight: FontWeight.w600),
+                        color: Colors.grey[800]),
                   ),
                 ),
                 SizedBox(
