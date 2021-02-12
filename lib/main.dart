@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/loadingPage.dart';
-import 'package:my_health/pages/login.dart';
-import 'package:my_health/pages/register.dart';
+import 'package:my_health/pages/login/login.dart';
+import 'package:my_health/pages/register/register.dart';
 
 void main() {
   runApp(MyHealth());
@@ -25,6 +26,7 @@ class _MyHealthState extends State<MyHealth> {
         LoadingPage.id : (context) => LoadingPage(),
         Login.id : (context) => Login(),
         Register.id : (context) => Register(),
+        HomePage.id : (context) => HomePage(),
       },
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
-import 'package:my_health/pages/register.dart';
+import 'package:my_health/pages/home/home.dart';
+import 'package:my_health/pages/register/register.dart';
+
 
 class Login extends StatefulWidget {
   static const String id = 'loginPage';
@@ -14,8 +16,8 @@ class _LoginState extends State<Login> {
   @override
   void initState() {
     super.initState();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,12 +34,16 @@ class _LoginState extends State<Login> {
                 // TODO: Need to create a background image and add if possible.
                 child: Center(
                     child: Text(
-                  "BACKGROUND-IMAGE",
-                  style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-                )),
+                      "BACKGROUND-IMAGE",
+                      style: TextStyle(
+                          fontSize: 25.0, fontWeight: FontWeight.bold),
+                    )),
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.68,
+                height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.68,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -75,7 +81,9 @@ class _LoginState extends State<Login> {
                       LoginTextFieldPass(),
                       SizedBox(height: 25.0,),
                       Center(
-                        child: PageButtons(buttonTitle: "Login",onPressed: (){},),
+                        child: PageButtons(buttonTitle: "Login", onPressed: () {
+                          Navigator.pushNamed(context, HomePage.id);
+                        },),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -102,7 +110,8 @@ class _LoginState extends State<Login> {
                                         fontWeight: FontWeight.bold),
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
-                                      Navigator.pushNamed(context, Register.id);
+                                        Navigator.pushNamed(
+                                            context, Register.id);
                                       },
                                   ),
                                 ],
@@ -128,7 +137,9 @@ class LoginTextFieldPass extends StatefulWidget {
   @override
   _LoginTextFieldPassState createState() => _LoginTextFieldPassState();
 }
+
 FocusNode focusNode1 = FocusNode();
+
 class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
   @override
   Widget build(BuildContext context) {
@@ -159,7 +170,9 @@ class LoginTextFieldUsr extends StatefulWidget {
   @override
   _LoginTextFieldUsrState createState() => _LoginTextFieldUsrState();
 }
+
 FocusNode focusNode = FocusNode();
+
 class _LoginTextFieldUsrState extends State<LoginTextFieldUsr> {
   @override
   Widget build(BuildContext context) {
