@@ -1,7 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:random_color/random_color.dart';
+
 
 Color mainColor = Color(0xff6c5dd4);
+RandomColor randomColor = RandomColor();
+
+Color randomColour = randomColor.randomColor(
+    colorSaturation: ColorSaturation.highSaturation
+);
+
+
+
 
 class PageButtons extends StatelessWidget {
   PageButtons({this.buttonTitle, this.onPressed, this.iconName});

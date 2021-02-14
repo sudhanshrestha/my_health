@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/register/register.dart';
-
 
 class Login extends StatefulWidget {
   static const String id = 'loginPage';
@@ -34,16 +34,12 @@ class _LoginState extends State<Login> {
                 // TODO: Need to create a background image and add if possible.
                 child: Center(
                     child: Text(
-                      "BACKGROUND-IMAGE",
-                      style: TextStyle(
-                          fontSize: 25.0, fontWeight: FontWeight.bold),
-                    )),
+                  "BACKGROUND-IMAGE",
+                  style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                )),
               ),
               Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.68,
+                height: MediaQuery.of(context).size.height * 0.79,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -66,24 +62,32 @@ class _LoginState extends State<Login> {
                     children: [
                       /*Login Title Label*/
                       Padding(
-                        padding: const EdgeInsets.only(left: 15.0, top: 15.0),
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                              fontSize: 40.0, fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                          padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+                          child:
+                          Text(
+                            "Login",
+                            style: TextStyle(
+                                fontSize: 40.0, fontWeight: FontWeight.bold),
+                          ),
+                          ),
                       SizedBox(
                         height: 20.0,
                       ),
                       LoginTextFieldUsr(),
-                      SizedBox(height: 10.0,),
+                      SizedBox(
+                        height: 10.0,
+                      ),
                       LoginTextFieldPass(),
-                      SizedBox(height: 25.0,),
+                      SizedBox(
+                        height: 25.0,
+                      ),
                       Center(
-                        child: PageButtons(buttonTitle: "Login", onPressed: () {
-                          Navigator.pushNamed(context, HomePage.id);
-                        },),
+                        child: PageButtons(
+                          buttonTitle: "Login",
+                          onPressed: () {
+                            Navigator.pushNamed(context, HomePage.id);
+                          },
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +137,6 @@ class _LoginState extends State<Login> {
 }
 
 class LoginTextFieldPass extends StatefulWidget {
-
   @override
   _LoginTextFieldPassState createState() => _LoginTextFieldPassState();
 }
@@ -148,8 +151,8 @@ class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
       child: TextField(
         decoration: InputDecoration(
           labelText: "Password",
-          labelStyle: TextStyle(
-              color: focusNode1.hasFocus ? mainColor : Colors.black),
+          labelStyle:
+              TextStyle(color: focusNode1.hasFocus ? mainColor : Colors.black),
           border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(10),
@@ -182,8 +185,8 @@ class _LoginTextFieldUsrState extends State<LoginTextFieldUsr> {
         focusNode: focusNode,
         decoration: InputDecoration(
           labelText: "Username",
-          labelStyle: TextStyle(
-              color: focusNode.hasFocus ? mainColor : Colors.black),
+          labelStyle:
+              TextStyle(color: focusNode.hasFocus ? mainColor : Colors.black),
           border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(10),

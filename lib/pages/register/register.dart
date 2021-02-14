@@ -73,7 +73,7 @@ class _RegisterState extends State<Register> {
                 ],
               ),
               Container(
-                height: MediaQuery.of(context).size.height * 0.79,
+                height: MediaQuery.of(context).size.height * 0.89,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.white,

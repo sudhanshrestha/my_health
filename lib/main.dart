@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/loadingPage.dart';
 import 'package:my_health/pages/login/login.dart';
+import 'package:my_health/pages/medicine/medicine.dart';
 import 'package:my_health/pages/register/register.dart';
 
 void main() {
@@ -27,6 +29,8 @@ class _MyHealthState extends State<MyHealth> {
         Login.id : (context) => Login(),
         Register.id : (context) => Register(),
         HomePage.id : (context) => HomePage(),
+        MedicinePage.id : (context) => MedicinePage(),
+
       },
     );
   }
