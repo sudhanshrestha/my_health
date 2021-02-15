@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_health/pages/login/login.dart';
 
 
+
 class LoadingPage extends StatefulWidget {
   static const String id = 'loadingPage';
   @override

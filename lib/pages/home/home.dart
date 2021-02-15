@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/bottomNavigation.dart';
 import 'package:random_color/random_color.dart';
@@ -39,17 +41,6 @@ class _HomePageState extends State<HomePage> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(38.0),
-                        bottomLeft: Radius.circular(38.0),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            spreadRadius: 3,
-                            blurRadius: 1,
-                            offset: Offset(0.0, 0.75)),
-                      ],
                     ),
                     child: TopCalender(controller: _controller),
                   ),
@@ -58,37 +49,93 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 20.0,
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 8.0, bottom: 8.0, left: 12.0, right: 12.0),
+              SingleChildScrollView(
                 child: Container(
+                  margin: const EdgeInsets.only(bottom: 6.0),
+                  //Same as `blurRadius` i guess
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+
+                      topLeft: Radius.circular(50.0),
+                    ),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.8),
+                        offset: Offset(0.0, 1.0), //(x,y)
+                        blurRadius: 6.0,
+                      ),
+                    ],
+                  ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "Today activities",
-                        style: TextStyle(
-                            fontSize: 24.0, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      MedicineBadge(
-                        medicineName: "Glemipiride",
-                        medicineAmount: "2 pills",
-                        medicineDosage: "5 mg",
-                        medicineTime: "8:00 AM - 9:00 AM",
-                        medicineIcon: FontAwesomeIcons.pills,
-                        randomColor: randomColour,
-                      ),
-                      MedicineBadge(
-                        medicineName: "Glemipiride",
-                        medicineAmount: "1 Injection",
-                        medicineDosage: "10 ml",
-                        medicineTime: "8:00 PM - 9:00 PM",
-                        medicineIcon: FontAwesomeIcons.syringe,
-                        randomColor: randomColour,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 8.0, bottom: 8.0, left: 12.0, right: 12.0),
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15.0,top: 20.0),
+                                child: Text(
+                                  "Today activities",
+                                  style: TextStyle(
+                                      fontSize: 24.0, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20.0,
+                              ),
+                              MedicineBadge(
+                                medicineName: "Glemipiride",
+                                medicineAmount: "2 pills",
+                                medicineDosage: "5 mg",
+                                medicineTime: "8:00 AM - 9:00 AM",
+                                medicineIcon: FontAwesomeIcons.pills,
+                                randomColor: randomColour,
+                                medicineTaken: true,
+                              ),
+                              MedicineBadge(
+                                medicineName: "Glemipiride",
+                                medicineAmount: "1 Injection",
+                                medicineDosage: "10 ml",
+                                medicineTime: "8:00 PM - 9:00 PM",
+                                medicineIcon: FontAwesomeIcons.syringe,
+                                randomColor: randomColour,
+                                medicineTaken: false,
+                              ),
+                              MedicineBadge(
+                                medicineName: "Glemipiride",
+                                medicineAmount: "1 Injection",
+                                medicineDosage: "10 ml",
+                                medicineTime: "8:00 PM - 9:00 PM",
+                                medicineIcon: FontAwesomeIcons.syringe,
+                                randomColor: randomColour,
+                                medicineTaken: false,
+                              ),
+                              MedicineBadge(
+                                medicineName: "Glemipiride",
+                                medicineAmount: "1 Injection",
+                                medicineDosage: "10 ml",
+                                medicineTime: "8:00 PM - 9:00 PM",
+                                medicineIcon: FontAwesomeIcons.syringe,
+                                randomColor: randomColour,
+                                medicineTaken: false,
+                              ),
+                              MedicineBadge(
+                                medicineName: "Glemipiride",
+                                medicineAmount: "1 Injection",
+                                medicineDosage: "10 ml",
+                                medicineTime: "8:00 PM - 9:00 PM",
+                                medicineIcon: FontAwesomeIcons.syringe,
+                                randomColor: randomColour,
+                                medicineTaken: false,
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -98,22 +145,38 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add),
+        shape:RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16.0))
+        ),
+        backgroundColor: Colors.indigo,
+      ),
       bottomNavigationBar: BottomNavigation(),
-
     );
   }
 }
 
 // ignore: must_be_immutable
 class MedicineBadge extends StatelessWidget {
-MedicineBadge({this.medicineName,this.medicineAmount,this.medicineDosage,this.medicineTime,this.medicineIcon,this.randomColor});
-final String medicineName;
-final String medicineAmount;
-final String medicineDosage;
-final String medicineTime;
-final IconData medicineIcon;
-final Color randomColor;
-Color iconColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
+  MedicineBadge(
+      {this.medicineName,
+      this.medicineAmount,
+      this.medicineDosage,
+      this.medicineTime,
+      this.medicineIcon,
+      this.randomColor,this.medicineTaken});
+
+  final String medicineName;
+  final String medicineAmount;
+  final String medicineDosage;
+  final String medicineTime;
+  final IconData medicineIcon;
+  final Color randomColor;
+  final bool medicineTaken;
+  Color iconColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -181,7 +244,7 @@ Color iconColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
                       Padding(
                         padding: const EdgeInsets.only(left: 2.0),
                         child: Text(
-                         medicineName,
+                          medicineName,
                           style: TextStyle(
                               fontSize: 22.0, fontWeight: FontWeight.bold),
                         ),
@@ -192,7 +255,7 @@ Color iconColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
                       Padding(
                         padding: const EdgeInsets.only(left: 2.0),
                         child: Text(
-                         " $medicineAmount ($medicineDosage)",
+                          " $medicineAmount ($medicineDosage)",
                           style: TextStyle(
                               fontSize: 16.0, color: Colors.grey[700]),
                         ),
@@ -216,7 +279,27 @@ Color iconColor = Colors.primaries[Random().nextInt(Colors.primaries.length)];
                         ],
                       ),
                     ],
-                  )
+                  ),
+                  SizedBox(width: 55.0,),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 6.0),
+                    //Same as `blurRadius` i guess
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.0),
+                      color: medicineTaken == true ? Colors.green[100] : Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(0.0, 1.0), //(x,y)
+                          blurRadius: 6.0,
+                        ),
+                      ],
+                    ),
+                    child: IconButton(
+                      icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
+                      onPressed: () {},
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -254,9 +337,6 @@ class TopCalender extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(16.0),
-                  ),
                 ),
                 child: TableCalendar(
                   initialCalendarFormat: CalendarFormat.week,

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/medicine/medicine.dart';
+import 'package:random_color/random_color.dart';
 
 int selectedIndex = 0;
 
@@ -45,6 +47,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               index: 0,
               onPress: (){
                 selectedIndex = 0;
+                HapticFeedback.vibrate();
                 Navigator.push(context, new MaterialPageRoute(
                     builder: (context) =>
                     new HomePage())
@@ -56,8 +59,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
               colorName: Colors.indigo,
               isActive: false,
               index: 1,
+
               onPress: (){
                 selectedIndex = 1;
+                HapticFeedback.vibrate();
                 Navigator.push(context, new MaterialPageRoute(
                     builder: (context) =>
                     new MedicinePage())
@@ -69,14 +74,20 @@ class _BottomNavigationState extends State<BottomNavigation> {
               colorName: Colors.pink,
               isActive: false,
               index: 2,
-              onPress: (){},
+
+              onPress: (){
+                HapticFeedback.vibrate();
+              },
             ),
             NavBarItem(
               iconName: Icons.person,
               colorName: Colors.teal,
               isActive: false,
               index: 3,
-              onPress: (){},
+
+              onPress: (){
+                HapticFeedback.vibrate();
+              },
             ),
           ],
         ),
@@ -94,6 +105,7 @@ class NavBarItem extends StatefulWidget {
   final bool isActive;
   final int index;
   final Function onPress;
+
 
   @override
   _NavBarItemState createState() => _NavBarItemState();
@@ -118,7 +130,7 @@ class _NavBarItemState extends State<NavBarItem> {
         padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 15),
         child: Padding(
           padding: const EdgeInsets.only(top:8.0),
-          child: Icon(
+          child:Icon(
             widget.iconName,
             color: widget.colorName,
           ),
