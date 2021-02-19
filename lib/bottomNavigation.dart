@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:my_health/pages/Other/Other.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/medicine/medicine.dart';
+import 'package:my_health/pages/mesurement/measurement.dart';
 import 'package:random_color/random_color.dart';
 
 int selectedIndex = 0;
@@ -76,7 +78,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
               index: 2,
 
               onPress: (){
+                selectedIndex = 2;
                 HapticFeedback.vibrate();
+                Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) =>
+                    new Measurement())
+                );
               },
             ),
             NavBarItem(
@@ -84,9 +91,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
               colorName: Colors.teal,
               isActive: false,
               index: 3,
-
               onPress: (){
+                selectedIndex = 3;
                 HapticFeedback.vibrate();
+                Navigator.push(context, new MaterialPageRoute(
+                    builder: (context) =>
+                    new OtherPage())
+                );
               },
             ),
           ],

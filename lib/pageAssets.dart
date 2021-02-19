@@ -62,3 +62,34 @@ class PageButtons extends StatelessWidget {
     );
   }
 }
+
+
+class SmallButton extends StatelessWidget {
+  SmallButton({this.buttonTitle, this.onPressed});
+
+  final String buttonTitle;
+  final Function onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: SizedBox(
+        width: 350,
+        height: 55,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: mainColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          onPressed: onPressed,
+          child: Text(
+            buttonTitle,
+            style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'OpenSans'),
+          ),
+        ),
+      ),
+    );
+  }
+}

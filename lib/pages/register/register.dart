@@ -372,3 +372,4 @@ class _RegisterPasswordTextFieldState extends State<RegisterPasswordTextField> {
     );
   }
 }
+
