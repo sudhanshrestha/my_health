@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_health/bottomNavigation.dart';
+import 'package:my_health/pages/Other/Doctors/doctor.dart';
+import 'package:my_health/pages/Other/Notes/notes.dart';
 import 'package:my_health/pages/Other/Other.dart';
+import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/loadingPage.dart';
 import 'package:my_health/pages/login/login.dart';
@@ -48,6 +51,9 @@ class _MyHealthState extends State<MyHealth> {
         PulsePage.id : (context) => PulsePage(),
        AddPulsePage.id : (context) => AddPulsePage(),
        OtherPage.id : (context) => OtherPage(),
+       ProfilePage.id : (context) => ProfilePage(),
+       NotePage.id : (context) => NotePage(),
+       DoctorPage.id : (context) => DoctorPage(),
 
 
       },

@@ -3,6 +3,9 @@ import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:my_health/pages/Other/Doctors/doctor.dart';
+import 'package:my_health/pages/Other/Notes/notes.dart';
+import 'package:my_health/pages/Other/Profile/profile.dart';
 
 class OtherPage extends StatefulWidget {
   static const String id = 'OtherPage';
@@ -68,6 +71,7 @@ class _OtherPageState extends State<OtherPage> {
                           mainLabel: "Notes",
                           icons: MdiIcons.noteText,
                           onTap: (){
+                            Navigator.pushNamed(context, NotePage.id);
                           },
                         ),
                         SizedBox(height: 15.0,),
@@ -75,6 +79,7 @@ class _OtherPageState extends State<OtherPage> {
                           mainLabel: "Doctors",
                           icons: IcoFontIcons.doctor,
                           onTap: (){
+                            Navigator.pushNamed(context, DoctorPage.id);
                           },
                         ),
                         SizedBox(height: 15.0,),
@@ -82,6 +87,7 @@ class _OtherPageState extends State<OtherPage> {
                           mainLabel: "Profile",
                           icons: Icons.person,
                           onTap: (){
+                            Navigator.pushNamed(context, ProfilePage.id);
                           },
                         ),
 

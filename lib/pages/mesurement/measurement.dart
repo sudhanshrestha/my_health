@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/main.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:my_health/pages/Other/Other.dart';
 import 'package:my_health/pages/mesurement/BloodPressure/bloodPressure.dart';
 import 'package:my_health/pages/mesurement/BodyFat/bodyFat.dart';
 import 'package:my_health/pages/mesurement/Pulse/pulse.dart';
@@ -61,16 +64,40 @@ class _MeasurementState extends State<Measurement> {
                         SizedBox(
                           height: 60.0,
                         ),
-                        MeasurementBadge(title: "Blood Pressure", color: mainColor,onPress: (){
-                          Navigator.pushNamed(context, BloodPressurePage.id);
+                        PCard2(
+                          mainLabel: "Blood Pressure",
+                          icons: MdiIcons.heartPlus,
+                          onTap: (){
+                            Navigator.pushNamed(context, BloodPressurePage.id);
+                          },
+                        ),
+                        SizedBox(height: 15.0,),
+                        PCard2(
+                          mainLabel: "Body Fat",
+                          icons: Boxicons.bx_body,
+                          onTap: (){
+                            Navigator.pushNamed(context, BodyFatPage.id);
+                          },
+                        ),
+                        SizedBox(height: 15.0,),
+                        PCard2(
+                          mainLabel: "Pulse",
+                          icons: MdiIcons.heartPulse,
+                          onTap: (){
+                            Navigator.pushNamed(context, PulsePage.id);
+                          },
+                        ),
 
-                        },),
-                        MeasurementBadge(title: "Body Fat", color: mainColor,onPress: (){
-                          Navigator.pushNamed(context, BodyFatPage.id);
-                        },),
-                        MeasurementBadge(title: "Pulse", color: mainColor,onPress: (){
-                          Navigator.pushNamed(context, PulsePage.id);
-                        },),
+                        // MeasurementBadge(title: "Blood Pressure", color: mainColor,onPress: (){
+                        //   Navigator.pushNamed(context, BloodPressurePage.id);
+                        //
+                        // },),
+                        // MeasurementBadge(title: "Body Fat", color: mainColor,onPress: (){
+                        //   Navigator.pushNamed(context, BodyFatPage.id);
+                        // },),
+                        // MeasurementBadge(title: "Pulse", color: mainColor,onPress: (){
+                        //   Navigator.pushNamed(context, PulsePage.id);
+                        // },),
                       ]
                   ),
                 ),

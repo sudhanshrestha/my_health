@@ -26,6 +26,7 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Image(
         image: AssetImage('images/My Health.png'),
         height: double.infinity,
