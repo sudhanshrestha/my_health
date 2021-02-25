@@ -8,6 +8,7 @@ import 'package:random_color/random_color.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:my_health/pageAssets.dart';
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'HomePage';
@@ -17,12 +18,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _auth = FirebaseAuth.instance;
+  User loggedInUser;
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    }
+    catch(e){
+      print(e);
+    }
+  }
   CalendarController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = CalendarController();
+    getCurrentUser();
   }
 
   @override

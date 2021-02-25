@@ -58,7 +58,6 @@ class _MyHealthState extends State<MyHealth> {
        NotePage.id : (context) => NotePage(),
        DoctorPage.id : (context) => DoctorPage(),
 
-
       },
     );
   }
