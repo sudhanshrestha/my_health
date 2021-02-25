@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+sudhanshrestha/my_health/BuildConfig.java
+ sudhanshrestha.my_health.BuildConfig
+sudhanshrestha/my_health/MainActivity.java
+ sudhanshrestha.my_health.MainActivity

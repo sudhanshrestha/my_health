@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/pages/Other/Doctors/doctor.dart';
@@ -18,7 +19,9 @@ import 'package:my_health/pages/mesurement/Pulse/pulse.dart';
 import 'package:my_health/pages/mesurement/measurement.dart';
 import 'package:my_health/pages/register/register.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyHealth());
 }
 

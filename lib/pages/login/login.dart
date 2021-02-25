@@ -1,9 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/register/register.dart';
+
+String email;
+String password;
 
 class Login extends StatefulWidget {
   static const String id = 'loginPage';
@@ -13,6 +16,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _auth = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -56,75 +62,89 @@ class _LoginState extends State<Login> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      /*Login Title Label*/
-                      Padding(
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        /*Login Title Label*/
+                        Padding(
                           padding: const EdgeInsets.only(left: 15.0, top: 15.0),
-                          child:
-                          Text(
+                          child: Text(
                             "Login",
                             style: TextStyle(
                                 fontSize: 40.0, fontWeight: FontWeight.bold),
                           ),
-                          ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      LoginTextFieldUsr(),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      LoginTextFieldPass(),
-                      SizedBox(
-                        height: 25.0,
-                      ),
-                      Center(
-                        child: PageButtons(
-                          buttonTitle: "Login",
-                          onPressed: () {
-                            Navigator.pushNamed(context, HomePage.id);
-                          },
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 20.0),
-                            child: RichText(
-                              textAlign: TextAlign.end,
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: "Don't have an account? ",
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: Colors.grey[700],
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  TextSpan(
-                                    text: "Register Now",
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        color: mainColor,
-                                        fontWeight: FontWeight.bold),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.pushNamed(
-                                            context, Register.id);
-                                      },
-                                  ),
-                                ],
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        LoginTextFieldEmail(),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        LoginTextFieldPass(),
+                        SizedBox(
+                          height: 25.0,
+                        ),
+                        Center(
+                          child: PageButtons(
+                            buttonTitle: "Login",
+                            onPressed: () async {
+                              if (_formKey.currentState.validate()) {
+                                try {
+                                  final user =
+                                  await _auth.signInWithEmailAndPassword(
+                                      email: email, password: password);
+                                  if (user != null) {
+                                    Navigator.pushNamed(context, HomePage.id);
+                                  }
+                                }
+                                catch (e) {
+                                  print(e);
+                                }
+                              }
+                            },
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: RichText(
+                                textAlign: TextAlign.end,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "Don't have an account? ",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.grey[700],
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(
+                                      text: "Register Now",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: mainColor,
+                                          fontWeight: FontWeight.bold),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.pushNamed(
+                                              context, Register.id);
+                                        },
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -148,7 +168,11 @@ class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0),
-      child: TextField(
+      child: TextFormField(
+        onChanged: (value) {
+          password = value;
+        },
+        validator: (val) => val.isEmpty ? 'Enter the password' : null,
         decoration: InputDecoration(
           labelText: "Password",
           labelStyle:
@@ -169,22 +193,27 @@ class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
   }
 }
 
-class LoginTextFieldUsr extends StatefulWidget {
+class LoginTextFieldEmail extends StatefulWidget {
   @override
-  _LoginTextFieldUsrState createState() => _LoginTextFieldUsrState();
+  _LoginTextFieldEmailState createState() => _LoginTextFieldEmailState();
 }
 
 FocusNode focusNode = FocusNode();
 
-class _LoginTextFieldUsrState extends State<LoginTextFieldUsr> {
+class _LoginTextFieldEmailState extends State<LoginTextFieldEmail> {
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0),
-      child: TextField(
+      child: TextFormField(
+        onChanged: (value) {
+          email = value;
+        },
         focusNode: focusNode,
+        validator: (val) => val.isEmpty ? 'Enter an email' : null,
+        keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
-          labelText: "Username",
+          labelText: "E-mail",
           labelStyle:
               TextStyle(color: focusNode.hasFocus ? mainColor : Colors.black),
           border: OutlineInputBorder(
