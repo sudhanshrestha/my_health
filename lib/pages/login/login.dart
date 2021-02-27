@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/register/register.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 String email;
 String password;
@@ -17,6 +18,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _auth = FirebaseAuth.instance;
+  bool showSpinner = false;
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -28,127 +30,153 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: 190.0,
-                width: double.infinity,
-                // TODO: Need to create a background image and add if possible.
-                child: Center(
-                    child: Text(
-                  "BACKGROUND-IMAGE",
-                  style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-                )),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.79,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(60),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: mainColor.withOpacity(1.0),
-                      spreadRadius: 10,
-                      blurRadius: 10,
-                    ),
-                  ],
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 190.0,
+                  width: double.infinity,
+                  // TODO: Need to create a background image and add if possible.
+                  child: Center(
+                      child: Text(
+                    "BACKGROUND-IMAGE",
+                    style:
+                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                  )),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        /*Login Title Label*/
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15.0, top: 15.0),
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                                fontSize: 40.0, fontWeight: FontWeight.bold),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.79,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(60),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: mainColor.withOpacity(1.0),
+                        spreadRadius: 10,
+                        blurRadius: 10,
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /*Login Title Label*/
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 15.0, top: 15.0),
+                            child: Text(
+                              "Login",
+                              style: TextStyle(
+                                  fontSize: 40.0, fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        LoginTextFieldEmail(),
-                        SizedBox(
-                          height: 10.0,
-                        ),
-                        LoginTextFieldPass(),
-                        SizedBox(
-                          height: 25.0,
-                        ),
-                        Center(
-                          child: PageButtons(
-                            buttonTitle: "Login",
-                            onPressed: () async {
-                              if (_formKey.currentState.validate()) {
-                                try {
-                                  final user =
-                                  await _auth.signInWithEmailAndPassword(
-                                      email: email, password: password);
-                                  if (user != null) {
-                                    Navigator.pushNamed(context, HomePage.id);
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          LoginTextFieldEmail(),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          LoginTextFieldPass(),
+                          SizedBox(
+                            height: 25.0,
+                          ),
+                          Center(
+                            child: PageButtons(
+                              buttonTitle: "Login",
+                              onPressed: () async {
+                                setState(() {
+                                  showSpinner = true;
+                                });
+                                if (_formKey.currentState.validate()) {
+                                  try {
+                                    final user = await _auth.signInWithEmailAndPassword(email: email, password: password)
+                                        .catchError((err) {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text("Error"),
+                                              content: Text(err.message),
+                                              actions: [
+                                                ElevatedButton(
+                                                  child: Text("Ok"),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                )
+                                              ],
+                                            );
+                                          });
+                                    });
+                                    if (user != null) {
+                                      Navigator.pushNamed(context, HomePage.id);
+                                    }
+                                    setState(() {
+                                      showSpinner = false;
+                                    });
+                                  } catch (e) {
+                                    print(e);
                                   }
                                 }
-                                catch (e) {
-                                  print(e);
-                                }
-                              }
-                            },
+                              },
+                            ),
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: RichText(
-                                textAlign: TextAlign.end,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "Don't have an account? ",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          color: Colors.grey[700],
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(
-                                      text: "Register Now",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          color: mainColor,
-                                          fontWeight: FontWeight.bold),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          Navigator.pushNamed(
-                                              context, Register.id);
-                                        },
-                                    ),
-                                  ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20.0),
+                                child: RichText(
+                                  textAlign: TextAlign.end,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: "Don't have an account? ",
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            color: Colors.grey[700],
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      TextSpan(
+                                        text: "Register Now",
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            color: mainColor,
+                                            fontWeight: FontWeight.bold),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () {
+                                            Navigator.pushNamed(
+                                                context, Register.id);
+                                          },
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

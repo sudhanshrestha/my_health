@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_health/pages/home/home.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 //Variables to store data in firebase
 String name;
@@ -20,6 +21,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final _auth = FirebaseAuth.instance;
   final _formKey = GlobalKey<FormState>();
+  bool showSpinner = false;
 
   //for dropdown menu
   final List<ListItem> _dropdownItems = [
@@ -54,146 +56,155 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: mainColor,
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 130,
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      height: 130,
+                      width: double.infinity,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0, top: 50.0),
+                        child: Text(
+                          "Register",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 46.0,
+                              fontWeight: FontWeight.w900),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        iconSize: 30.0,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
+                  ],
+                ),
+                Form(
+                  key: _formKey,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.89,
                     width: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20.0, top: 50.0),
-                      child: Text(
-                        "Register",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 46.0,
-                            fontWeight: FontWeight.w900),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(60),
                       ),
-                    ),
-                  ),
-                  IconButton(
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      iconSize: 30.0,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      }),
-                ],
-              ),
-              Form(
-                key: _formKey,
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.89,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: mainColor.withOpacity(1.0),
-                        spreadRadius: 10,
-                        blurRadius: 10,
-                      ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 30.0,
-                        ),
-                        // RegisterNameTextField(),
-                        // SizedBox(
-                        //   height: 20.0,
-                        // ),
-                        RegisterEmailTextField(),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        RegisterPasswordTextField(),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        // Center(
-                        //   child: Container(
-                        //     width: 370.0,
-                        //     height: 58.0,
-                        //     padding: EdgeInsets.fromLTRB(50, 1, 20, 1),
-                        //     decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(8.0),
-                        //         color: Colors.white,
-                        //         border: Border.all(
-                        //           width: 0.7,
-                        //           color: Colors.grey[700],
-                        //         )),
-                        //     child: DropdownButtonHideUnderline(
-                        //       child: DropdownButton(
-                        //           style: TextStyle(
-                        //             fontSize: 18.0,
-                        //             color: Colors.grey[800],
-                        //           ),
-                        //           hint: Text("Select Gender"),
-                        //           value: _selectedItem,
-                        //           items: _dropdownMenuItems,
-                        //           onChanged: (value) {
-                        //             _dropdownItems.indexOf(value) == 0
-                        //                 ? gender = "Male"
-                        //                 : gender = "Female";
-                        //             setState(() {
-                        //               _selectedItem = value;
-                        //             });
-                        //           }),
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: 20.0,
-                        // ),
-                        // Center(child: DOBPicker()),
-                        SizedBox(
-                          height: 25.0,
-                        ),
-                        Center(
-                          child: PageButtons(
-                            buttonTitle: "Register",
-                            onPressed: () async {
-                              if(_formKey.currentState.validate()){
-                                try{
-                                  final newUser =
-                                  await _auth.createUserWithEmailAndPassword(
-                                      email: email, password: password);
-                                  if(newUser !=null) {
-                                    Navigator.pushNamed(context, HomePage.id);
-                                  }
-                                }
-                                catch (e)
-                                {
-                                  print(e);
-                                }
-                              }
-
-
-                            },
-                          ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: mainColor.withOpacity(1.0),
+                          spreadRadius: 10,
+                          blurRadius: 10,
                         ),
                       ],
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          // RegisterNameTextField(),
+                          // SizedBox(
+                          //   height: 20.0,
+                          // ),
+                          RegisterEmailTextField(),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          RegisterPasswordTextField(),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          // Center(
+                          //   child: Container(
+                          //     width: 370.0,
+                          //     height: 58.0,
+                          //     padding: EdgeInsets.fromLTRB(50, 1, 20, 1),
+                          //     decoration: BoxDecoration(
+                          //         borderRadius: BorderRadius.circular(8.0),
+                          //         color: Colors.white,
+                          //         border: Border.all(
+                          //           width: 0.7,
+                          //           color: Colors.grey[700],
+                          //         )),
+                          //     child: DropdownButtonHideUnderline(
+                          //       child: DropdownButton(
+                          //           style: TextStyle(
+                          //             fontSize: 18.0,
+                          //             color: Colors.grey[800],
+                          //           ),
+                          //           hint: Text("Select Gender"),
+                          //           value: _selectedItem,
+                          //           items: _dropdownMenuItems,
+                          //           onChanged: (value) {
+                          //             _dropdownItems.indexOf(value) == 0
+                          //                 ? gender = "Male"
+                          //                 : gender = "Female";
+                          //             setState(() {
+                          //               _selectedItem = value;
+                          //             });
+                          //           }),
+                          //     ),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: 20.0,
+                          // ),
+                          // Center(child: DOBPicker()),
+                          SizedBox(
+                            height: 25.0,
+                          ),
+                          Center(
+                            child: PageButtons(
+                              buttonTitle: "Register",
+                              onPressed: () async {
+                                setState(() {
+                                  showSpinner = true;
+                                });
+                                if(_formKey.currentState.validate()){
+                                  try{
+                                    final newUser =
+                                    await _auth.createUserWithEmailAndPassword(
+                                        email: email, password: password);
+                                    if(newUser !=null) {
+                                      Navigator.pushNamed(context, HomePage.id);
+                                    }
+                                    setState(() {
+                                      showSpinner = false;
+                                    });
+                                  }
+                                  catch (e)
+                                  {
+                                    print(e);
+                                  }
+                                }
+
+
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/pages/Other/Doctors/doctor.dart';
+import 'package:my_health/pages/Other/Notes/addNotes.dart';
+import 'package:my_health/pages/Other/Notes/editNote.dart';
 import 'package:my_health/pages/Other/Notes/notes.dart';
 import 'package:my_health/pages/Other/Other.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
@@ -56,6 +58,8 @@ class _MyHealthState extends State<MyHealth> {
        OtherPage.id : (context) => OtherPage(),
        ProfilePage.id : (context) => ProfilePage(),
        NotePage.id : (context) => NotePage(),
+       AddNote.id : (context) => AddNote(),
+       EditNote.id : (context) => EditNote(),
        DoctorPage.id : (context) => DoctorPage(),
 
       },
