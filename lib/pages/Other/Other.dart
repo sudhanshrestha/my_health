@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -6,6 +7,7 @@ import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/Other/Doctors/doctor.dart';
 import 'package:my_health/pages/Other/Notes/notes.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
+import 'package:my_health/pages/login/login.dart';
 
 class OtherPage extends StatefulWidget {
   static const String id = 'OtherPage';
@@ -14,6 +16,7 @@ class OtherPage extends StatefulWidget {
 }
 
 class _OtherPageState extends State<OtherPage> {
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,6 +91,15 @@ class _OtherPageState extends State<OtherPage> {
                           icons: Icons.person,
                           onTap: (){
                             Navigator.pushNamed(context, ProfilePage.id);
+                          },
+                        ),
+                        SizedBox(height: 15.0,),
+                        PCard2(
+                          mainLabel: "Log Out",
+                          icons: Icons.person,
+                          onTap: (){
+                            _auth.signOut();
+                            Navigator.pushNamed(context, Login.id);
                           },
                         ),
 

@@ -25,7 +25,9 @@ class _HomePageState extends State<HomePage> {
       final user = _auth.currentUser;
       if (user != null) {
         loggedInUser = user;
+        UserID = loggedInUser.uid;
         print(loggedInUser.email);
+        print(UserID);
       }
     }
     catch(e){

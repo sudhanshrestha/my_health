@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:random_color/random_color.dart';
 
+String UserID;
 
 Color mainColor = Color(0xff6c5dd4);
 RandomColor randomColor = RandomColor();
