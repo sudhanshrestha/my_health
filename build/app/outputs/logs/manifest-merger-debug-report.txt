@@ -6,6 +6,7 @@ INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\ma
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:shared_preferences] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:7:1-12:12
@@ -141,6 +142,8 @@ INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\ma
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

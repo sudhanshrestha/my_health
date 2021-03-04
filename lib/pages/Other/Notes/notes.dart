@@ -68,56 +68,59 @@ class _NotePageState extends State<NotePage> {
                           stream: ref.snapshots(),
                           builder: (context,
                               AsyncSnapshot<QuerySnapshot> snapshot) {
-                            return ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                physics: ScrollPhysics(),
-                                itemCount: snapshot.hasData ? snapshot.data.docs.
-                                    length : 0,
-                                itemBuilder: (_, index) {
+                            return ClipRect(
+                              child: ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  physics: ScrollPhysics(),
+                                  itemCount: snapshot.hasData ? snapshot.data.docs.
+                                      length : 0,
+                                  itemBuilder: (_, index) {
 
-                                  return  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(
-                                          builder: (_) =>
-                                              EditNote(docToEdit: snapshot.data
-                                                  .docs[index])));
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.all(15.0),
-                                      padding: EdgeInsets.all(15.0),
-                                      height: 150.0,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                            16.0),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment
-                                            .start,
-                                        children: [
-                                          Text(
-                                            snapshot.data.docs[index]
-                                                .data()['title'],
-                                            style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          SizedBox(
-                                            height: 5.0,
-                                          ),
-                                          Text(
-                                            snapshot.data.docs[index]
-                                                .data()['description'],
-                                            style: TextStyle(
-                                              fontSize: 17.0,
+                                    return  GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(context, MaterialPageRoute(
+                                            builder: (_) =>
+                                                EditNote(docToEdit: snapshot.data
+                                                    .docs[index])));
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.all(15.0),
+                                        padding: EdgeInsets.all(15.0),
+                                        height: 150.0,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(
+                                              16.0),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment
+                                              .start,
+                                          children: [
+                                            Text(
+                                              snapshot.data.docs[index]
+                                                  .data()['title'],
+                                              style: TextStyle(
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold),
                                             ),
-                                          ),
-                                        ],
+                                            SizedBox(
+                                              height: 5.0,
+                                            ),
+                                            Text(
+                                              snapshot.data.docs[index]
+                                                  .data()['description'],
+                                              style: TextStyle(
+                                                fontSize: 17.0,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                });
+                                    );
+                                  }),
+                            );
                           }
                       ),
                     ]),

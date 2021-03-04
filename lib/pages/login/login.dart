@@ -6,8 +6,8 @@ import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/register/register.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-String email;
-String password;
+
+
 
 class Login extends StatefulWidget {
   static const String id = 'loginPage';
@@ -42,12 +42,7 @@ class _LoginState extends State<Login> {
                   height: 190.0,
                   width: double.infinity,
                   // TODO: Need to create a background image and add if possible.
-                  child: Center(
-                      child: Text(
-                    "BACKGROUND-IMAGE",
-                    style:
-                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-                  )),
+
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.79,
@@ -103,7 +98,7 @@ class _LoginState extends State<Login> {
                                 });
                                 if (_formKey.currentState.validate()) {
                                   try {
-                                    final user = await _auth.signInWithEmailAndPassword(email: email, password: password)
+                                    final user = await _auth.signInWithEmailAndPassword(email: userEmail, password: userPassword)
                                         .catchError((err) {
                                       showDialog(
                                           context: context,
@@ -113,6 +108,12 @@ class _LoginState extends State<Login> {
                                               content: Text(err.message),
                                               actions: [
                                                 ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                    primary: mainColor,
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(8),
+                                                    ),
+                                                  ),
                                                   child: Text("Ok"),
                                                   onPressed: () {
                                                     Navigator.of(context).pop();
@@ -198,7 +199,7 @@ class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
       padding: EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0),
       child: TextFormField(
         onChanged: (value) {
-          password = value;
+          userPassword = value;
         },
         validator: (val) => val.isEmpty ? 'Enter the password' : null,
         decoration: InputDecoration(
@@ -235,7 +236,7 @@ class _LoginTextFieldEmailState extends State<LoginTextFieldEmail> {
       padding: EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0),
       child: TextFormField(
         onChanged: (value) {
-          email = value;
+          userEmail = value;
         },
         focusNode: focusNode,
         validator: (val) => val.isEmpty ? 'Enter an email' : null,

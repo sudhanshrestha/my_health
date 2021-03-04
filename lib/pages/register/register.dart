@@ -180,7 +180,31 @@ class _RegisterState extends State<Register> {
                                   try{
                                     final newUser =
                                     await _auth.createUserWithEmailAndPassword(
-                                        email: email, password: password);
+                                        email: email, password: password)
+                                        .catchError((err) {
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text("Error"),
+                                              content: Text(err.message),
+                                              actions: [
+                                                ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                    primary: mainColor,
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(8),
+                                                    ),
+                                                  ),
+                                                  child: Text("Ok"),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                )
+                                              ],
+                                            );
+                                          });
+                                    });
                                     if(newUser !=null) {
                                       Navigator.pushNamed(context, HomePage.id);
                                     }

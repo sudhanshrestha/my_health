@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/login/login.dart';
 
 
@@ -15,10 +17,21 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   void initState() {
     super.initState();
+     final user = FirebaseAuth.instance.currentUser;
     Timer(Duration(seconds: 3), () {
-      Navigator.push(
-        context, new MaterialPageRoute(builder: (context) => new Login(),),
-      );
+      if (user !=null){
+        Navigator.push(
+          context, new MaterialPageRoute(builder: (context) => new HomePage(),),
+        );
+      }
+      else{
+        Navigator.push(
+          context, new MaterialPageRoute(builder: (context) => new Login(),),
+        );
+      }
+
+
+
     }
     );
   }
