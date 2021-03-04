@@ -1,13 +1,41 @@
+
+
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dropdown/flutter_dropdown.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
 
+
+String _name;
+String _dob;
+String _gender;
 class ProfilePage extends StatefulWidget {
   static const String id = 'ProfilePage';
+
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final storeProfile = FirebaseFirestore.instance;
+  final _formKey = GlobalKey<FormState>();
+
+  final imagePicker = ImagePicker();
+  File imageFile;
+
+  Future getImage() async {
+    var image = await imagePicker.getImage(source: ImageSource.gallery);
+    setState(() {
+      imageFile = File(image.path);
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
-                        "Prfoile",
+                        "Profile",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 45.0,
@@ -42,12 +70,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
                         Navigator.pop(context);
                       }),
-
                 ],
               ),
               Container(
                 width: double.infinity,
-                height: 650,
+                height: 720,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -61,34 +88,152 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ],
                 ),
-                child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        SizedBox(height: 60.0,),
-                        Center(child: CircleAvatar(backgroundImage: AssetImage("images/p.jpg"), radius: 50)),
-                        SizedBox(height: 30.0,),
+                        SizedBox(
+                          height: 60.0,
+                        ),
+                        Center(
+                          child: GestureDetector(
+                              onTap: () => getImage(),
+                              child: (imageFile == null)
+                                  ? Container(
+                                height: 150,
+                                width: 150,
+                                child: Icon(
+                                    MdiIcons.cameraPlus,
+                                    size: 40
+                                ),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    color: Colors.white
+                                ),
+                              )
+                                  : Container(
+                                height: 180,
+                                width: 130,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: FileImage(imageFile)
+                                    )
+                                ),
+                              ),
+                          ),
+                        ),
+                        // Center(
+                        //   child: MaterialButton(
+                        //     onPressed: getImage,
+                        //     child: CircleAvatar(
+                        //       backgroundColor: Colors.transparent,
+                        //       radius: 60.0,
+                        //       child: CircleAvatar(
+                        //         radius: 40.0,
+                        //         backgroundImage: (imageFile != null)
+                        //             ? Image.file(imageFile)
+                        //             : AssetImage("images/p.jpg"),
+                        //         backgroundColor: Colors.white,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        // Center(
+                        //     child: CircleAvatar(
+                        //         backgroundImage: AssetImage("images/p.jpg"),
+                        //         radius: 50)),
+                        SizedBox(
+                          height: 30.0,
+                        ),
                         ProfileNameTextField(),
-                        SizedBox(height: 20.0,),
-                        ProfileUserNameTextField(),
-                        SizedBox(height: 20.0,),
-                        ProfilePasswordTextField(),
-                        SizedBox(height: 20.0,),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         Center(child: DOBPicker()),
-                        SizedBox(height: 20.0,),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left:18.0,right: 18.0),
+                            child: Container(
+                              padding: const EdgeInsets.only(left:15.0,right: 10.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 0.7,
+                                    color: Colors.grey[700],
+                                  ),
+                                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                              child: DropDown(
+                                showUnderline: false,
+                                isExpanded: true,
+                                items: ["Male", "Female", "Other"],
+                                hint: Text("Select Gender",style: TextStyle(fontSize: 17.0,color: Colors.grey[800]),),
+                                onChanged: (value){
+                                  _gender = value.toString();
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20.0,bottom: 50.0),
+                          padding:
+                              const EdgeInsets.only(top: 20.0, bottom: 50.0),
                           child: Center(
                             child: SmallButton(
                               buttonTitle: "Save changes",
                               onPressed: () {
+                                if(_formKey.currentState.validate()){
+                                  if(_name == null || _gender == null || _dob == null){
+                                    print("empty");
+                                    return AlertDialog(
+                                      title: Text("Error"),
+                                      content: Text("Please enter the details properly."),
+                                      actions: [
+                                        ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            primary: mainColor,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          child: Text("Ok"),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        )
+                                      ],
+                                    );
+                                  }
+                                  else{
+                                    print(" not empyty");
+                                    print(_name);
+                                    print(_gender);
+                                    print(_dob);
+
+                                    storeProfile.collection('profile').doc(UserID).set({
+                                      'userID':UserID,
+                                      'name' : _name,
+                                      'gender': _gender,
+                                      'dob': _dob,
+                                    });
+                                  }
+                                }
+                                // storeProfile.collection('notes').add({
+                                //   'userID':UserID,
+                                //   'name': title.text,
+                                //   'description': description.text,
+                                // });
                               },
                             ),
                           ),
                         ),
-
-
                       ]),
                 ),
               ),
@@ -97,16 +242,13 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
     );
-
   }
 }
 
-
-
 DateTime dateTime;
+
 // ignore: must_be_immutable
 class DOBPicker extends StatefulWidget {
-
   @override
   _DOBPickerState createState() => _DOBPickerState();
 }
@@ -128,6 +270,7 @@ class _DOBPickerState extends State<DOBPicker> {
           ).then((date) {
             setState(() {
               dateTime = date;
+              _dob = '${dateTime.year}-${dateTime.month}-${dateTime.day}'.toString();
             });
           });
         },
@@ -139,8 +282,7 @@ class _DOBPickerState extends State<DOBPicker> {
                 width: 0.7,
                 color: Colors.grey[700],
               ),
-              borderRadius:
-              BorderRadius.all(Radius.circular(10))),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Padding(
             padding: const EdgeInsets.only(
                 left: 20.0, right: 18.0, top: 10.0, bottom: 10.0),
@@ -154,9 +296,7 @@ class _DOBPickerState extends State<DOBPicker> {
                     dateTime == null
                         ? "Select Date of Birth"
                         : "Date of Birth: ${dateTime.year}-${dateTime.month}-${dateTime.day}",
-                    style: TextStyle(
-                        fontSize: 17.0,
-                        color: Colors.grey[800]),
+                    style: TextStyle(fontSize: 17.0, color: Colors.grey[800]),
                   ),
                 ),
                 SizedBox(
@@ -170,6 +310,7 @@ class _DOBPickerState extends State<DOBPicker> {
     );
   }
 }
+
 //TextField for Name
 class ProfileNameTextField extends StatefulWidget {
   @override
@@ -193,7 +334,11 @@ class _ProfileNameTextFieldState extends State<ProfileNameTextField> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15.0, right: 15.0),
-      child: TextField(
+      child: TextFormField(
+        validator: (val) => val.isEmpty ? 'Enter the name' : null,
+        onChanged: (value) {
+          _name = value.toString();
+        },
         focusNode: focusNodeName,
         decoration: InputDecoration(
           labelText: "Name",
@@ -239,7 +384,7 @@ class _ProfileUserNameTextFieldState extends State<ProfileUserNameTextField> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15.0, right: 15.0),
-      child: TextField(
+      child: TextFormField(
         focusNode: focusNodeUserName,
         decoration: InputDecoration(
           labelText: "UserName",
@@ -285,7 +430,7 @@ class _ProfilePasswordTextFieldState extends State<ProfilePasswordTextField> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 15.0, right: 15.0),
-      child: TextField(
+      child: TextFormField(
         focusNode: focusNodePassword,
         decoration: InputDecoration(
           labelText: "Password",
@@ -306,4 +451,3 @@ class _ProfilePasswordTextFieldState extends State<ProfilePasswordTextField> {
     );
   }
 }
-

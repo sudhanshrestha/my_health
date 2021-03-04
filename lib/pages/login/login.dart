@@ -126,11 +126,39 @@ class _LoginState extends State<Login> {
                                     if (user != null) {
                                       Navigator.pushNamed(context, HomePage.id);
                                     }
+                                    else {
+                                      setState(() {
+                                        showSpinner = false;
+                                      });
+                                      AlertDialog(
+                                        title: Text("Error"),
+                                        content: Text("Please enter the correct email and passowrd."),
+                                        actions: [
+                                          ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              primary: mainColor,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(8),
+                                              ),
+                                            ),
+                                            child: Text("Ok"),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          )
+                                        ],
+                                      );
+
+
+                                    }
                                     setState(() {
                                       showSpinner = false;
                                     });
                                   } catch (e) {
                                     print(e);
+                                    setState(() {
+                                      showSpinner = false;
+                                    });
                                   }
                                 }
                               },

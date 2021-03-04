@@ -16,7 +16,7 @@ class OtherPage extends StatefulWidget {
 }
 
 class _OtherPageState extends State<OtherPage> {
-  final _auth = FirebaseAuth.instance;
+  final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,8 +98,10 @@ class _OtherPageState extends State<OtherPage> {
                           mainLabel: "Log Out",
                           icons: Icons.person,
                           onTap: (){
-                            _auth.signOut();
-                            Navigator.pushNamed(context, Login.id);
+                            auth.signOut();
+                            Navigator.pop(context,true);
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()),);
+
                           },
                         ),
 

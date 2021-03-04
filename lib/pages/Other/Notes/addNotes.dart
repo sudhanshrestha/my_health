@@ -96,7 +96,7 @@ class _AddNoteState extends State<AddNote> {
                         child: AddButton(
                           buttonTitle: "Add Note",
                           onPressed: () {
-                            _firestore.collection('notes').doc(UserID).set({
+                            _firestore.collection('notes').add({
                               'userID':UserID,
                               'title': title.text,
                               'description': description.text,

@@ -20,12 +20,12 @@ class _LoadingPageState extends State<LoadingPage> {
      final user = FirebaseAuth.instance.currentUser;
     Timer(Duration(seconds: 3), () {
       if (user !=null){
-        Navigator.push(
+        Navigator.pushReplacement(
           context, new MaterialPageRoute(builder: (context) => new HomePage(),),
         );
       }
       else{
-        Navigator.push(
+        Navigator.pushReplacement(
           context, new MaterialPageRoute(builder: (context) => new Login(),),
         );
       }

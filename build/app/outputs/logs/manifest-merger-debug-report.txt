@@ -6,12 +6,14 @@ INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\ma
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:shared_preferences] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-22:12
+MERGED from [:flutter_plugin_android_lifecycle] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:7:1-12:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\d06827f7a9596f53a59241ad5fbb5890\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\68cdf54e57789aa73bcc970d349223b6\jetified-firebase-auth-20.0.1\AndroidManifest.xml:17:1-83:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c771071d4a1115941bb32fffa0845a8c\exifinterface-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.test:rules:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\eec6b24c8eaf3f8ee3c418c2b11fa5fa\rules-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.test.espresso:espresso-core:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\f0009a834e6cd3d3db53887b06adc843\espresso-core-3.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.test:runner:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\a42a342b567f67ca4074b388538f9e7c\runner-1.2.0\AndroidManifest.xml:17:1-24:12
@@ -64,6 +66,8 @@ application
 ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:3:4-40:19
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
+MERGED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-20:19
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
@@ -142,8 +146,10 @@ INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\ma
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -154,6 +160,8 @@ MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Sudhan\.gradle\caches\tr
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\d06827f7a9596f53a59241ad5fbb5890\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\68cdf54e57789aa73bcc970d349223b6\jetified-firebase-auth-20.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\68cdf54e57789aa73bcc970d349223b6\jetified-firebase-auth-20.0.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c771071d4a1115941bb32fffa0845a8c\exifinterface-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c771071d4a1115941bb32fffa0845a8c\exifinterface-1.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test:rules:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\eec6b24c8eaf3f8ee3c418c2b11fa5fa\rules-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test:rules:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\eec6b24c8eaf3f8ee3c418c2b11fa5fa\rules-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test.espresso:espresso-core:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\f0009a834e6cd3d3db53887b06adc843\espresso-core-3.2.0\AndroidManifest.xml:20:5-22:41
@@ -258,6 +266,30 @@ ADDED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\buil
 		ADDED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-78
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar
 ADDED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
