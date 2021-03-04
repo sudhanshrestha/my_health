@@ -7,6 +7,7 @@ import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/Other/Doctors/doctor.dart';
 import 'package:my_health/pages/Other/Notes/notes.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
+import 'package:my_health/pages/Other/Profile/profileDisplay.dart';
 import 'package:my_health/pages/login/login.dart';
 
 class OtherPage extends StatefulWidget {
@@ -90,7 +91,7 @@ class _OtherPageState extends State<OtherPage> {
                           mainLabel: "Profile",
                           icons: Icons.person,
                           onTap: (){
-                            Navigator.pushNamed(context, ProfilePage.id);
+                            Navigator.pushNamed(context, ProfileDisplay.id);
                           },
                         ),
                         SizedBox(height: 15.0,),

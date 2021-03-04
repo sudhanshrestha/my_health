@@ -7,7 +7,9 @@ import 'package:my_health/pages/Other/Notes/addNotes.dart';
 import 'package:my_health/pages/Other/Notes/editNote.dart';
 import 'package:my_health/pages/Other/Notes/notes.dart';
 import 'package:my_health/pages/Other/Other.dart';
+import 'package:my_health/pages/Other/Profile/editProfile.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
+import 'package:my_health/pages/Other/Profile/profileDisplay.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/loadingPage.dart';
 import 'package:my_health/pages/login/login.dart';
@@ -62,6 +64,8 @@ class _MyHealthState extends State<MyHealth> {
        AddPulsePage.id : (context) => AddPulsePage(),
        OtherPage.id : (context) => OtherPage(),
        ProfilePage.id : (context) => ProfilePage(),
+       ProfileDisplay.id : (context) => ProfileDisplay(),
+       EditProfile.id : (context) => EditProfile(),
        NotePage.id : (context) => NotePage(),
        AddNote.id : (context) => AddNote(),
        EditNote.id : (context) => EditNote(),
