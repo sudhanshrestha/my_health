@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/bottomNavigation.dart';
+import 'package:my_health/pages/Other/Doctors/addDoctor.dart';
 import 'package:my_health/pages/Other/Doctors/doctor.dart';
+import 'package:my_health/pages/Other/Doctors/doctorInfo.dart';
 import 'package:my_health/pages/Other/Notes/addNotes.dart';
 import 'package:my_health/pages/Other/Notes/editNote.dart';
 import 'package:my_health/pages/Other/Notes/notes.dart';
@@ -70,6 +72,8 @@ class _MyHealthState extends State<MyHealth> {
        AddNote.id : (context) => AddNote(),
        EditNote.id : (context) => EditNote(),
        DoctorPage.id : (context) => DoctorPage(),
+       AddDoctorPage.id : (context) => AddDoctorPage(),
+       DoctorInfo.id : (context) => DoctorInfo(),
 
       },
     );

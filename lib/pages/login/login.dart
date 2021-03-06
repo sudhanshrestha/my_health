@@ -124,7 +124,7 @@ class _LoginState extends State<Login> {
                                           });
                                     });
                                     if (user != null) {
-                                      Navigator.pushNamed(context, HomePage.id);
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),);
                                     }
                                     else {
                                       setState(() {

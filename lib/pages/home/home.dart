@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -69,17 +70,16 @@ class _HomePageState extends State<HomePage> {
               ),
               SingleChildScrollView(
                 child: Container(
-                  margin: const EdgeInsets.only(bottom: 6.0),
+                  margin: const EdgeInsets.only(bottom: 2.0),
                   //Same as `blurRadius` i guess
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-
                       topLeft: Radius.circular(50.0),
                     ),
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.8),
+                        color: Colors.grey.withOpacity(0.8),
                         offset: Offset(0.0, 1.0), //(x,y)
                         blurRadius: 6.0,
                       ),

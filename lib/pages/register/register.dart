@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
@@ -206,7 +207,7 @@ class _RegisterState extends State<Register> {
                                           });
                                     });
                                     if(newUser !=null) {
-                                      Navigator.pushNamed(context, HomePage.id);
+                                      Navigator.pushNamed(context, ProfilePage.id);
                                     }
                                     setState(() {
                                       showSpinner = false;

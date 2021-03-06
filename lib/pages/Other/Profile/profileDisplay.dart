@@ -71,7 +71,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                       SizedBox(height: 30,),
                       Center(
                           child: CircleAvatar(
-                              backgroundImage: AssetImage("images/p.jpg"),
+                              backgroundImage: AssetImage("images/person.png"),
                               radius: 50)),
                       StreamBuilder(
                           stream: FirebaseFirestore.instance

@@ -86,7 +86,7 @@ class _EditProfileState extends State<EditProfile> {
                       ),
                       Center(
                         child: CircleAvatar(
-                            backgroundImage: AssetImage("images/p.jpg"),
+                            backgroundImage: AssetImage("images/person.png"),
                             radius: 50),
                       ),
                       SingleChildScrollView(

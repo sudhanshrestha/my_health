@@ -8,6 +8,7 @@ import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:my_health/pages/home/home.dart';
 
 
 String _name;
@@ -188,7 +189,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               const EdgeInsets.only(top: 20.0, bottom: 50.0),
                           child: Center(
                             child: SmallButton(
-                              buttonTitle: "Save changes",
+                              buttonTitle: "Save",
                               onPressed: () {
                                 if(_formKey.currentState.validate()){
                                   if(_name == null || _gender == null || _dob == null){
@@ -224,6 +225,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       'gender': _gender,
                                       'dob': _dob,
                                     });
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),);
                                   }
                                 }
                                 // storeProfile.collection('notes').add({

@@ -33,7 +33,7 @@ class _OtherPageState extends State<OtherPage> {
                 child: Column(
                   children: [
                     SizedBox(height: 20.0,),
-                    CircleAvatar(backgroundImage: AssetImage("images/p.jpg"), radius: 50),
+                    CircleAvatar(backgroundImage: AssetImage("images/person.png"), radius: 50),
                     Center(
                       child: Text(
                         "Sudhan Shrestha",
