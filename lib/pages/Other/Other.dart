@@ -113,6 +113,14 @@ class _OtherPageState extends State<OtherPage> {
                         ),
                         SizedBox(height: 15.0,),
                         PCard2(
+                          mainLabel: "Track Me",
+                          icons: Icons.location_on,
+                          onTap: (){
+
+                          },
+                        ),
+                        SizedBox(height: 15.0,),
+                        PCard2(
                           mainLabel: "Log Out",
                           icons: Icons.person,
                           onTap: (){
