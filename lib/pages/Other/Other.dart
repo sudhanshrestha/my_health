@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
@@ -18,6 +19,7 @@ class OtherPage extends StatefulWidget {
 
 class _OtherPageState extends State<OtherPage> {
   final auth = FirebaseAuth.instance;
+  final ref = FirebaseFirestore.instance.collection('profile').doc(UserID);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,19 +31,34 @@ class _OtherPageState extends State<OtherPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                height: 250.0,
+                height: 220.0,
                 child: Column(
                   children: [
                     SizedBox(height: 20.0,),
                     CircleAvatar(backgroundImage: AssetImage("images/person.png"), radius: 50),
+                    SizedBox(height: 20.0,),
                     Center(
-                      child: Text(
-                        "Sudhan Shrestha",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 35.0,
-                            fontWeight: FontWeight.bold),
+                      child: StreamBuilder(
+                        stream: FirebaseFirestore.instance
+                          .collection('profile')
+                          .doc(UserID)
+                          .snapshots(),
+                        builder: (context,snapshot){
+                          if(!snapshot.hasData){
+                            return Text("Loading");
+                          }
+                          var usrData = snapshot.data;
+                          return  Text(
+                                usrData["name"],
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 35.0,
+                                    fontWeight: FontWeight.bold),
+                              );
+
+                        },
                       ),
+
                     ),
                   ],
                 ),
