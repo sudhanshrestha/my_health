@@ -25,7 +25,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
               Stack(
                 children: [
                   Container(
-                    height: 150.0,
+                    height: 170.0,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
@@ -64,117 +64,119 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                     ),
                   ],
                 ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: 30,),
-                      Center(
-                          child: CircleAvatar(
-                              backgroundImage: AssetImage("images/person.png"),
-                              radius: 50)),
-                      StreamBuilder(
-                          stream: FirebaseFirestore.instance
-                              .collection('profile')
-                              .doc(UserID)
-                              .snapshots(),
-                          builder: (context, snapshot) {
-                            if (!snapshot.hasData) {
-                              return new Text("Loading");
-                            }
-                            var userDocument = snapshot.data;
-                            return Container(
-                              margin: EdgeInsets.all(15.0),
-                              padding: EdgeInsets.all(15.0),
-                              height: 150.0,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Name:  ' ,
-                                        style: TextStyle(
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        userDocument["name"],
-                                        style: TextStyle(
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5.0,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Gender:  ' ,
-                                        style: TextStyle(
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        userDocument["gender"],
-                                        style: TextStyle(
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 5.0,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'DOB:  ' ,
-                                        style: TextStyle(
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        userDocument["dob"],
-                                        style: TextStyle(
-                                            fontSize: 25.0,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            );
-                          }),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0, bottom: 50.0),
-                        child: Center(
-                          child: SmallButton(
-                            buttonTitle: "Edit",
-                            onPressed: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => EditProfile()),);
-                              // EditProfile(docToEdit: snapshot.data
-                              //     .docs[index])));
-                            },
+                child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 30,),
+                        Center(
+                            child: CircleAvatar(
+                                backgroundImage: AssetImage("images/person.png"),
+                                radius: 50)),
+                        StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection('profile')
+                                .doc(UserID)
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData) {
+                                return new Text("Loading");
+                              }
+                              var userDocument = snapshot.data;
+                              return Container(
+                                margin: EdgeInsets.all(15.0),
+                                padding: EdgeInsets.all(15.0),
+                                height: 300.0,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Name:  ' ,
+                                          style: TextStyle(
+                                              fontSize: 25.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          userDocument["name"],
+                                          style: TextStyle(
+                                              fontSize: 25.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Gender:  ' ,
+                                          style: TextStyle(
+                                              fontSize: 25.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          userDocument["gender"],
+                                          style: TextStyle(
+                                              fontSize: 25.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'DOB:  ' ,
+                                          style: TextStyle(
+                                              fontSize: 25.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          userDocument["dob"],
+                                          style: TextStyle(
+                                              fontSize: 25.0,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20.0, bottom: 50.0),
+                          child: Center(
+                            child: SmallButton(
+                              buttonTitle: "Edit",
+                              onPressed: () {
+                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => EditProfile()),);
+                                // EditProfile(docToEdit: snapshot.data
+                                //     .docs[index])));
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ]),
+                      ]),
+                ),
               ),
             ],
           ),

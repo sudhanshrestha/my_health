@@ -22,7 +22,7 @@ class _PulsePageState extends State<PulsePage> {
               Stack(
                 children: [
                   Container(
-                    height: 150.0,
+                    height: 175.0,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
@@ -48,7 +48,7 @@ class _PulsePageState extends State<PulsePage> {
               ),
               Container(
                 width: double.infinity,
-                height: 650,
+                height: 700,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

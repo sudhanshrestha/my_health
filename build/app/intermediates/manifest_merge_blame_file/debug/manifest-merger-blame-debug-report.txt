@@ -32,7 +32,7 @@
 22        android:debuggable="true"
 23        android:icon="@mipmap/ic_launcher"
 23-->E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:5:9-43
-24        android:label="my_health" >
+24        android:label="My Health" >
 24-->E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:4:9-34
 25        <activity
 25-->E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:6:9-34:20

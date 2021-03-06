@@ -29,7 +29,7 @@ class _DoctorInfoState extends State<DoctorInfo> {
                 Stack(
                   children: [
                     Container(
-                      height: 150.0,
+                      height: 245.0,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                         child: Text(
@@ -54,7 +54,7 @@ class _DoctorInfoState extends State<DoctorInfo> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 600,
+                  height: 700,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -80,7 +80,7 @@ class _DoctorInfoState extends State<DoctorInfo> {
                   Container(
                     margin: EdgeInsets.all(15.0),
                     padding: EdgeInsets.all(15.0),
-                    height: 200.0,
+                    height: 250.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16.0),

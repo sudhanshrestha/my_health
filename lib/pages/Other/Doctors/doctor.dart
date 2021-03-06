@@ -27,7 +27,7 @@ class _DoctorPageState extends State<DoctorPage> {
               Stack(
                 children: [
                   Container(
-                    height: 150.0,
+                    height: 170.0,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
