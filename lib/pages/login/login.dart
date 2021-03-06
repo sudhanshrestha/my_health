@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -267,7 +268,7 @@ class _LoginTextFieldEmailState extends State<LoginTextFieldEmail> {
           userEmail = value;
         },
         focusNode: focusNode,
-        validator: (val) => val.isEmpty ? 'Enter an email' : null,
+        validator: (val) => EmailValidator.validate(val) ? null : 'Enter correct email address',
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           labelText: "E-mail",

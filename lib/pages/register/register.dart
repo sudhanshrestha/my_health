@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -383,7 +384,7 @@ class _RegisterEmailTextFieldState extends State<RegisterEmailTextField> {
     return Container(
       padding: EdgeInsets.only(left: 10.0, right: 10.0),
       child: TextFormField(
-        validator: (val)=> val.isEmpty ? 'Enter an email':null,
+        validator: (val) => EmailValidator.validate(val) ? null : 'Enter correct email address',
         focusNode: focusNodeUserName,
         keyboardType: TextInputType.emailAddress,
         onChanged: (value) {

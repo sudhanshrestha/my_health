@@ -204,7 +204,7 @@ class _AddDoctorPageState extends State<AddDoctorPage> {
                                     height: 60,
                                     child: TextFormField(
                                       controller: docEmail,
-                                      validator: (val) => EmailValidator.validate(val) ? 'Enter correct email address' : null,
+                                      validator: (val) => EmailValidator.validate(val) ? null : 'Enter correct email address',
                                       keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
                                         border: OutlineInputBorder(
