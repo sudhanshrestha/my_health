@@ -27,6 +27,23 @@ class _ProfilePageState extends State<ProfilePage> {
   final storeProfile = FirebaseFirestore.instance;
   final _formKey = GlobalKey<FormState>();
 
+  final _auth = FirebaseAuth.instance;
+  User loggedInUser;
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        UserID = loggedInUser.uid;
+        print(loggedInUser.email);
+        print(UserID);
+      }
+    }
+    catch(e){
+      print(e);
+    }
+  }
+
   final imagePicker = ImagePicker();
   File imageFile;
 
@@ -36,7 +53,12 @@ class _ProfilePageState extends State<ProfilePage> {
       imageFile = File(image.path);
     });
   }
+  @override
+  void initState() {
 
+    getCurrentUser();
+
+  }
 
   @override
   Widget build(BuildContext context) {

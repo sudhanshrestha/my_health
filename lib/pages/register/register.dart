@@ -208,7 +208,8 @@ class _RegisterState extends State<Register> {
                                           });
                                     });
                                     if(newUser !=null) {
-                                      Navigator.pushNamed(context, ProfilePage.id);
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()),);
+
                                     }
                                     setState(() {
                                       showSpinner = false;

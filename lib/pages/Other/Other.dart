@@ -125,6 +125,7 @@ class _OtherPageState extends State<OtherPage> {
                           icons: Icons.person,
                           onTap: (){
                             auth.signOut();
+                            UserID = "";
                             Navigator.pop(context,true);
                             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()),);
 

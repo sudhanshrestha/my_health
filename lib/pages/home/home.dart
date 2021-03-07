@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/bottomNavigation.dart';
+import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:random_color/random_color.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:my_health/pageAssets.dart';
@@ -20,27 +21,28 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _auth = FirebaseAuth.instance;
   User loggedInUser;
-  void getCurrentUser() {
-    try {
-      final user = _auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-        UserID = loggedInUser.uid;
-        print(loggedInUser.email);
-        print(UserID);
-      }
-    }
-    catch(e){
-      print(e);
-    }
-  }
+  // void getCurrentUser() {
+  //   try {
+  //     final user = _auth.currentUser;
+  //     if (user != null) {
+  //       loggedInUser = user;
+  //       UserID = loggedInUser.uid;
+  //       print(loggedInUser.email);
+  //       print(UserID);
+  //     }
+  //   }
+  //   catch(e){
+  //     print(e);
+  //   }
+  // }
   CalendarController _controller;
 
   @override
   void initState() {
     super.initState();
     _controller = CalendarController();
-    getCurrentUser();
+    // getCurrentUser();
+    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()),);
   }
 
   @override
