@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boxicons/flutter_boxicons.dart';
+import 'package:icofont_flutter/icofont_flutter.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:intl/intl.dart';
 
 
 class AddBodyFatPage extends StatefulWidget {
@@ -9,6 +13,45 @@ class AddBodyFatPage extends StatefulWidget {
 }
 
 class _AddBodyFatPageState extends State<AddBodyFatPage> {
+  TextEditingController bodyFat = TextEditingController();
+  TextEditingController bfNote = TextEditingController();
+
+  DateTime selectedDate = DateTime.now();
+
+  Future<Null> _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2019, 1),
+        lastDate: DateTime(2111));
+    if (picked != null)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
+
+  TimeOfDay _selectedTime = TimeOfDay.now();
+
+  Future<Null> _selectTime(BuildContext context) async {
+    final TimeOfDay timePicked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (timePicked != null)
+      setState(() {
+        _selectedTime = timePicked;
+      });
+
+    print(_selectedTime.toString());
+  }
+
+  String formatTimeOfDay(TimeOfDay tod) {
+    final now = new DateTime.now();
+    final dt = DateTime(now.year, now.month, now.day, tod.hour, tod.minute);
+    final format = DateFormat.jm(); //"6:00 AM"
+    return format.format(dt);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +72,7 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                         "Add Body Fat",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 45.0,
+                            fontSize: 38.0,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -43,7 +86,6 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                       onPressed: () {
                         Navigator.pop(context);
                       }),
-
                 ],
               ),
               Container(
@@ -78,6 +120,166 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                                 fontSize: 18.0, fontWeight: FontWeight.bold),
                           ),
                         ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Boxicons.bx_body,
+                              color: mainColor,
+                            ),
+                            Flexible(
+                              child: Container(
+                                padding: EdgeInsets.all(20),
+                                child: TextField(
+                                  controller: bodyFat,
+                                  decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.fromLTRB(
+                                        5.0, 10.0, 5.0, 10.0),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: mainColor),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: mainColor),
+                                    ),
+                                    hintText: "Body Fat",
+                                    hintStyle: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black),
+                                  ),
+                                  style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "%",
+                              style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              MdiIcons.clock,
+                              color: mainColor,
+                            ),
+                            SizedBox(width: 15.0,),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                                elevation: 0,
+                              ),
+                              onPressed: () => _selectDate(context),
+                              child: Text(
+                                '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}'
+                                    .toString(),
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 30,
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                                elevation: 0,
+                              ),
+                              onPressed: () => _selectTime(context),
+                              child: Text(
+                                formatTimeOfDay(_selectedTime),
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black),
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        // FlatButton(
+                        //     onPressed: () {
+                        //       DatePicker.showDateTimePicker(context,
+                        //           showTitleActions: true,
+                        //           minTime: DateTime(1980, 1, 1),
+                        //           maxTime: DateTime(2099, 12, 30), onChanged: (date) {
+                        //             print('change $date');
+                        //           }, onConfirm: (date) {
+                        //             print('confirm $date');
+                        //           }, currentTime: DateTime.now(), locale: LocaleType.en);
+                        //     },
+                        //     child: Text(
+                        //       'Pick Date',
+                        //       style: TextStyle(color: Colors.blue),
+                        //     )),
+
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              MdiIcons.note,
+                              color: mainColor,
+                            ),
+                            Flexible(
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: TextField(
+                                  controller: bfNote,
+                                  maxLines: null,
+                                  decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: mainColor),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: mainColor),
+                                    ),
+                                    hintText: "Notes ",
+                                    hintStyle: TextStyle(
+                                        fontSize: 18.0, color: Colors.black),
+                                  ),
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Colors.black),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Center(
+                            child: SmallButton(
+                              buttonTitle: "Save",
+                              onPressed: () {},
+                            )),
                       ]),
                 ),
               ),

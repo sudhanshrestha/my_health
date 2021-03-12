@@ -21,25 +21,26 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _auth = FirebaseAuth.instance;
   User loggedInUser;
-  // void getCurrentUser() {
-  //   try {
-  //     final user = _auth.currentUser;
-  //     if (user != null) {
-  //       loggedInUser = user;
-  //       UserID = loggedInUser.uid;
-  //       print(loggedInUser.email);
-  //       print(UserID);
-  //     }
-  //   }
-  //   catch(e){
-  //     print(e);
-  //   }
-  // }
+  void getCurrentUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        UserID = loggedInUser.uid;
+        print(loggedInUser.email);
+        print(UserID);
+      }
+    }
+    catch(e){
+      print(e);
+    }
+  }
   CalendarController _controller;
 
   @override
   void initState() {
     super.initState();
+    getCurrentUser();
     _controller = CalendarController();
     // getCurrentUser();
     // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()),);

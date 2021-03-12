@@ -13,10 +13,9 @@ class NotePage extends StatefulWidget {
 }
 
 class _NotePageState extends State<NotePage> {
-
-
-  final ref = FirebaseFirestore.instance.collection('notes').where('userID',isEqualTo: UserID);
-
+  final ref = FirebaseFirestore.instance
+      .collection('notes')
+      .where('userID', isEqualTo: UserID);
 
   @override
   Widget build(BuildContext context) {
@@ -63,26 +62,27 @@ class _NotePageState extends State<NotePage> {
                       SizedBox(
                         height: 50.0,
                       ),
-
                       StreamBuilder<QuerySnapshot>(
                           stream: ref.snapshots(),
-                          builder: (context,
-                              AsyncSnapshot<QuerySnapshot> snapshot) {
+                          builder:
+                              (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                             return ClipRect(
                               child: ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
                                   physics: ScrollPhysics(),
-                                  itemCount: snapshot.hasData ? snapshot.data.docs.
-                                      length : 0,
+                                  itemCount: snapshot.hasData
+                                      ? snapshot.data.docs.length
+                                      : 0,
                                   itemBuilder: (_, index) {
-
-                                    return  GestureDetector(
+                                    return GestureDetector(
                                       onTap: () {
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (_) =>
-                                                EditNote(docToEdit: snapshot.data
-                                                    .docs[index])));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) => EditNote(
+                                                    docToEdit: snapshot
+                                                        .data.docs[index])));
                                       },
                                       child: Container(
                                         margin: EdgeInsets.all(15.0),
@@ -90,12 +90,12 @@ class _NotePageState extends State<NotePage> {
                                         height: 150.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadius.circular(
-                                              16.0),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
                                         ),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment
-                                              .start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               snapshot.data.docs[index]
@@ -121,8 +121,7 @@ class _NotePageState extends State<NotePage> {
                                     );
                                   }),
                             );
-                          }
-                      ),
+                          }),
                     ]),
               ),
             ],
@@ -144,7 +143,8 @@ class _NotePageState extends State<NotePage> {
 class _test {
   String title;
   String description;
-  _test(this.title,this.description);
+
+  _test(this.title, this.description);
 }
 
 // class NotesCard extends StatelessWidget {

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/mesurement/BloodPressure/addBloodPressure.dart';
@@ -10,6 +11,10 @@ class BloodPressurePage extends StatefulWidget {
 }
 
 class _BloodPressurePageState extends State<BloodPressurePage> {
+  final ref = FirebaseFirestore.instance
+      .collection('Measurement_BloodPressure')
+      .where('userID', isEqualTo: UserID);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +49,6 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                       onPressed: () {
                         Navigator.pop(context);
                       }),
-
                 ],
               ),
               Container(
@@ -79,6 +83,120 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                                 fontSize: 18.0, fontWeight: FontWeight.bold),
                           ),
                         ),
+                        StreamBuilder<QuerySnapshot>(
+                            stream: ref.snapshots(),
+                            builder: (context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              return ClipRect(
+                                child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    physics: ScrollPhysics(),
+                                    itemCount: snapshot.hasData
+                                        ? snapshot.data.docs.length
+                                        : 0,
+                                    itemBuilder: (_, index) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          // Navigator.push(
+                                          //     context,
+                                          //     MaterialPageRoute(
+                                          //         builder: (_) => EditNote(
+                                          //             docToEdit: snapshot
+                                          //                 .data.docs[index])));
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Card(
+                                            elevation: 4,
+                                            child: Container(
+                                              margin: EdgeInsets.all(15.0),
+                                              padding: EdgeInsets.all(15.0),
+                                              height: 90.0,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(16.0),
+                                              ),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        snapshot.data.docs[index]
+                                                            .data()['sys'],
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            fontWeight:
+                                                                FontWeight.bold),
+                                                      ),
+                                                      Text(
+                                                        " / ",
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            fontWeight:
+                                                                FontWeight.bold),
+                                                      ),
+                                                      Text(
+                                                        snapshot.data.docs[index]
+                                                            .data()['dia'],
+                                                        style: TextStyle(
+                                                            fontSize: 20.0,
+                                                            fontWeight:
+                                                                FontWeight.bold),
+                                                        overflow:
+                                                            TextOverflow.ellipsis,
+                                                      ),
+                                                      SizedBox(width: 50,),
+                                                      Text(
+                                                        snapshot.data.docs[index]
+                                                            .data()['date'],
+                                                        style: TextStyle(
+                                                            fontSize: 18.0,
+                                                            fontWeight:
+                                                            FontWeight.normal),
+                                                      ),
+                                                      Text(
+                                                        " , ",
+                                                        style: TextStyle(
+                                                            fontSize: 18.0,
+                                                            fontWeight:
+                                                            FontWeight.normal),
+                                                      ),
+                                                      Text(
+                                                        snapshot.data.docs[index]
+                                                            .data()['time'],
+                                                        style: TextStyle(
+                                                            fontSize: 18.0,
+                                                            fontWeight:
+                                                            FontWeight.normal),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5.0,
+                                                  ),
+                                                  Text(
+                                                    snapshot.data.docs[index]
+                                                        .data()['note'],
+                                                    style: TextStyle(
+                                                        fontSize: 18.0,
+                                                        fontWeight:
+                                                        FontWeight.normal),
+                                                    overflow:
+                                                    TextOverflow.ellipsis,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                              );
+                            }),
                       ]),
                 ),
               ),

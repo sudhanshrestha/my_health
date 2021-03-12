@@ -94,6 +94,10 @@ flutter_boxicons
 2.1
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_boxicons-2.0.2/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_boxicons-2.0.2/lib/
+flutter_datetime_picker
+2.0
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.0/
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.0/lib/
 flutter_dropdown
 2.1
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_dropdown-0.0.8/
@@ -131,9 +135,9 @@ image_picker_platform_interface
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-1.1.6/
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker_platform_interface-1.1.6/lib/
 intl
-2.5
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1/
-file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.1/lib/
+2.12
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/
+file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib/
 js
 2.12
 file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3/

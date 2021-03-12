@@ -20,6 +20,26 @@ class OtherPage extends StatefulWidget {
 class _OtherPageState extends State<OtherPage> {
   final auth = FirebaseAuth.instance;
   final ref = FirebaseFirestore.instance.collection('profile').doc(UserID);
+  final _auth = FirebaseAuth.instance;
+  User loggedInUser;
+  // void getCurrentUser() {
+  //   try {
+  //     final user = _auth.currentUser;
+  //     if (user != null) {
+  //       loggedInUser = user;
+  //       UserID = loggedInUser.uid;
+  //       print(loggedInUser.email);
+  //       print(UserID);
+  //     }
+  //   }
+  //   catch(e){
+  //     print(e);
+  //   }
+  // }
+  @override
+  void initState() {
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
