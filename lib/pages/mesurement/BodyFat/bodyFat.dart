@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/mesurement/BodyFat/addBodyFat.dart';
+import 'package:my_health/pages/mesurement/BodyFat/editBodyFat.dart';
 class BodyFatPage extends StatefulWidget {
   static const String id = 'BodyFatPage';
   @override
@@ -96,12 +97,12 @@ class _BodyFatPageState extends State<BodyFatPage> {
                                     itemBuilder: (_, index) {
                                       return GestureDetector(
                                         onTap: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (_) => EditNote(
-                                          //             docToEdit: snapshot
-                                          //                 .data.docs[index])));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) => EditBodyFat(
+                                                      docToEdit: snapshot
+                                                          .data.docs[index])));
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(10.0),

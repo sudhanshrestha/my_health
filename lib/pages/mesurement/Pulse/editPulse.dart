@@ -1,18 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
-import 'package:intl/intl.dart';
 
-class AddPulsePage extends StatefulWidget {
-  static const String id = 'AddPulsePage';
+class EditPulse extends StatefulWidget {
+  static const String id = 'EditPulsePage';
+  DocumentSnapshot docToEdit;
+
+  EditPulse({this.docToEdit});
+
   @override
-  _AddPulsePageState createState() => _AddPulsePageState();
+  _EditPulseState createState() => _EditPulseState();
 }
 
-class _AddPulsePageState extends State<AddPulsePage> {
+class _EditPulseState extends State<EditPulse> {
   TextEditingController pulse = TextEditingController();
   TextEditingController pulseNote = TextEditingController();
   String date;
@@ -25,7 +28,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,
-        initialDate: selectedDate,
+        initialDate: DateTime.parse(date),
         firstDate: DateTime(2019, 1),
         lastDate: DateTime(2111));
     if (picked != null)
@@ -36,11 +39,15 @@ class _AddPulsePageState extends State<AddPulsePage> {
   }
 
   TimeOfDay _selectedTime = TimeOfDay.now();
+  TimeOfDay stringToTimeOfDay(String tod) {
+    final format = DateFormat.jm(); //"6:00 AM"
+    return TimeOfDay.fromDateTime(format.parse(tod));
+  }
 
   Future<Null> _selectTime(BuildContext context) async {
     final TimeOfDay timePicked = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay.now(),
+      initialTime: stringToTimeOfDay(time),
     );
     if (timePicked != null)
       setState(() {
@@ -48,7 +55,6 @@ class _AddPulsePageState extends State<AddPulsePage> {
         time= formatTimeOfDay(_selectedTime);
       });
 
-    print(_selectedTime.toString());
   }
 
   String formatTimeOfDay(TimeOfDay tod) {
@@ -60,11 +66,12 @@ class _AddPulsePageState extends State<AddPulsePage> {
 
   @override
   void initState() {
+    pulse = TextEditingController(text: widget.docToEdit.data()['pulse']);
+    pulseNote = TextEditingController(text: widget.docToEdit.data()['note']);
     time= formatTimeOfDay(_selectedTime);
     date =  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +90,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
-                        "Add Pulse",
+                        "Edit Pulse",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 38.0,
@@ -153,16 +160,19 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
                                     controller: pulse,
-                                    validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    validator: (val) =>
+                                        val.isEmpty ? 'Enter value' : null,
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       hintText: "Pulse",
                                       hintStyle: TextStyle(
@@ -202,7 +212,9 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 MdiIcons.clock,
                                 color: mainColor,
                               ),
-                              SizedBox(width: 15.0,),
+                              SizedBox(
+                                width: 15.0,
+                              ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
@@ -274,10 +286,12 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                     maxLines: null,
                                     decoration: InputDecoration(
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       hintText: "Notes ",
                                       hintStyle: TextStyle(
@@ -294,21 +308,29 @@ class _AddPulsePageState extends State<AddPulsePage> {
                             height: 20,
                           ),
                           Center(
-                              child: SmallButton(
-                                buttonTitle: "Save",
-                                onPressed: () {
-                                  if (_formKey.currentState.validate()) {
-                                    _firestore.collection('Measurement_Pulse').add({
-                                      'userID':UserID,
-                                      'pulse': pulse.text,
-                                      'date': date,
-                                      'time': time,
-                                      'note': pulseNote.text,
-                                    }).whenComplete(() => Navigator.pop(context));
-                                  }
-
-                                },
-                              )),
+                            child: SmallButton(
+                              buttonTitle: "Save",
+                              onPressed: () {
+                                if (_formKey.currentState.validate()) {
+                                  widget.docToEdit.reference.update({
+                                    'pulse': pulse.text,
+                                    'date': date,
+                                    'time': time,
+                                    'note': pulseNote.text,
+                                  }).whenComplete(() => Navigator.pop(context));
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(height: 20,),
+                          Center(
+                            child: SmallButton(
+                              buttonTitle: "Delete",
+                              onPressed: () {
+                                widget.docToEdit.reference.delete().whenComplete(() => Navigator.pop(context));
+                              },
+                            ),
+                          ),
                         ]),
                   ),
                 ),

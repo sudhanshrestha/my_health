@@ -1,20 +1,24 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_boxicons/flutter_boxicons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:icofont_flutter/icofont_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
-import 'package:intl/intl.dart';
 
-class AddPulsePage extends StatefulWidget {
-  static const String id = 'AddPulsePage';
+class EditBloodPressure extends StatefulWidget {
+  static const String id = 'EditBloodPressure';
+  DocumentSnapshot docToEdit;
+
+  EditBloodPressure({this.docToEdit});
+
   @override
-  _AddPulsePageState createState() => _AddPulsePageState();
+  _EditBloodPressureState createState() => _EditBloodPressureState();
 }
 
-class _AddPulsePageState extends State<AddPulsePage> {
-  TextEditingController pulse = TextEditingController();
-  TextEditingController pulseNote = TextEditingController();
+class _EditBloodPressureState extends State<EditBloodPressure> {
+  TextEditingController sys = TextEditingController();
+  TextEditingController dia = TextEditingController();
+  TextEditingController bpNote = TextEditingController();
   String date;
   String time;
   final _firestore = FirebaseFirestore.instance;
@@ -23,6 +27,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
   DateTime selectedDate = DateTime.now();
 
   Future<Null> _selectDate(BuildContext context) async {
+    date = '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
@@ -31,13 +36,14 @@ class _AddPulsePageState extends State<AddPulsePage> {
     if (picked != null)
       setState(() {
         selectedDate = picked;
-        date =  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+        date = '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
       });
   }
 
   TimeOfDay _selectedTime = TimeOfDay.now();
 
   Future<Null> _selectTime(BuildContext context) async {
+    time = formatTimeOfDay(_selectedTime);
     final TimeOfDay timePicked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
@@ -45,10 +51,8 @@ class _AddPulsePageState extends State<AddPulsePage> {
     if (timePicked != null)
       setState(() {
         _selectedTime = timePicked;
-        time= formatTimeOfDay(_selectedTime);
+        time = formatTimeOfDay(_selectedTime);
       });
-
-    print(_selectedTime.toString());
   }
 
   String formatTimeOfDay(TimeOfDay tod) {
@@ -60,11 +64,12 @@ class _AddPulsePageState extends State<AddPulsePage> {
 
   @override
   void initState() {
-    time= formatTimeOfDay(_selectedTime);
-    date =  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+    sys = TextEditingController(text: widget.docToEdit.data()['sys']);
+    dia = TextEditingController(text: widget.docToEdit.data()['dia']);
+    time = formatTimeOfDay(_selectedTime);
+    date = '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +88,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
-                        "Add Pulse",
+                        "Add Blood Pressure",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 38.0,
@@ -131,7 +136,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                           Padding(
                             padding: const EdgeInsets.only(left: 15.0),
                             child: Text(
-                              "Pulse (bpm)",
+                              "Blood Pressure (mmHg)",
                               style: TextStyle(
                                   fontSize: 18.0, fontWeight: FontWeight.bold),
                             ),
@@ -145,26 +150,29 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 width: 10,
                               ),
                               Icon(
-                                FontAwesomeIcons.heartbeat,
+                                IcoFontIcons.bloodTest,
                                 color: mainColor,
                               ),
                               Flexible(
                                 child: Container(
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
-                                    controller: pulse,
-                                    validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    controller: sys,
                                     keyboardType: TextInputType.number,
+                                    validator: (val) =>
+                                        val.isEmpty ? 'Enter value' : null,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
-                                      hintText: "Pulse",
+                                      hintText: "Sys(high)",
                                       hintStyle: TextStyle(
                                           fontSize: 18.0,
                                           fontWeight: FontWeight.w500,
@@ -172,13 +180,52 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                     ),
                                     style: TextStyle(
                                         fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w600,
                                         color: Colors.black),
                                   ),
                                 ),
                               ),
                               Text(
-                                "bpm",
+                                "/",
+                                style: TextStyle(
+                                    fontSize: 25.0,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding: EdgeInsets.all(20),
+                                  child: TextFormField(
+                                    controller: dia,
+                                    validator: (val) =>
+                                        val.isEmpty ? 'Enter value' : null,
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          5.0, 10.0, 5.0, 10.0),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: mainColor),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: mainColor),
+                                      ),
+                                      hintText: "Sys(high)",
+                                      hintStyle: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black),
+                                    ),
+                                    style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "mmHg",
                                 style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.normal,
@@ -192,7 +239,6 @@ class _AddPulsePageState extends State<AddPulsePage> {
                           SizedBox(
                             height: 10,
                           ),
-
                           Row(
                             children: [
                               SizedBox(
@@ -202,7 +248,9 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 MdiIcons.clock,
                                 color: mainColor,
                               ),
-                              SizedBox(width: 15.0,),
+                              SizedBox(
+                                width: 15.0,
+                              ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
@@ -214,7 +262,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                       .toString(),
                                   style: TextStyle(
                                       fontSize: 18.0,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w600,
                                       color: Colors.black),
                                 ),
                               ),
@@ -231,29 +279,12 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   formatTimeOfDay(_selectedTime),
                                   style: TextStyle(
                                       fontSize: 18.0,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w600,
                                       color: Colors.black),
                                 ),
                               ),
                             ],
                           ),
-
-                          // FlatButton(
-                          //     onPressed: () {
-                          //       DatePicker.showDateTimePicker(context,
-                          //           showTitleActions: true,
-                          //           minTime: DateTime(1980, 1, 1),
-                          //           maxTime: DateTime(2099, 12, 30), onChanged: (date) {
-                          //             print('change $date');
-                          //           }, onConfirm: (date) {
-                          //             print('confirm $date');
-                          //           }, currentTime: DateTime.now(), locale: LocaleType.en);
-                          //     },
-                          //     child: Text(
-                          //       'Pick Date',
-                          //       style: TextStyle(color: Colors.blue),
-                          //     )),
-
                           SizedBox(
                             height: 10,
                           ),
@@ -270,21 +301,25 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(20.0),
                                   child: TextField(
-                                    controller: pulseNote,
+                                    controller: bpNote,
                                     maxLines: null,
                                     decoration: InputDecoration(
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       hintText: "Notes ",
                                       hintStyle: TextStyle(
                                           fontSize: 18.0, color: Colors.black),
                                     ),
                                     style: TextStyle(
-                                        fontSize: 18.0, color: Colors.black),
+                                        fontSize: 18.0,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ),
                               ),
@@ -294,21 +329,34 @@ class _AddPulsePageState extends State<AddPulsePage> {
                             height: 20,
                           ),
                           Center(
-                              child: SmallButton(
-                                buttonTitle: "Save",
-                                onPressed: () {
-                                  if (_formKey.currentState.validate()) {
-                                    _firestore.collection('Measurement_Pulse').add({
-                                      'userID':UserID,
-                                      'pulse': pulse.text,
-                                      'date': date,
-                                      'time': time,
-                                      'note': pulseNote.text,
-                                    }).whenComplete(() => Navigator.pop(context));
-                                  }
-
-                                },
-                              )),
+                            child: SmallButton(
+                              buttonTitle: "Save",
+                              onPressed: () {
+                                if (_formKey.currentState.validate()) {
+                                  widget.docToEdit.reference.update({
+                                    'sys': sys.text,
+                                    'dia': dia.text,
+                                    'date': date,
+                                    'time': time,
+                                    'note': bpNote.text,
+                                  }).whenComplete(() => Navigator.pop(context));
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Center(
+                            child: SmallButton(
+                              buttonTitle: "Delete",
+                              onPressed: () {
+                                widget.docToEdit.reference
+                                    .delete()
+                                    .whenComplete(() => Navigator.pop(context));
+                              },
+                            ),
+                          ),
                         ]),
                   ),
                 ),

@@ -1,20 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:intl/intl.dart';
 
-class AddPulsePage extends StatefulWidget {
-  static const String id = 'AddPulsePage';
+class EditBodyFat extends StatefulWidget {
+  static const String id = 'EditBodyFatPage';
+  DocumentSnapshot docToEdit;
+
+  EditBodyFat({this.docToEdit});
   @override
-  _AddPulsePageState createState() => _AddPulsePageState();
+  _EditBodyFatState createState() => _EditBodyFatState();
 }
 
-class _AddPulsePageState extends State<AddPulsePage> {
-  TextEditingController pulse = TextEditingController();
-  TextEditingController pulseNote = TextEditingController();
+class _EditBodyFatState extends State<EditBodyFat> {
+  TextEditingController bodyFat = TextEditingController();
+  TextEditingController bfNote = TextEditingController();
   String date;
   String time;
   final _firestore = FirebaseFirestore.instance;
@@ -45,10 +47,9 @@ class _AddPulsePageState extends State<AddPulsePage> {
     if (timePicked != null)
       setState(() {
         _selectedTime = timePicked;
-        time= formatTimeOfDay(_selectedTime);
+        time = formatTimeOfDay(_selectedTime);
       });
 
-    print(_selectedTime.toString());
   }
 
   String formatTimeOfDay(TimeOfDay tod) {
@@ -57,9 +58,10 @@ class _AddPulsePageState extends State<AddPulsePage> {
     final format = DateFormat.jm(); //"6:00 AM"
     return format.format(dt);
   }
-
   @override
   void initState() {
+    bodyFat = TextEditingController(text: widget.docToEdit.data()['bodyFat']);
+    bfNote = TextEditingController(text: widget.docToEdit.data()['note']);
     time= formatTimeOfDay(_selectedTime);
     date =  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
     super.initState();
@@ -83,7 +85,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
-                        "Add Pulse",
+                        "Edit Body Fat",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 38.0,
@@ -131,7 +133,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                           Padding(
                             padding: const EdgeInsets.only(left: 15.0),
                             child: Text(
-                              "Pulse (bpm)",
+                              "Body Fat (%)",
                               style: TextStyle(
                                   fontSize: 18.0, fontWeight: FontWeight.bold),
                             ),
@@ -145,14 +147,14 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 width: 10,
                               ),
                               Icon(
-                                FontAwesomeIcons.heartbeat,
+                                Boxicons.bx_body,
                                 color: mainColor,
                               ),
                               Flexible(
                                 child: Container(
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
-                                    controller: pulse,
+                                    controller: bodyFat,
                                     validator: (val) => val.isEmpty ? 'Enter value' : null,
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
@@ -164,7 +166,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(color: mainColor),
                                       ),
-                                      hintText: "Pulse",
+                                      hintText: "Body Fat",
                                       hintStyle: TextStyle(
                                           fontSize: 18.0,
                                           fontWeight: FontWeight.w500,
@@ -178,7 +180,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 ),
                               ),
                               Text(
-                                "bpm",
+                                "%",
                                 style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.normal,
@@ -238,21 +240,6 @@ class _AddPulsePageState extends State<AddPulsePage> {
                             ],
                           ),
 
-                          // FlatButton(
-                          //     onPressed: () {
-                          //       DatePicker.showDateTimePicker(context,
-                          //           showTitleActions: true,
-                          //           minTime: DateTime(1980, 1, 1),
-                          //           maxTime: DateTime(2099, 12, 30), onChanged: (date) {
-                          //             print('change $date');
-                          //           }, onConfirm: (date) {
-                          //             print('confirm $date');
-                          //           }, currentTime: DateTime.now(), locale: LocaleType.en);
-                          //     },
-                          //     child: Text(
-                          //       'Pick Date',
-                          //       style: TextStyle(color: Colors.blue),
-                          //     )),
 
                           SizedBox(
                             height: 10,
@@ -270,7 +257,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(20.0),
                                   child: TextField(
-                                    controller: pulseNote,
+                                    controller: bfNote,
                                     maxLines: null,
                                     decoration: InputDecoration(
                                       enabledBorder: UnderlineInputBorder(
@@ -298,17 +285,24 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 buttonTitle: "Save",
                                 onPressed: () {
                                   if (_formKey.currentState.validate()) {
-                                    _firestore.collection('Measurement_Pulse').add({
-                                      'userID':UserID,
-                                      'pulse': pulse.text,
+                                    widget.docToEdit.reference.update({
+                                      'bodyFat': bodyFat.text,
                                       'date': date,
                                       'time': time,
-                                      'note': pulseNote.text,
+                                      'note': bfNote.text,
                                     }).whenComplete(() => Navigator.pop(context));
                                   }
-
                                 },
-                              )),
+                              ),),
+                          SizedBox(height: 20,),
+                          Center(
+                            child: SmallButton(
+                              buttonTitle: "Delete",
+                              onPressed: () {
+                                widget.docToEdit.reference.delete().whenComplete(() => Navigator.pop(context));
+                              },
+                            ),
+                          ),
                         ]),
                   ),
                 ),

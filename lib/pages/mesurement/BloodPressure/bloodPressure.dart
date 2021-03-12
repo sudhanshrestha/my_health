@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/mesurement/BloodPressure/addBloodPressure.dart';
+import 'package:my_health/pages/mesurement/BloodPressure/editBloodPressure.dart';
 
 class BloodPressurePage extends StatefulWidget {
   static const String id = 'BloodPressurePage';
@@ -98,12 +99,12 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                                     itemBuilder: (_, index) {
                                       return GestureDetector(
                                         onTap: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (_) => EditNote(
-                                          //             docToEdit: snapshot
-                                          //                 .data.docs[index])));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) => EditBloodPressure(
+                                                      docToEdit: snapshot
+                                                          .data.docs[index])));
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(10.0),

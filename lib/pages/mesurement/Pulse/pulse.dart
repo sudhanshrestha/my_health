@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/mesurement/Pulse/addPulse.dart';
+import 'package:my_health/pages/mesurement/Pulse/editPulse.dart';
 
 class PulsePage extends StatefulWidget {
   static const String id = 'PulsePage';
@@ -97,12 +98,12 @@ class _PulsePageState extends State<PulsePage> {
                                     itemBuilder: (_, index) {
                                       return GestureDetector(
                                         onTap: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (_) => EditNote(
-                                          //             docToEdit: snapshot
-                                          //                 .data.docs[index])));
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) => EditPulse(
+                                                      docToEdit: snapshot
+                                                          .data.docs[index])));
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(10.0),
