@@ -23,37 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="854fc566-50a1-4b14-b37b-78af359c0571" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config_subset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/Other/Notes/notes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Other/Notes/notes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/Other/Other.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Other/Other.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/mesurement/BloodPressure/addBloodPressure.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mesurement/BloodPressure/addBloodPressure.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/mesurement/BloodPressure/bloodPressure.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mesurement/BloodPressure/bloodPressure.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/mesurement/BodyFat/addBodyFat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mesurement/BodyFat/addBodyFat.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/mesurement/BodyFat/bodyFat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mesurement/BodyFat/bodyFat.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/mesurement/Pulse/addPulse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mesurement/Pulse/addPulse.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/mesurement/Pulse/pulse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/mesurement/Pulse/pulse.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615107105339</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="blood pressure adding sucessfull">
+      <created>1615575810833</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1615575810833</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,7 +311,8 @@
     <MESSAGE value="Email validation done" />
     <MESSAGE value="fixed sizes" />
     <MESSAGE value="profile error solved" />
-    <option name="LAST_COMMIT_MESSAGE" value="profile error solved" />
+    <MESSAGE value="blood pressure adding sucessfull" />
+    <option name="LAST_COMMIT_MESSAGE" value="blood pressure adding sucessfull" />
   </component>
   <component name="WindowStateProjectService">
     <state x="71" y="146" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1613046040726">
@@ -348,10 +330,10 @@
     <state x="74" y="79" width="1025" height="679" key="AVDManager/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613665400994" />
     <state x="74" y="79" width="1025" height="679" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1615106887758" />
     <state x="100" y="-980" width="1263" height="840" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1613058270856" />
-    <state x="314" y="0" key="CommitChangelistDialog2" timestamp="1615107081284">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="392" y="-996" key="CommitChangelistDialog2" timestamp="1615575784440">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="392" y="-996" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1615044786830" />
+    <state x="392" y="-996" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1615575784440" />
     <state x="314" y="0" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613401439913" />
     <state x="314" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615107081284" />
     <state x="574" y="-806" key="FileChooserDialogImpl" timestamp="1614870506204">
@@ -390,10 +372,10 @@
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
     <state x="315" y="-917" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1614870518574" />
-    <state x="309" y="200" key="Vcs.Push.Dialog.v2" timestamp="1615107111206">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="386" y="-828" key="Vcs.Push.Dialog.v2" timestamp="1615575818238">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="386" y="-828" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1615038122585" />
+    <state x="386" y="-828" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1615575818238" />
     <state x="309" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613401427754" />
     <state x="309" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615107111206" />
     <state x="484" y="-767" key="git4idea.merge.GitPullDialog" timestamp="1612961588527">

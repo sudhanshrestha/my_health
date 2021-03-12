@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,8 +13,12 @@ class AddPulsePage extends StatefulWidget {
 }
 
 class _AddPulsePageState extends State<AddPulsePage> {
-  TextEditingController bodyFat = TextEditingController();
-  TextEditingController bfNote = TextEditingController();
+  TextEditingController pulse = TextEditingController();
+  TextEditingController pulseNote = TextEditingController();
+  String date;
+  String time;
+  final _firestore = FirebaseFirestore.instance;
+  final _formKey = GlobalKey<FormState>();
 
   DateTime selectedDate = DateTime.now();
 
@@ -50,6 +55,14 @@ class _AddPulsePageState extends State<AddPulsePage> {
     final format = DateFormat.jm(); //"6:00 AM"
     return format.format(dt);
   }
+
+  @override
+  void initState() {
+    time= formatTimeOfDay(_selectedTime);
+    date =  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -104,182 +117,198 @@ class _AddPulsePageState extends State<AddPulsePage> {
                   ],
                 ),
                 child: SingleChildScrollView(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          height: 60.0,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15.0),
-                          child: Text(
-                            "Pulse (bpm)",
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.bold),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 60.0,
                           ),
-                        ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: Text(
+                              "Pulse (bpm)",
+                              style: TextStyle(
+                                  fontSize: 18.0, fontWeight: FontWeight.bold),
                             ),
-                            Icon(
-                              FontAwesomeIcons.heartbeat,
-                              color: mainColor,
-                            ),
-                            Flexible(
-                              child: Container(
-                                padding: EdgeInsets.all(20),
-                                child: TextField(
-                                  controller: bodyFat,
-                                  decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.fromLTRB(
-                                        5.0, 10.0, 5.0, 10.0),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: mainColor),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                FontAwesomeIcons.heartbeat,
+                                color: mainColor,
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding: EdgeInsets.all(20),
+                                  child: TextFormField(
+                                    controller: pulse,
+                                    validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          5.0, 10.0, 5.0, 10.0),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: mainColor),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: mainColor),
+                                      ),
+                                      hintText: "Pulse",
+                                      hintStyle: TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: mainColor),
-                                    ),
-                                    hintText: "Pulse",
-                                    hintStyle: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.w500,
+                                    style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
                                         color: Colors.black),
                                   ),
-                                  style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
                                 ),
                               ),
-                            ),
-                            Text(
-                              "bpm",
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.black),
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Icon(
-                              MdiIcons.clock,
-                              color: mainColor,
-                            ),
-                            SizedBox(width: 15.0,),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                                elevation: 0,
-                              ),
-                              onPressed: () => _selectDate(context),
-                              child: Text(
-                                '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}'
-                                    .toString(),
+                              Text(
+                                "bpm",
                                 style: TextStyle(
-                                    fontSize: 18.0,
+                                    fontSize: 20.0,
                                     fontWeight: FontWeight.normal,
                                     color: Colors.black),
                               ),
-                            ),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                                elevation: 0,
+                              SizedBox(
+                                width: 20,
                               ),
-                              onPressed: () => _selectTime(context),
-                              child: Text(
-                                formatTimeOfDay(_selectedTime),
-                                style: TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.normal,
-                                    color: Colors.black),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
                               ),
-                            ),
-                          ],
-                        ),
+                              Icon(
+                                MdiIcons.clock,
+                                color: mainColor,
+                              ),
+                              SizedBox(width: 15.0,),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                  elevation: 0,
+                                ),
+                                onPressed: () => _selectDate(context),
+                                child: Text(
+                                  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}'
+                                      .toString(),
+                                  style: TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                  elevation: 0,
+                                ),
+                                onPressed: () => _selectTime(context),
+                                child: Text(
+                                  formatTimeOfDay(_selectedTime),
+                                  style: TextStyle(
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.normal,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ],
+                          ),
 
-                        // FlatButton(
-                        //     onPressed: () {
-                        //       DatePicker.showDateTimePicker(context,
-                        //           showTitleActions: true,
-                        //           minTime: DateTime(1980, 1, 1),
-                        //           maxTime: DateTime(2099, 12, 30), onChanged: (date) {
-                        //             print('change $date');
-                        //           }, onConfirm: (date) {
-                        //             print('confirm $date');
-                        //           }, currentTime: DateTime.now(), locale: LocaleType.en);
-                        //     },
-                        //     child: Text(
-                        //       'Pick Date',
-                        //       style: TextStyle(color: Colors.blue),
-                        //     )),
+                          // FlatButton(
+                          //     onPressed: () {
+                          //       DatePicker.showDateTimePicker(context,
+                          //           showTitleActions: true,
+                          //           minTime: DateTime(1980, 1, 1),
+                          //           maxTime: DateTime(2099, 12, 30), onChanged: (date) {
+                          //             print('change $date');
+                          //           }, onConfirm: (date) {
+                          //             print('confirm $date');
+                          //           }, currentTime: DateTime.now(), locale: LocaleType.en);
+                          //     },
+                          //     child: Text(
+                          //       'Pick Date',
+                          //       style: TextStyle(color: Colors.blue),
+                          //     )),
 
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Icon(
-                              MdiIcons.note,
-                              color: mainColor,
-                            ),
-                            Flexible(
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: TextField(
-                                  controller: bfNote,
-                                  maxLines: null,
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: mainColor),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
+                                MdiIcons.note,
+                                color: mainColor,
+                              ),
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: TextField(
+                                    controller: pulseNote,
+                                    maxLines: null,
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: mainColor),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: mainColor),
+                                      ),
+                                      hintText: "Notes ",
+                                      hintStyle: TextStyle(
+                                          fontSize: 18.0, color: Colors.black),
                                     ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: mainColor),
-                                    ),
-                                    hintText: "Notes ",
-                                    hintStyle: TextStyle(
+                                    style: TextStyle(
                                         fontSize: 18.0, color: Colors.black),
                                   ),
-                                  style: TextStyle(
-                                      fontSize: 18.0, color: Colors.black),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                            child: SmallButton(
-                              buttonTitle: "Save",
-                              onPressed: () {},
-                            )),
-                      ]),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Center(
+                              child: SmallButton(
+                                buttonTitle: "Save",
+                                onPressed: () {
+                                  if (_formKey.currentState.validate()) {
+                                    _firestore.collection('Measurement_Pulse').add({
+                                      'userID':UserID,
+                                      'pulse': pulse.text,
+                                      'date': date,
+                                      'time': time,
+                                      'note': pulseNote.text,
+                                    }).whenComplete(() => Navigator.pop(context));
+                                  }
+
+                                },
+                              )),
+                        ]),
+                  ),
                 ),
               ),
             ],
