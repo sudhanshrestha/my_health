@@ -206,6 +206,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "google_maps",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
       "packageUri": "lib/",
@@ -250,6 +256,12 @@
     {
       "name": "js",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "js_wrapping",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/js_wrapping-0.7.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -422,7 +434,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-12T17:49:46.746473Z",
+  "generated": "2021-03-21T04:25:33.637364Z",
   "generator": "pub",
   "generatorVersion": "2.13.0-101.0.dev"
 }

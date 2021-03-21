@@ -7,9 +7,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:my_health/pageAssets.dart';
 import 'package:intl/intl.dart';
 
+bool sysValHigh = false;
 class AddBloodPressure extends StatefulWidget {
   static const String id = 'AddBloodPressurePage';
-
   @override
   _AddBloodPressureState createState() => _AddBloodPressureState();
 }
@@ -156,7 +156,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   child: TextFormField(
                                     controller: sys,
                                     keyboardType: TextInputType.number,
-                                    validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),
@@ -191,7 +191,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
                                     controller: dia,
-                                    validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
@@ -320,6 +320,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                               child: SmallButton(
                             buttonTitle: "Save",
                             onPressed: () {
+                              validateSysBloodPressure(sys.text);
                               if (_formKey.currentState.validate()) {
                                 _firestore.collection('Measurement_BloodPressure').add({
                                   'userID':UserID,
@@ -342,4 +343,19 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
       ),
     );
   }
+  bool validateSysBloodPressure( String val)
+  {
+      if((int.parse(val)>180) || val.isEmpty) {
+        setState(() {
+          sysValHigh = true;
+        });
+        return false;
+      }
+      setState(() {
+        sysValHigh=false;
+      });
+      return true;
+
+  }
 }
+

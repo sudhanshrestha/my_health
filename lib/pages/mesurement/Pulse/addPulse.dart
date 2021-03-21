@@ -153,7 +153,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
                                     controller: pulse,
-                                    validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(

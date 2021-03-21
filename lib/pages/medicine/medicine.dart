@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
@@ -17,6 +18,10 @@ class MedicinePage extends StatefulWidget {
 }
 
 class _MedicinePageState extends State<MedicinePage> {
+  final ref = FirebaseFirestore.instance
+      .collection('Medicine')
+      .where('userID', isEqualTo: UserID);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,33 +64,53 @@ class _MedicinePageState extends State<MedicinePage> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 50.0,),
-                    MedicineBadge(
-                      medicineName: "Glemipiride",
-                      medicineAmount: "2 pills",
-                      medicineDosage: "5 mg",
-                      medicineTime: "8:00 AM - 9:00 AM",
-                      medicineIcon: FontAwesomeIcons.pills,
-                      randomColor: randomColour,
-                      medicineTaken: true,
-                    ),
-                    MedicineBadge(
-                      medicineName: "Glemipiride",
-                      medicineAmount: "2 pills",
-                      medicineDosage: "5 mg",
-                      medicineTime: "8:00 AM - 9:00 AM",
-                      medicineIcon: FontAwesomeIcons.pills,
-                      randomColor: randomColour,
-                      medicineTaken: true,
-                    ),
-                    MedicineBadge(
-                      medicineName: "Glemipiride",
-                      medicineAmount: "2 pills",
-                      medicineDosage: "5 mg",
-                      medicineTime: "8:00 AM - 9:00 AM",
-                      medicineIcon: FontAwesomeIcons.pills,
-                      randomColor: randomColour,
-                      medicineTaken: true,
-                    ),
+                    StreamBuilder<QuerySnapshot>(
+                        stream: ref.snapshots(),
+                        builder: (context,
+                            AsyncSnapshot<QuerySnapshot> snapshot) {
+                          return ClipRect(
+                            child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                physics: ScrollPhysics(),
+                                itemCount: snapshot.hasData
+                                    ? snapshot.data.docs.length
+                                    : 0,
+                                itemBuilder: (_, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         builder: (_) => EditBloodPressure(
+                                      //             docToEdit: snapshot
+                                      //                 .data.docs[index])));
+                                    },
+                                    child: MedicineBadge(
+                                      medicineName: snapshot.data.docs[index]
+                                          .data()['Name'],
+                                        medicineAmount: snapshot.data.docs[index]
+                                            .data()['Dose'] +" "+ snapshot.data.docs[index]
+                                            .data()['MedicineType'],
+                                        medicineTime: snapshot.data.docs[index]
+                                            .data()['ReminderTime'].toString(),
+                                        medicineIcon: FontAwesomeIcons.pills,
+                                        randomColor: randomColour,
+                                        medicineTaken: true,
+                                    ),
+                                  );
+                                }),
+                          );
+                        }),
+                    // MedicineBadge(
+                    //   medicineName: "Glemipiride",
+                    //   medicineAmount: "2 pills",
+                    //   medicineDosage: "5 mg",
+                    //   medicineTime: "8:00 AM - 9:00 AM",
+                    //   medicineIcon: FontAwesomeIcons.pills,
+                    //   randomColor: randomColour,
+                    //   medicineTaken: true,
+                    // ),
                   ],
                 ),
               ),
@@ -113,14 +138,14 @@ class MedicineBadge extends StatelessWidget {
   MedicineBadge(
       {this.medicineName,
         this.medicineAmount,
-        this.medicineDosage,
+        // this.medicineDosage,
         this.medicineTime,
         this.medicineIcon,
         this.randomColor,this.medicineTaken});
 
   final String medicineName;
   final String medicineAmount;
-  final String medicineDosage;
+  // final String medicineDosage;
   final String medicineTime;
   final IconData medicineIcon;
   final Color randomColor;
@@ -205,7 +230,7 @@ class MedicineBadge extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 2.0),
                         child: Text(
-                          " $medicineAmount ($medicineDosage)",
+                          " $medicineAmount",
                           style: TextStyle(
                               fontSize: 16.0, color: Colors.grey[700]),
                         ),
