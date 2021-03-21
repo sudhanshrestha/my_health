@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,6 +21,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _auth = FirebaseAuth.instance;
+  final ref = FirebaseFirestore.instance
+      .collection('Medicine')
+      .where('userID', isEqualTo: UserID);
   User loggedInUser;
   void getCurrentUser() {
     try {
@@ -109,51 +113,45 @@ class _HomePageState extends State<HomePage> {
                               SizedBox(
                                 height: 20.0,
                               ),
-                              MedicineBadge(
-                                medicineName: "Glemipiride",
-                                medicineAmount: "2 pills",
-                                medicineDosage: "5 mg",
-                                medicineTime: "8:00 AM - 9:00 AM",
-                                medicineIcon: FontAwesomeIcons.pills,
-                                randomColor: randomColour,
-                                medicineTaken: true,
-                              ),
-                              MedicineBadge(
-                                medicineName: "Glemipiride",
-                                medicineAmount: "1 Injection",
-                                medicineDosage: "10 ml",
-                                medicineTime: "8:00 PM - 9:00 PM",
-                                medicineIcon: FontAwesomeIcons.syringe,
-                                randomColor: randomColour,
-                                medicineTaken: false,
-                              ),
-                              MedicineBadge(
-                                medicineName: "Glemipiride",
-                                medicineAmount: "1 Injection",
-                                medicineDosage: "10 ml",
-                                medicineTime: "8:00 PM - 9:00 PM",
-                                medicineIcon: FontAwesomeIcons.syringe,
-                                randomColor: randomColour,
-                                medicineTaken: false,
-                              ),
-                              MedicineBadge(
-                                medicineName: "Glemipiride",
-                                medicineAmount: "1 Injection",
-                                medicineDosage: "10 ml",
-                                medicineTime: "8:00 PM - 9:00 PM",
-                                medicineIcon: FontAwesomeIcons.syringe,
-                                randomColor: randomColour,
-                                medicineTaken: false,
-                              ),
-                              MedicineBadge(
-                                medicineName: "Glemipiride",
-                                medicineAmount: "1 Injection",
-                                medicineDosage: "10 ml",
-                                medicineTime: "8:00 PM - 9:00 PM",
-                                medicineIcon: FontAwesomeIcons.syringe,
-                                randomColor: randomColour,
-                                medicineTaken: false,
-                              ),
+                              StreamBuilder<QuerySnapshot>(
+                                  stream: ref.snapshots(),
+                                  builder: (context,
+                                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                                    return ClipRect(
+                                      child: ListView.builder(
+                                          scrollDirection: Axis.vertical,
+                                          shrinkWrap: true,
+                                          physics: ScrollPhysics(),
+                                          itemCount: snapshot.hasData
+                                              ? snapshot.data.docs.length
+                                              : 0,
+                                          itemBuilder: (_, index) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                // Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (_) => EditBloodPressure(
+                                                //             docToEdit: snapshot
+                                                //                 .data.docs[index])));
+                                              },
+                                              child: MedicineBadge(
+                                                medicineName: snapshot.data.docs[index]
+                                                    .data()['Name'],
+                                                medicineAmount: snapshot.data.docs[index]
+                                                    .data()['Dose'] +" "+ snapshot.data.docs[index]
+                                                    .data()['MedicineType'],
+                                                medicineTime: snapshot.data.docs[index]
+                                                    .data()['ReminderTime'].toString(),
+                                                medicineIcon: FontAwesomeIcons.pills,
+                                                randomColor: randomColour,
+                                                medicineTaken: true,
+                                              ),
+                                            );
+                                          }),
+                                    );
+                                  }),
+
                             ],
                           ),
                         ),

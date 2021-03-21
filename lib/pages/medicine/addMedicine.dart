@@ -207,6 +207,7 @@ class _AddMedicineState extends State<AddMedicine> {
                             child: TextFormField(
                               focusNode: focusNodeStock,
                               controller: medicineStock,
+                              keyboardType: TextInputType.number,
                               validator: (val) => val.isEmpty? 'Invalid value' : null,
                               decoration: InputDecoration(
                                 labelText: "Stock",
@@ -230,6 +231,7 @@ class _AddMedicineState extends State<AddMedicine> {
                             EdgeInsets.only(top: 25.0, left: 20.0, right: 25.0, bottom: 20.0),
                             child: TextFormField(
                               focusNode: focusNodeDose,
+                              keyboardType: TextInputType.number,
                               controller: intakeDose,
                               validator: (val) => val.isEmpty  ? 'Invalid value' : null,
                               decoration: InputDecoration(
