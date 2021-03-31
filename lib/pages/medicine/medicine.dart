@@ -9,6 +9,7 @@ import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/medicine/addMedicine.dart';
+import 'package:my_health/pages/medicine/editMedicine.dart';
 
 class MedicinePage extends StatefulWidget {
   static const String id = 'MedicinePage';
@@ -79,12 +80,12 @@ class _MedicinePageState extends State<MedicinePage> {
                                 itemBuilder: (_, index) {
                                   return GestureDetector(
                                     onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (_) => EditBloodPressure(
-                                      //             docToEdit: snapshot
-                                      //                 .data.docs[index])));
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => EditMedicine(
+                                                  docToEdit: snapshot
+                                                      .data.docs[index])));
                                     },
                                     child: MedicineBadge(
                                       medicineName: snapshot.data.docs[index]
@@ -154,110 +155,105 @@ class MedicineBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print(medicineName);
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 10.0,left: 20.0,right: 20.0),
-        child: Container(
-          margin: const EdgeInsets.only(bottom: 6.0),
-          //Same as `blurRadius` i guess
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                offset: Offset(0.0, 1.0), //(x,y)
-                blurRadius: 6.0,
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              child: Row(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: iconColor.withOpacity(0.5),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20.0),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 10,
-                              blurRadius: 10,
-                            ),
-                          ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0,left: 20.0,right: 20.0),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 6.0),
+        //Same as `blurRadius` i guess
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16.0),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset(0.0, 1.0), //(x,y)
+              blurRadius: 6.0,
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            child: Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: iconColor.withOpacity(0.5),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20.0),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 35.0, left: 15.0, right: 15.0, bottom: 35.0),
-                          child: Icon(
-                            medicineIcon,
-                            size: 40.0,
-                            color: iconColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 2.0),
-                        child: Text(
-                          medicineName,
-                          style: TextStyle(
-                              fontSize: 22.0, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 2.0),
-                        child: Text(
-                          " $medicineAmount",
-                          style: TextStyle(
-                              fontSize: 16.0, color: Colors.grey[700]),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15.0,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(MdiIcons.clock),
-                          SizedBox(
-                            width: 5.0,
-                          ),
-                          Text(
-                            medicineTime,
-                            style: TextStyle(
-                                fontSize: 15.0, color: Colors.grey[700]),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 10,
+                            blurRadius: 10,
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 35.0, left: 15.0, right: 15.0, bottom: 35.0),
+                        child: Icon(
+                          medicineIcon,
+                          size: 40.0,
+                          color: iconColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 20.0,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 2.0),
+                      child: Text(
+                        medicineName,
+                        style: TextStyle(
+                            fontSize: 22.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 2.0),
+                      child: Text(
+                        " $medicineAmount",
+                        style: TextStyle(
+                            fontSize: 16.0, color: Colors.grey[700]),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(MdiIcons.clock),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text(
+                          medicineTime,
+                          style: TextStyle(
+                              fontSize: 15.0, color: Colors.grey[700]),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
 
-                ],
-              ),
+              ],
             ),
           ),
         ),

@@ -16,6 +16,7 @@ import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/loadingPage.dart';
 import 'package:my_health/pages/login/login.dart';
 import 'package:my_health/pages/medicine/addMedicine.dart';
+import 'package:my_health/pages/medicine/editMedicine.dart';
 import 'package:my_health/pages/medicine/medicine.dart';
 import 'package:my_health/pages/mesurement/BloodPressure/addBloodPressure.dart';
 import 'package:my_health/pages/mesurement/BloodPressure/bloodPressure.dart';
@@ -80,6 +81,7 @@ class _MyHealthState extends State<MyHealth> {
        EditPulse.id : (context) => EditPulse(),
        EditBodyFat.id : (context) => EditBodyFat(),
        EditBloodPressure.id : (context) => EditBloodPressure(),
+       EditMedicine.id : (context) => EditMedicine(),
 
       },
     );

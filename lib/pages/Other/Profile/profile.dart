@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropdown/flutter_dropdown.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
@@ -44,15 +43,15 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  final imagePicker = ImagePicker();
-  File imageFile;
-
-  Future getImage() async {
-    var image = await imagePicker.getImage(source: ImageSource.gallery);
-    setState(() {
-      imageFile = File(image.path);
-    });
-  }
+  // final imagePicker = ImagePicker();
+  // File imageFile;
+  //
+  // Future getImage() async {
+  //   var image = await imagePicker.getImage(source: ImageSource.gallery);
+  //   setState(() {
+  //     imageFile = File(image.path);
+  //   });
+  // }
   @override
   void initState() {
 
@@ -121,34 +120,34 @@ class _ProfilePageState extends State<ProfilePage> {
                         SizedBox(
                           height: 60.0,
                         ),
-                        Center(
-                          child: GestureDetector(
-                              onTap: () => getImage(),
-                              child: (imageFile == null)
-                                  ? Container(
-                                height: 150,
-                                width: 150,
-                                child: Icon(
-                                    MdiIcons.cameraPlus,
-                                    size: 40
-                                ),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(25),
-                                    color: Colors.white
-                                ),
-                              )
-                                  : Container(
-                                height: 180,
-                                width: 130,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: FileImage(imageFile)
-                                    )
-                                ),
-                              ),
-                          ),
-                        ),
+                        // Center(
+                        //   child: GestureDetector(
+                        //       onTap: () => getImage(),
+                        //       child: (imageFile == null)
+                        //           ? Container(
+                        //         height: 150,
+                        //         width: 150,
+                        //         child: Icon(
+                        //             MdiIcons.cameraPlus,
+                        //             size: 40
+                        //         ),
+                        //         decoration: BoxDecoration(
+                        //             borderRadius: BorderRadius.circular(25),
+                        //             color: Colors.white
+                        //         ),
+                        //       )
+                        //           : Container(
+                        //         height: 180,
+                        //         width: 130,
+                        //         decoration: BoxDecoration(
+                        //             image: DecorationImage(
+                        //                 fit: BoxFit.cover,
+                        //                 image: FileImage(imageFile)
+                        //             )
+                        //         ),
+                        //       ),
+                        //   ),
+                        // ),
                         // Center(
                         //   child: MaterialButton(
                         //     onPressed: getImage,
