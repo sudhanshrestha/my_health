@@ -95,29 +95,32 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Name:  ' ,
-                                          style: TextStyle(
-                                              fontSize: 25.0,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(
-                                          userDocument["name"],
-                                          style: TextStyle(
-                                              fontSize: 25.0,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Name:  ' ,
+                                            style: TextStyle(
+                                                fontSize: 25.0,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            userDocument["name"],
+                                            style: TextStyle(
+                                                fontSize: 25.0,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     SizedBox(
                                       height: 5.0,
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
@@ -138,7 +141,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                       height: 5.0,
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
@@ -153,17 +156,39 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                               fontSize: 25.0,
                                               fontWeight: FontWeight.bold),
                                         ),
+
                                       ],
+                                    ),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Emergency Number:  ' ,
+                                            style: TextStyle(
+                                                fontSize: 25.0,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            userDocument["emrNumber"],
+                                            style: TextStyle(
+                                                fontSize: 25.0,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               );
                             }),
-                        SizedBox(
-                          height: 20.0,
-                        ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20.0, bottom: 50.0),
+                          padding: const EdgeInsets.only(bottom: 50.0),
                           child: Center(
                             child: SmallButton(
                               buttonTitle: "Edit",

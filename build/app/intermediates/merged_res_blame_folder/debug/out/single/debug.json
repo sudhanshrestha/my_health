@@ -1,9 +1,5 @@
 [
     {
-        "merged": "E:\\ISLINGTON FILES\\Year 3\\FYP\\Program\\my_health\\build\\app\\intermediates\\res\\merged\\debug\\drawable_launch_background.xml.flat",
-        "source": "E:\\ISLINGTON FILES\\Year 3\\FYP\\Program\\my_health\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
-    },
-    {
         "merged": "E:\\ISLINGTON FILES\\Year 3\\FYP\\Program\\my_health\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_launch_background.xml.flat",
         "source": "E:\\ISLINGTON FILES\\Year 3\\FYP\\Program\\my_health\\android\\app\\src\\main\\res\\drawable-v21\\launch_background.xml"
     },

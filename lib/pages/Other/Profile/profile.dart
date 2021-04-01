@@ -8,11 +8,13 @@ import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
+import 'package:my_health/pages/register/register.dart';
 
 
 String _name;
 String _dob;
 String _gender;
+String _emrNum;
 class ProfilePage extends StatefulWidget {
   static const String id = 'ProfilePage';
 
@@ -205,6 +207,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         SizedBox(
                           height: 20.0,
                         ),
+                        EmergencyNumberTF(),
+                        SizedBox(
+                          height: 20.0,
+                        ),
                         Padding(
                           padding:
                               const EdgeInsets.only(top: 20.0, bottom: 50.0),
@@ -239,12 +245,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                     print(_name);
                                     print(_gender);
                                     print(_dob);
+                                    print(_emrNum);
 
                                     storeProfile.collection('profile').doc(UserID).set({
                                       'userID':UserID,
                                       'name' : _name,
                                       'gender': _gender,
                                       'dob': _dob,
+                                      'emrNumber':_emrNum,
                                     });
                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),);
                                   }
@@ -430,18 +438,17 @@ class _ProfileUserNameTextFieldState extends State<ProfileUserNameTextField> {
   }
 }
 
-//TextField for PasswordCredential
-class ProfilePasswordTextField extends StatefulWidget {
+
+
+class EmergencyNumberTF extends StatefulWidget {
+
   @override
-  _ProfilePasswordTextFieldState createState() =>
-      _ProfilePasswordTextFieldState();
+  _EmergencyNumberTFState createState() => _EmergencyNumberTFState();
 }
 
-class _ProfilePasswordTextFieldState extends State<ProfilePasswordTextField> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
+class _EmergencyNumberTFState extends State<EmergencyNumberTF> {
   final myController = TextEditingController();
-  FocusNode focusNodePassword = FocusNode();
+  FocusNode focusNodeUserName = FocusNode();
 
   @override
   void dispose() {
@@ -449,17 +456,23 @@ class _ProfilePasswordTextFieldState extends State<ProfilePasswordTextField> {
     myController.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 15.0, right: 15.0),
+      padding: EdgeInsets.only(left: 10.0, right: 10.0),
       child: TextFormField(
-        focusNode: focusNodePassword,
+        validator: (val) => val.length < 10
+            ? 'Enter correct Number'
+            : null,
+        focusNode: focusNodeUserName,
+        keyboardType: TextInputType.number,
+        onChanged: (value) {
+          _emrNum = value;
+        },
         decoration: InputDecoration(
-          labelText: "Password",
+          labelText: "Emergency Number",
           labelStyle: TextStyle(
-              color: focusNodePassword.hasFocus ? mainColor : Colors.black),
+              color: focusNodeUserName.hasFocus ? mainColor : Colors.black),
           border: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black),
             borderRadius: BorderRadius.circular(10),

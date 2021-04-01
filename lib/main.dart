@@ -12,6 +12,7 @@ import 'package:my_health/pages/Other/Other.dart';
 import 'package:my_health/pages/Other/Profile/editProfile.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/Other/Profile/profileDisplay.dart';
+import 'package:my_health/pages/Other/Track/trackMapPage.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/loadingPage.dart';
 import 'package:my_health/pages/login/login.dart';
@@ -82,8 +83,10 @@ class _MyHealthState extends State<MyHealth> {
        EditBodyFat.id : (context) => EditBodyFat(),
        EditBloodPressure.id : (context) => EditBloodPressure(),
        EditMedicine.id : (context) => EditMedicine(),
+       TracKMapPage.id : (context) => TracKMapPage(),
 
       },
     );
   }
 }
+

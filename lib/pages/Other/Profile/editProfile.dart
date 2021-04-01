@@ -18,6 +18,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController name = TextEditingController();
   TextEditingController dob = TextEditingController();
   TextEditingController gender = TextEditingController();
+  TextEditingController emrNumber = TextEditingController();
   var docRef = FirebaseFirestore.instance.collection("profile").doc(UserID);
   @override
   void initState() {
@@ -112,6 +113,8 @@ class _EditProfileState extends State<EditProfile> {
                                         text: userDocument['gender']);
                                     dob=TextEditingController(
                                         text: userDocument['dob']);
+                                    emrNumber=TextEditingController(
+                                        text: userDocument['emrNumber']);
                                     return Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -221,6 +224,41 @@ class _EditProfileState extends State<EditProfile> {
                                                 color: Colors.black),
                                           ),
                                         ),
+                                        SizedBox(
+                                          height: 30,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(15.0),
+                                          child: TextField(
+                                            controller: emrNumber,
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: Colors.black),
+                                                borderRadius:
+                                                BorderRadius.circular(10),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: mainColor),
+                                              ),
+                                              disabledBorder:
+                                              OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: Colors.black),
+                                              ),
+                                              hintText: "Enter name",
+                                              hintStyle: TextStyle(
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black),
+                                            ),
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black),
+                                          ),
+                                        ),
                                       ],
                                     );
                                   }),
@@ -252,6 +290,7 @@ class _EditProfileState extends State<EditProfile> {
                                       'name': name.text,
                                       'gender': gender.text,
                                       'dob': dob.text,
+                                      'emrNumber': emrNumber.text
                                     }).whenComplete(
                                         () => Navigator.pushReplacement(
                                               context,

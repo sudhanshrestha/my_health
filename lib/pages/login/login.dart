@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/register/register.dart';
@@ -220,6 +221,8 @@ class LoginTextFieldPass extends StatefulWidget {
 }
 
 FocusNode focusNode1 = FocusNode();
+bool _passwordVisible = false;
+bool isPressed = false;
 
 class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
   @override
@@ -227,11 +230,33 @@ class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
     return Container(
       padding: EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0),
       child: TextFormField(
+        obscureText: !_passwordVisible,
         onChanged: (value) {
           userPassword = value;
         },
         validator: (val) => val.isEmpty ? 'Enter the password' : null,
         decoration: InputDecoration(
+          suffixIcon: GestureDetector(
+            onLongPress: () {
+              setState(() {
+                _passwordVisible = true;
+                isPressed = true;
+              });
+            },
+            onLongPressUp: () {
+              setState(() {
+                _passwordVisible = false;
+                isPressed = false;
+              });
+            },
+            child: (isPressed)
+                ? Icon(MdiIcons.eye,
+                color: Colors.black)
+                : Icon(
+              MdiIcons.eyeOff,
+              color: Colors.black,
+            ),
+          ),
           labelText: "Password",
           labelStyle:
               TextStyle(color: focusNode1.hasFocus ? mainColor : Colors.black),

@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
@@ -25,6 +26,7 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   bool showSpinner = false;
 
+
   //for dropdown menu
   final List<ListItem> _dropdownItems = [
     ListItem(1, "Male"),
@@ -38,6 +40,7 @@ class _RegisterState extends State<Register> {
     super.initState();
     _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
     _selectedItem = _dropdownMenuItems[0].value;
+    bool _passwordVisible = false;
   }
 
   List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
@@ -313,55 +316,8 @@ class ListItem {
   ListItem(this.value, this.name);
 }
 
-//TextField for Name
-class RegisterNameTextField extends StatefulWidget {
-  @override
-  _RegisterNameTextFieldState createState() => _RegisterNameTextFieldState();
-}
 
-class _RegisterNameTextFieldState extends State<RegisterNameTextField> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
-  final myController = TextEditingController();
-  FocusNode focusNodeName = FocusNode();
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 10.0, right: 10.0),
-      child: TextField(
-        focusNode: focusNodeName,
-        onChanged: (value) {
-          name = value;
-        },
-        decoration: InputDecoration(
-          labelText: "Name",
-          labelStyle: TextStyle(
-              color: focusNodeName.hasFocus ? mainColor : Colors.black),
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: mainColor),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//TextField for UserName
+//TextField for Email
 class RegisterEmailTextField extends StatefulWidget {
   @override
   _RegisterEmailTextFieldState createState() => _RegisterEmailTextFieldState();
@@ -423,6 +379,8 @@ class _RegisterPasswordTextFieldState extends State<RegisterPasswordTextField> {
   // of the TextField.
   final myController = TextEditingController();
   FocusNode focusNodePassword = FocusNode();
+  bool _passwordVisible = false;
+  bool isPressed = false;
 
   @override
   void dispose() {
@@ -438,10 +396,32 @@ class _RegisterPasswordTextFieldState extends State<RegisterPasswordTextField> {
       child: TextFormField(
         validator: (val)=> val.length <6 ? 'Enter a password with more than 5 characters':null,
         focusNode: focusNodePassword,
+        obscureText: !_passwordVisible,
         onChanged: (value) {
           password = value;
         },
         decoration: InputDecoration(
+          suffixIcon: GestureDetector(
+            onLongPress: () {
+              setState(() {
+                _passwordVisible = true;
+                isPressed = true;
+              });
+            },
+            onLongPressUp: () {
+              setState(() {
+                _passwordVisible = false;
+                isPressed = false;
+              });
+            },
+            child: (isPressed)
+                ? Icon(MdiIcons.eye,
+                color: Colors.black)
+                : Icon(
+              MdiIcons.eyeOff,
+              color: Colors.black,
+            ),
+          ),
           labelText: "Password",
           labelStyle: TextStyle(
               color: focusNodePassword.hasFocus ? mainColor : Colors.black),
