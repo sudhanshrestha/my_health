@@ -28,6 +28,8 @@ class _TracKMapPageState extends State<TracKMapPage> {
   String userLocation;
   String emergencyNumber;
   Text EmrNum;
+  double tempLat;
+  double tempLong;
   final ref =FirebaseFirestore.instance.collection('profile').where('userID', isEqualTo: UserID);
 
   getUserData() async {
@@ -80,17 +82,22 @@ class _TracKMapPageState extends State<TracKMapPage> {
     firstLocation = position;
   }
 
-  void finalPostiton() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.best);
-    secondLocation = position;
-  }
+  // void finalPostiton() async {
+  //   Position position = await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.best);
+  //   secondLocation = position;
+  // }
 
   checkLocationStat() {
-    if (firstLocation.latitude == secondLocation.latitude &&
-        firstLocation.longitude == secondLocation.longitude) {
+    print("Checking location");
+    print("Initial Pos: $firstLocation");
+    print("Second Pos: $tempLat $tempLong");
+    if (firstLocation.latitude == tempLat &&
+        firstLocation.longitude == tempLong) {
       setState(() {
         data = "No change in position ";
+        secondLocation =firstLocation;
+        print("Second Location: $secondLocation");
       });
       Future<AlertDialog> action = showDialog(
           context: context,
@@ -105,11 +112,23 @@ class _TracKMapPageState extends State<TracKMapPage> {
               actions: <Widget>[
                 ElevatedButton(
                     child: Text("YES"),
+                    style: ElevatedButton.styleFrom(
+                      primary: mainColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.of(context, rootNavigator: true).pop();
                     }),
                 ElevatedButton(
                     child: Text("NO"),
+                    style: ElevatedButton.styleFrom(
+                    primary: mainColor,
+                    shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    ),
+                    ),
                     onPressed: () {
                       Navigator.of(context, rootNavigator: true).pop();
                       //Sending SMS if pressed no
@@ -204,19 +223,24 @@ class _TracKMapPageState extends State<TracKMapPage> {
                                   setState(() {
                                     showButton = false;
                                   });
-                                  initialPosition();
                                   //checking position every time period set
                                   timerUser = Timer.periodic(
                                       Duration(seconds: 10), (timer) {
                                     print("Start tracking");
-                                    finalPostiton();
+                                    initialPosition();
+                                    // finalPostiton();
                                     checkLocationStat();
+                                    setState(() {
+                                      tempLat = firstLocation.latitude;
+                                      tempLong = firstLocation.longitude;
+                                    });
                                   });
                                 },
                               )
                             : PageButtons(
                                 buttonTitle: "Stop",
                                 onPressed: () {
+                                  print("Tracking Stopped");
                                   timerUser.cancel();
                                   setState(() {
                                     showButton = true;

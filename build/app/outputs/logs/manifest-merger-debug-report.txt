@@ -11,6 +11,7 @@ MERGED from [:geocoder] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\ge
 MERGED from [:geolocator] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:7:1-12:12
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-18:12
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:sms_maintained] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\sms_maintained\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
@@ -18,6 +19,7 @@ MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Sudhan\.gradle\caches\tr
 MERGED from [androidx.test:rules:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\eec6b24c8eaf3f8ee3c418c2b11fa5fa\rules-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.test.espresso:espresso-core:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\f0009a834e6cd3d3db53887b06adc843\espresso-core-3.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.test:runner:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\a42a342b567f67ca4074b388538f9e7c\runner-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\dfada74371e7579678d9a1100e22b108\jetified-core-ktx-1.3.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\9110924fa5aa38f8594591ae482ee47f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
 MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\68cdf54e57789aa73bcc970d349223b6\jetified-firebase-auth-20.0.1\AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\47f2bbf34d181dc69307c2d1c22a9f51\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
@@ -36,7 +38,7 @@ MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Sudhan\.gradle\caches\
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\86a19e549f1b89d0cd93e50b43a5731c\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\93eb15a063e98f83ec64762f9f8eb3f4\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\1ede25d85004a9b507954bf5b4658077\customview-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\600ae9dcb738ce264b9b4b2f862c355e\core-1.1.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\37cc0debd9524d3e19b5249156e38ac4\lifecycle-runtime-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\02a0ee98ffcae2d58122417d6745c1b9\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\5519540335bf0ae91c95349cf623c530\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
@@ -81,16 +83,22 @@ MERGED from [com.google.firebase:firebase-firestore:22.0.1] C:\Users\Sudhan\.gra
 		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:3:22-64
 uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:4:5-79
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-79
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-79
 	android:name
 		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:4:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:5:5-81
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
 	android:name
 		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:5:22-78
 application
 ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:6:4-45:19
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-16:19
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-16:19
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
@@ -117,12 +125,12 @@ MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Sudhan\
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\1dc5320a9bb104405ebe660998fecc91\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-basement:17.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\31fa2430445b3c93a9b80698fc7720c4\jetified-play-services-basement-17.1.0\AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:17.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\31fa2430445b3c93a9b80698fc7720c4\jetified-play-services-basement-17.1.0\AndroidManifest.xml:22:5-26:19
-MERGED from [androidx.core:core:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\600ae9dcb738ce264b9b4b2f862c355e\core-1.1.0\AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\600ae9dcb738ce264b9b4b2f862c355e\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\162dc168d3428ad5e0b1edef3433dbca\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\162dc168d3428ad5e0b1edef3433dbca\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\600ae9dcb738ce264b9b4b2f862c355e\core-1.1.0\AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:24:18-86
 	android:label
 		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:7:9-34
 	android:icon
@@ -191,6 +199,8 @@ MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\b
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-44
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-44
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -205,6 +215,8 @@ MERGED from [androidx.test.espresso:espresso-core:3.2.0] C:\Users\Sudhan\.gradle
 MERGED from [androidx.test.espresso:espresso-core:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\f0009a834e6cd3d3db53887b06adc843\espresso-core-3.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test:runner:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\a42a342b567f67ca4074b388538f9e7c\runner-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test:runner:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\a42a342b567f67ca4074b388538f9e7c\runner-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\dfada74371e7579678d9a1100e22b108\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\dfada74371e7579678d9a1100e22b108\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\9110924fa5aa38f8594591ae482ee47f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\9110924fa5aa38f8594591ae482ee47f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\68cdf54e57789aa73bcc970d349223b6\jetified-firebase-auth-20.0.1\AndroidManifest.xml:21:5-44
@@ -241,8 +253,8 @@ MERGED from [androidx.activity:activity:1.0.0] C:\Users\Sudhan\.gradle\caches\tr
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\93eb15a063e98f83ec64762f9f8eb3f4\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\1ede25d85004a9b507954bf5b4658077\customview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\1ede25d85004a9b507954bf5b4658077\customview-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\600ae9dcb738ce264b9b4b2f862c355e\core-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\600ae9dcb738ce264b9b4b2f862c355e\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\37cc0debd9524d3e19b5249156e38ac4\lifecycle-runtime-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\37cc0debd9524d3e19b5249156e38ac4\lifecycle-runtime-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\02a0ee98ffcae2d58122417d6745c1b9\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
@@ -303,6 +315,16 @@ ADDED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\bu
 		ADDED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-134
+service#com.lyokone.location.FlutterLocationService
+ADDED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-15:56
+	android:enabled
+		ADDED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-35
+	android:exported
+		ADDED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+	android:foregroundServiceType
+		ADDED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-53
+	android:name
+		ADDED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-71
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar
 ADDED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value
