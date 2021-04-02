@@ -10,6 +10,7 @@ MERGED from [:flutter_plugin_android_lifecycle] E:\ISLINGTON FILES\Year 3\FYP\Pr
 MERGED from [:geocoder] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geocoder\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:geolocator] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:permission_handler] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:7:1-12:12
 MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-18:12
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
@@ -197,6 +198,8 @@ MERGED from [:geolocator] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\
 MERGED from [:geolocator] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:permission_handler] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:permission_handler] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-44
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-44
 MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

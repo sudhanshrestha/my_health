@@ -326,6 +326,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "permission_handler",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler-6.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "permission_handler_platform_interface",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/permission_handler_platform_interface-3.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.0.0",
       "packageUri": "lib/",
@@ -458,7 +470,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-04-01T18:10:30.336789Z",
+  "generated": "2021-04-02T15:42:35.212215Z",
   "generator": "pub",
   "generatorVersion": "2.13.0-101.0.dev"
 }
