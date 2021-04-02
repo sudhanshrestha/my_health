@@ -452,6 +452,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "vibrate",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vibrate-0.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "vm_service",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vm_service-6.0.1-nullsafety.1",
       "packageUri": "lib/",
@@ -470,7 +476,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-04-02T15:42:35.212215Z",
+  "generated": "2021-04-02T17:57:36.784568Z",
   "generator": "pub",
   "generatorVersion": "2.13.0-101.0.dev"
 }

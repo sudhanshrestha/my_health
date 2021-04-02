@@ -66,6 +66,12 @@
 @import sms_maintained;
 #endif
 
+#if __has_include(<vibrate/VibratePlugin.h>)
+#import <vibrate/VibratePlugin.h>
+#else
+@import vibrate;
+#endif
+
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
@@ -79,6 +85,7 @@
   [LocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"LocationPlugin"]];
   [PermissionHandlerPlugin registerWithRegistrar:[registry registrarForPlugin:@"PermissionHandlerPlugin"]];
   [SmsPlugin registerWithRegistrar:[registry registrarForPlugin:@"SmsPlugin"]];
+  [VibratePlugin registerWithRegistrar:[registry registrarForPlugin:@"VibratePlugin"]];
 }
 
 @end

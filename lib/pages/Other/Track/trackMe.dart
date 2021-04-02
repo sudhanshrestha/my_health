@@ -9,6 +9,7 @@ import 'package:location/location.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sms_maintained/sms.dart';
+import 'package:vibrate/vibrate.dart';
 
 class TrackMe extends StatefulWidget {
   static const String id = 'TrackMePage';
@@ -22,6 +23,11 @@ class _TrackMeState extends State<TrackMe> {
       CameraPosition(target: LatLng(28.3974, 84.1258), zoom: 18);
   GoogleMapController newGoogleMapController;
 
+  final Iterable<Duration> pauses = [
+    const Duration(milliseconds: 500),
+    const Duration(milliseconds: 1000),
+    const Duration(milliseconds: 500),
+  ];
   //To track the users position
   geo.Position currentPositon;
 
@@ -138,12 +144,15 @@ class _TrackMeState extends State<TrackMe> {
       // location service is enabled, and location permission is granted
       print('---------------- Checking user location ----------------------');
       print("Distance travelled by user : $totalDistance");
-      if (totalDistance < 15) {
+      if (totalDistance < 1) {
         print("XXXXXXXXXXXXXXX NO CHANGE IN LOCATION XXXXXXXXXXXXXXXXXXXXXX");
         setState(() {
           totalDistance = 0;
         });
         locationSMS();
+        if (await Vibrate.canVibrate) {
+          Vibrate.vibrateWithPauses(pauses);
+        }
         Future<AlertDialog> action = showDialog(
             context: context,
             barrierDismissible: true,
@@ -151,6 +160,7 @@ class _TrackMeState extends State<TrackMe> {
               return AlertDialog(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
+
                 ),
                 title: Text("Status Check"),
                 content: Text("Are you ok ?"),
@@ -197,7 +207,7 @@ class _TrackMeState extends State<TrackMe> {
       }
       // return print("No change in position first: $firstLocation sec: $secondLocation");
 
-      if (totalDistance > 15) {
+      if (totalDistance > 1) {
         print("XXXXXXXXXXXXXXX LOCATION CHANGED XXXXXXXXXXXXXXXXXXXXXX");
         setState(() {
           totalDistance = 0;
@@ -281,6 +291,7 @@ class _TrackMeState extends State<TrackMe> {
                                   timerUser.cancel();
                                   setState(() {
                                     showButton = true;
+                                    totalDistance = 0;
                                   });
                                 },
                               ),
