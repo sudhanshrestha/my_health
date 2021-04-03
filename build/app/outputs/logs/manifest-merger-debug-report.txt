@@ -1,14 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-46:12
-INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-46:12
-INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-46:12
-INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-46:12
-MERGED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-46:12
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
+INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
+INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
+INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
+MERGED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
 MERGED from [:google_maps_flutter] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_plugin_android_lifecycle] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:geocoder] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geocoder\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:geolocator] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:vibrate] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\vibrate\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-23:12
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:permission_handler] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:integration_test] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\integration_test\intermediates\library_manifest\debug\AndroidManifest.xml:7:1-12:12
@@ -21,6 +23,7 @@ MERGED from [androidx.test:rules:1.2.0] C:\Users\Sudhan\.gradle\caches\transform
 MERGED from [androidx.test.espresso:espresso-core:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\f0009a834e6cd3d3db53887b06adc843\espresso-core-3.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.test:runner:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\a42a342b567f67ca4074b388538f9e7c\runner-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\dfada74371e7579678d9a1100e22b108\jetified-core-ktx-1.3.2\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.media:media:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\6a5e3440e87a442c435a30cdb2a32167\media-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\9110924fa5aa38f8594591ae482ee47f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:17:1-38:12
 MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\68cdf54e57789aa73bcc970d349223b6\jetified-firebase-auth-20.0.1\AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\47f2bbf34d181dc69307c2d1c22a9f51\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
@@ -51,6 +54,7 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [com.google.firebase:firebase-components:16.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\46e45a9d58789bc26e532135bdd45b3e\jetified-firebase-components-16.1.0\AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\b2a4e474865a8fe715b407234826497d\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\2291dc725f80ef0c3c6fe02c14121338\jetified-grpc-android-1.28.0\AndroidManifest.xml:2:1-13:12
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\be2daa06339505602a71fcdd4b0312b3\jetified-threetenabp-1.2.3\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.test.espresso:espresso-idling-resource:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\aeef9c21f1033b31f4948850a9a2b3c5\espresso-idling-resource-3.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:protolite-well-known-types:17.1.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\afbc3d08fb80c54a20c9e09e7defad35\jetified-protolite-well-known-types-17.1.1\AndroidManifest.xml:2:1-11:12
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -62,11 +66,11 @@ INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\de
 		INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-46:12
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
 		INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-46:12
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
 		INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:11-69
@@ -82,20 +86,34 @@ MERGED from [com.google.firebase:firebase-firestore:22.0.1] C:\Users\Sudhan\.gra
 MERGED from [com.google.firebase:firebase-firestore:22.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\ee249c1afabd6b11658506a870166220\jetified-firebase-firestore-22.0.1\AndroidManifest.xml:14:5-67
 	android:name
 		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:3:22-64
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:4:5-81
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:4:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:4:5-79
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:5:5-79
 MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-79
 MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-79
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:4:22-76
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:5:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:5:5-81
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:6:5-81
 MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
 MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:5:22-78
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:7:5-65
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
+	android:name
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:7:22-63
 application
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:6:4-45:19
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:8:4-54:19
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:location] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\location\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-16:19
@@ -130,60 +148,84 @@ MERGED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms
 MERGED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\162dc168d3428ad5e0b1edef3433dbca\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\162dc168d3428ad5e0b1edef3433dbca\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\be2daa06339505602a71fcdd4b0312b3\jetified-threetenabp-1.2.3\AndroidManifest.xml:7:5-20
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\be2daa06339505602a71fcdd4b0312b3\jetified-threetenabp-1.2.3\AndroidManifest.xml:7:5-20
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\c08ee20946e920e19610a1849045ae0f\core-1.3.2\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:7:9-34
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:9:9-34
 	android:icon
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:8:9-43
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:10:9-43
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:11:8-16:19
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:13:9-20:20
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:13:9-20:20
+	android:name
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:11:18-106
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:12:12-15:28
+action#android.intent.action.BOOT_COMPLETED
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:13:16-77
+	android:name
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:13:24-75
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:14:16-82
+	android:name
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:14:24-80
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:17:8-105
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-106
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-106
+	android:name
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:17:18-102
 meta-data#com.google.android.geo.API_KEY
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:9:8-10:69
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:18:8-19:69
 	android:value
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:10:12-67
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:19:12-67
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:9:19-64
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:18:19-64
 activity#sudhanshrestha.my_health.MainActivity
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:11:9-39:20
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:20:9-48:20
 	android:launchMode
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:13:13-43
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:22:13-43
 	android:hardwareAccelerated
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:16:13-47
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:25:13-47
 	android:windowSoftInputMode
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:17:13-55
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:26:13-55
 	android:configChanges
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:15:13-163
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:24:13-163
 	android:theme
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:14:13-47
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:23:13-47
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:12:13-41
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:21:13-41
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:22:13-25:17
-	android:resource
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:24:15-52
-	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:23:15-70
-meta-data#io.flutter.embedding.android.SplashScreenDrawable
 ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:31:13-34:17
 	android:resource
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:33:15-61
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:33:15-52
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:32:15-79
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:32:15-70
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:40:13-43:17
+	android:resource
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:42:15-61
+	android:name
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:41:15-79
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:35:13-38:29
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:44:13-47:29
 action#android.intent.action.MAIN
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:36:17-68
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:45:17-68
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:36:25-66
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:45:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:37:17-76
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:46:17-76
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:37:27-74
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:46:27-74
 meta-data#flutterEmbedding
-ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:42:9-44:33
+ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:51:9-53:33
 	android:value
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:44:13-30
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:53:13-30
 	android:name
-		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:43:13-44
+		ADDED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:52:13-44
 uses-sdk
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
@@ -196,6 +238,10 @@ MERGED from [:geocoder] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\ge
 MERGED from [:geocoder] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geocoder\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geolocator\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:vibrate] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\vibrate\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:vibrate] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\vibrate\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:permission_handler] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\permission_handler\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -220,6 +266,8 @@ MERGED from [androidx.test:runner:1.2.0] C:\Users\Sudhan\.gradle\caches\transfor
 MERGED from [androidx.test:runner:1.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\a42a342b567f67ca4074b388538f9e7c\runner-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\dfada74371e7579678d9a1100e22b108\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\dfada74371e7579678d9a1100e22b108\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.media:media:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\6a5e3440e87a442c435a30cdb2a32167\media-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\6a5e3440e87a442c435a30cdb2a32167\media-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\9110924fa5aa38f8594591ae482ee47f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\9110924fa5aa38f8594591ae482ee47f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-auth:20.0.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\68cdf54e57789aa73bcc970d349223b6\jetified-firebase-auth-20.0.1\AndroidManifest.xml:21:5-44
@@ -280,6 +328,8 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Sudhan\.grad
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\b2a4e474865a8fe715b407234826497d\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\2291dc725f80ef0c3c6fe02c14121338\jetified-grpc-android-1.28.0\AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.28.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\2291dc725f80ef0c3c6fe02c14121338\jetified-grpc-android-1.28.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\be2daa06339505602a71fcdd4b0312b3\jetified-threetenabp-1.2.3\AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\be2daa06339505602a71fcdd4b0312b3\jetified-threetenabp-1.2.3\AndroidManifest.xml:5:5-44
 MERGED from [androidx.test.espresso:espresso-idling-resource:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\aeef9c21f1033b31f4948850a9a2b3c5\espresso-idling-resource-3.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test.espresso:espresso-idling-resource:3.2.0] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\aeef9c21f1033b31f4948850a9a2b3c5\espresso-idling-resource-3.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:protolite-well-known-types:17.1.1] C:\Users\Sudhan\.gradle\caches\transforms-2\files-2.1\afbc3d08fb80c54a20c9e09e7defad35\jetified-protolite-well-known-types-17.1.1\AndroidManifest.xml:7:5-9:41
@@ -292,6 +342,20 @@ INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\de
 	android:minSdkVersion
 		INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
 		INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\debug\AndroidManifest.xml
+uses-permission#android.permission.USE_FULL_SCREEN_INTENT
+ADDED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:9:22-78
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-19:29
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:17:25-79
+action#com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_local_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:18:25-79
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:cloud_firestore] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19

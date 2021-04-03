@@ -32,10 +32,7 @@ import 'package:my_health/pages/mesurement/Pulse/pulse.dart';
 import 'package:my_health/pages/mesurement/measurement.dart';
 import 'package:my_health/pages/register/register.dart';
 
-
-
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyHealth());
@@ -46,49 +43,44 @@ class MyHealth extends StatefulWidget {
   _MyHealthState createState() => _MyHealthState();
 }
 
-
 class _MyHealthState extends State<MyHealth> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        fontFamily: "OpenSans"
-      ),
+      theme: ThemeData(fontFamily: "OpenSans"),
       home: LoadingPage(),
       initialRoute: LoadingPage.id,
       routes: {
-        LoadingPage.id : (context) => LoadingPage(),
-        Login.id : (context) => Login(),
-        Register.id : (context) => Register(),
-        HomePage.id : (context) => HomePage(),
-        MedicinePage.id : (context) => MedicinePage(),
-        AddMedicine.id : (context) => AddMedicine(),
-        Measurement.id : (context) => Measurement(),
-        BloodPressurePage.id : (context) => BloodPressurePage(),
-        AddBloodPressure.id : (context) => AddBloodPressure(),
-        BodyFatPage.id : (context) => BodyFatPage(),
-        AddBodyFatPage.id : (context) => AddBodyFatPage(),
-        PulsePage.id : (context) => PulsePage(),
-       AddPulsePage.id : (context) => AddPulsePage(),
-       OtherPage.id : (context) => OtherPage(),
-       ProfilePage.id : (context) => ProfilePage(),
-       ProfileDisplay.id : (context) => ProfileDisplay(),
-       EditProfile.id : (context) => EditProfile(),
-       NotePage.id : (context) => NotePage(),
-       AddNote.id : (context) => AddNote(),
-       EditNote.id : (context) => EditNote(),
-       DoctorPage.id : (context) => DoctorPage(),
-       AddDoctorPage.id : (context) => AddDoctorPage(),
-       DoctorInfo.id : (context) => DoctorInfo(),
-       EditPulse.id : (context) => EditPulse(),
-       EditBodyFat.id : (context) => EditBodyFat(),
-       EditBloodPressure.id : (context) => EditBloodPressure(),
-       EditMedicine.id : (context) => EditMedicine(),
-       // TracKMapPage.id : (context) => TracKMapPage(),
-       TrackMe.id : (context) => TrackMe(),
-
+        LoadingPage.id: (context) => LoadingPage(),
+        Login.id: (context) => Login(),
+        Register.id: (context) => Register(),
+        HomePage.id: (context) => HomePage(),
+        MedicinePage.id: (context) => MedicinePage(),
+        AddMedicine.id: (context) => AddMedicine(),
+        Measurement.id: (context) => Measurement(),
+        BloodPressurePage.id: (context) => BloodPressurePage(),
+        AddBloodPressure.id: (context) => AddBloodPressure(),
+        BodyFatPage.id: (context) => BodyFatPage(),
+        AddBodyFatPage.id: (context) => AddBodyFatPage(),
+        PulsePage.id: (context) => PulsePage(),
+        AddPulsePage.id: (context) => AddPulsePage(),
+        OtherPage.id: (context) => OtherPage(),
+        ProfilePage.id: (context) => ProfilePage(),
+        ProfileDisplay.id: (context) => ProfileDisplay(),
+        EditProfile.id: (context) => EditProfile(),
+        NotePage.id: (context) => NotePage(),
+        AddNote.id: (context) => AddNote(),
+        EditNote.id: (context) => EditNote(),
+        DoctorPage.id: (context) => DoctorPage(),
+        AddDoctorPage.id: (context) => AddDoctorPage(),
+        DoctorInfo.id: (context) => DoctorInfo(),
+        EditPulse.id: (context) => EditPulse(),
+        EditBodyFat.id: (context) => EditBodyFat(),
+        EditBloodPressure.id: (context) => EditBloodPressure(),
+        EditMedicine.id: (context) => EditMedicine(),
+        // TracKMapPage.id : (context) => TracKMapPage(),
+        TrackMe.id: (context) => TrackMe(),
       },
     );
   }
 }
-

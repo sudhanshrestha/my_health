@@ -11,7 +11,17 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:my_health/pageAssets.dart';
 import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+class Medicine {
+  String name;
+  String dose;
+  String medicineType;
+  String medicineStock;
+  List time;
+
+  Medicine(this.name,this.dose,this.medicineType,this.medicineStock,this.time);
+}
 class HomePage extends StatefulWidget {
   static const String id = 'HomePage';
 
@@ -20,6 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  FlutterLocalNotificationsPlugin fltrNotifcation;
   final _auth = FirebaseAuth.instance;
   final ref = FirebaseFirestore.instance
       .collection('Medicine')
@@ -46,9 +57,27 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getCurrentUser();
     _controller = CalendarController();
-    // getCurrentUser();
-    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()),);
+    var androidInitlizaer = new AndroidInitializationSettings('app_icon');
+    var IOSinitilize = new IOSInitializationSettings();
+    var initilizationsSettings = new InitializationSettings(android: androidInitlizaer,iOS: IOSinitilize);
+    fltrNotifcation = FlutterLocalNotificationsPlugin();
+    fltrNotifcation.initialize(initilizationsSettings,onSelectNotification: notifcationSelected);
+
+
+
+
   }
+  // showNotification() async {
+  //   var androidDetails = AndroidNotificationDetails("channelId", "channelName", "channelDescription",
+  //       importance: Importance.max);
+  //   var IOSDetails = new IOSNotificationDetails();
+  //   var generalNotificationDetails = NotificationDetails(android: androidDetails,iOS: IOSDetails);
+  //   //shedualling notification daily
+  //   await fltrNotifcation.showDailyAtTime(0, "My Health", "Medicine Reminder",RepeatInterval.daily, generalNotificationDetails);
+  // }
+
+  Future notifcationSelected(String payLoad) async{}
+
 
   @override
   Widget build(BuildContext context) {
@@ -127,27 +156,33 @@ class _HomePageState extends State<HomePage> {
                                               ? snapshot.data.docs.length
                                               : 0,
                                           itemBuilder: (_, index) {
-                                            return GestureDetector(
-                                              onTap: () {
-                                                // Navigator.push(
-                                                //     context,
-                                                //     MaterialPageRoute(
-                                                //         builder: (_) => EditBloodPressure(
-                                                //             docToEdit: snapshot
-                                                //                 .data.docs[index])));
-                                              },
-                                              child: MedicineBadge(
-                                                medicineName: snapshot.data.docs[index]
-                                                    .data()['Name'],
-                                                medicineAmount: snapshot.data.docs[index]
-                                                    .data()['Dose'] +" "+ snapshot.data.docs[index]
-                                                    .data()['MedicineType'],
-                                                medicineTime: snapshot.data.docs[index]
-                                                    .data()['ReminderTime'].toString(),
-                                                medicineIcon: FontAwesomeIcons.pills,
-                                                randomColor: randomColour,
-                                                medicineTaken: true,
-                                              ),
+                                            return Column(
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    print('MEdicine Detail');
+                                                    Medicine med  = new Medicine(
+                                                        snapshot.data.docs[index].data()['Name'],
+                                                        snapshot.data.docs[index].data()['Dose'],
+                                                        snapshot.data.docs[index].data()['MedicineType'],
+                                                        "1",
+                                                        snapshot.data.docs[index].data()['ReminderTime']);
+                                                    print(med);
+                                                  },
+                                                  child: MedicineBadge(
+                                                    medicineName: snapshot.data.docs[index]
+                                                        .data()['Name'],
+                                                    medicineAmount: snapshot.data.docs[index]
+                                                        .data()['Dose'] +" "+ snapshot.data.docs[index]
+                                                        .data()['MedicineType'],
+                                                    medicineTime: snapshot.data.docs[index]
+                                                        .data()['ReminderTime'].toString(),
+                                                    medicineIcon: FontAwesomeIcons.pills,
+                                                    randomColor: randomColour,
+                                                    medicineTaken: true,
+                                                  ),
+                                                ),
+                                              ],
                                             );
                                           }),
                                     );
@@ -166,7 +201,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          // showNotification();
+        },
         child: Icon(Icons.add),
         shape:RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(16.0))
@@ -201,7 +238,6 @@ class MedicineBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print(medicineName);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 10.0),
@@ -274,7 +310,7 @@ class MedicineBadge extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 2.0),
                         child: Text(
-                          " $medicineAmount ($medicineDosage)",
+                          " $medicineAmount",
                           style: TextStyle(
                               fontSize: 16.0, color: Colors.grey[700]),
                         ),
@@ -316,7 +352,8 @@ class MedicineBadge extends StatelessWidget {
                     ),
                     child: IconButton(
                       icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
-                      onPressed: () {},
+                      onPressed: () {
+                      },
                     ),
                   ),
                 ],

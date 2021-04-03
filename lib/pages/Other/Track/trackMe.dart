@@ -110,8 +110,14 @@ class _TrackMeState extends State<TrackMe> {
               return AlertDialog(
                 content: const Text('Make sure your GPS is on in Settings !'),
                 actions: <Widget>[
-                  FlatButton(
+                  ElevatedButton(
                       child: Text('OK'),
+                      style: ElevatedButton.styleFrom(
+                        primary: mainColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                       onPressed: () {
                         Navigator.of(context, rootNavigator: true).pop();
                       })
@@ -289,6 +295,7 @@ class _TrackMeState extends State<TrackMe> {
                                   print(
                                       "XXXXXXXXXXXXX TRACKING ENDED XXXXXXXXXXXXXXXXXXXX");
                                   timerUser.cancel();
+                                  updateMap.cancel();
                                   setState(() {
                                     showButton = true;
                                     totalDistance = 0;

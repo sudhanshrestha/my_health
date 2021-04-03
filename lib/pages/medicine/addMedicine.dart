@@ -347,8 +347,7 @@ class _AddMedicineState extends State<AddMedicine> {
                                   // print(medicineStock.text);
                                   // print(intakeDose.text);
                                   // print(timeAdded);
-
-
+                                  // print((timeAdded.toString().replaceAll("]","")).replaceAll("[",""));
                                   if (_formKey.currentState.validate()) {
                                     _firestore.collection('Medicine').add({
                                       'userID':UserID,
@@ -356,7 +355,7 @@ class _AddMedicineState extends State<AddMedicine> {
                                       'MedicineType': _medicineType.elementAt(itemCount).name.toString(),
                                       'Stock': medicineStock.text,
                                       'Dose': intakeDose.text,
-                                      'ReminderTime': timeAdded,
+                                      'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[",""),
                                     }).whenComplete(() => Navigator.pop(context));
                                   }
                                 },
