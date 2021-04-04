@@ -225,7 +225,7 @@ class _EditProfileState extends State<EditProfile> {
                                           ),
                                         ),
                                         SizedBox(
-                                          height: 30,
+                                          height: 5,
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.all(15.0),

@@ -33,9 +33,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   FlutterLocalNotificationsPlugin fltrNotifcation;
   final _auth = FirebaseAuth.instance;
-  final ref = FirebaseFirestore.instance
-      .collection('Medicine')
-      .where('userID', isEqualTo: UserID);
+  // final ref = ;
   User loggedInUser;
   void getCurrentUser() {
     try {
@@ -63,9 +61,6 @@ class _HomePageState extends State<HomePage> {
     var initilizationsSettings = new InitializationSettings(android: androidInitlizaer,iOS: IOSinitilize);
     fltrNotifcation = FlutterLocalNotificationsPlugin();
     fltrNotifcation.initialize(initilizationsSettings,onSelectNotification: notifcationSelected);
-
-
-
 
   }
   // showNotification() async {
@@ -103,26 +98,25 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               SizedBox(
-                height: 20.0,
+                height: 50.0,
               ),
-              SingleChildScrollView(
-                child: Container(
-                  //remove this if error
-                  height: 500,
-                  margin: const EdgeInsets.only(bottom: 2.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50.0),
-                    ),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.8),
-                        offset: Offset(0.0, 1.0), //(x,y)
-                        blurRadius: 6.0,
-                      ),
-                    ],
+              Container(
+                //remove this if error
+                margin: const EdgeInsets.only(bottom: 2.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(50.0),
                   ),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.8),
+                      offset: Offset(0.0, 1.0), //(x,y)
+                      blurRadius: 6.0,
+                    ),
+                  ],
+                ),
+                child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Padding(
@@ -145,7 +139,9 @@ class _HomePageState extends State<HomePage> {
                                 height: 20.0,
                               ),
                               StreamBuilder<QuerySnapshot>(
-                                  stream: ref.snapshots(),
+                                  stream: FirebaseFirestore.instance
+                                      .collection('Medicine')
+                                      .where('userID', isEqualTo: UserID).snapshots(),
                                   builder: (context,
                                       AsyncSnapshot<QuerySnapshot> snapshot) {
                                     return ClipRect(
@@ -352,6 +348,7 @@ class MedicineBadge extends StatelessWidget {
                   ),
                   child: IconButton(
                     icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
+                    onPressed: null,
 
                   ),
                 ),
