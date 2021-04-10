@@ -191,7 +191,9 @@ class _TrackMeState extends State<TrackMe> {
                         ),
                       ),
                       onPressed: () {
+
                         Navigator.of(context, rootNavigator: true).pop();
+
                         //Sending SMS if pressed no
                         SmsSender sender = SmsSender();
                         String address = emergencyNumber;

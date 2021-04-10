@@ -3,7 +3,11 @@ import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:intl/intl.dart';
 import 'package:my_health/bottomNavigation.dart';
+import 'package:my_health/notification/notifcation_data.dart';
+import '../../notification/notification_plugin.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 int itemCount=0;
@@ -22,6 +26,8 @@ class _AddMedicineState extends State<AddMedicine> {
   TextEditingController medicineName = TextEditingController();
   TextEditingController medicineStock = TextEditingController();
   TextEditingController intakeDose = TextEditingController();
+  int notificationID;
+  DateTime reminderTime;
   final List<ListItem> _medicineType = [
     ListItem(1, "Pill"),
     ListItem(2, "Solution"),
@@ -31,16 +37,21 @@ class _AddMedicineState extends State<AddMedicine> {
     ListItem(7, "Inhaler"),
   ];
 
+  //notification plugin
+  final NotificationPlugin _notificationPlugin = NotificationPlugin();
+  Future <List<PendingNotificationRequest>> notificationFuture;
+
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
   TimeOfDay _time = TimeOfDay.now().replacing(minute: 30);
   List<String> timeAdded = [];
-
   void initState() {
     super.initState();
     _dropdownMenuItems = buildDropDownMenuItems(_medicineType);
     _selectedItem = _dropdownMenuItems[0].value;
     timeAdded.clear();
+    //notification initilizer
+    notificationFuture = _notificationPlugin.getScheduledNotifications();
   }
 
   List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
@@ -66,6 +77,22 @@ class _AddMedicineState extends State<AddMedicine> {
       _time = newTime;
     });
   }
+  List<String> notifiID = [];
+   createNotification() async {
+    final title = medicineName.text;
+    final description = "It is time to take your medication!";
+    final time = Time(reminderTime.hour, reminderTime.minute, 0);
+    var timeID = DateTime.now().millisecondsSinceEpoch.remainder(100000);
+    int id = int.parse(timeID.toString());
+    notificationID = id;
+    notifiID.add(notificationID.toString());
+    print('ID generated: $id , NotificationID:$notificationID');
+    print('Time for notifi:');
+    print(Time(reminderTime.hour, reminderTime.minute));
+    await _notificationPlugin.showDailyAtTime(time, id, title, description);
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +102,6 @@ class _AddMedicineState extends State<AddMedicine> {
     FocusNode focusNodeDose = FocusNode();
     final _firestore = FirebaseFirestore.instance;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: mainColor,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -266,7 +292,7 @@ class _AddMedicineState extends State<AddMedicine> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                height: 150.0,
+                                height: 200.0,
                                 child: timeAdded == null
                                     ? Center(child: Text('No Time Added'))
                                     : ListView.builder(
@@ -313,11 +339,13 @@ class _AddMedicineState extends State<AddMedicine> {
                                       context: context,
                                       value: _time,
                                       onChange: onTimeChanged,
-                                      minuteInterval: MinuteInterval.FIVE,
+                                      blurredBackground: true,
+                                      minuteInterval: MinuteInterval.ONE,
                                       disableHour: false,
                                       disableMinute: false,
-                                      minMinute: 7,
-                                      maxMinute: 56,
+                                      minMinute: 0,
+                                      iosStylePicker: true,
+                                      maxMinute: 59,
                                       // Optional onChange to receive value as DateTime
                                       onChangeDateTime: (DateTime dateTime) {
                                         timeAdded.add(_time.format(context));
@@ -347,8 +375,21 @@ class _AddMedicineState extends State<AddMedicine> {
                                   // print(medicineStock.text);
                                   // print(intakeDose.text);
                                   // print(timeAdded);
-                                  // print((timeAdded.toString().replaceAll("]","")).replaceAll("[",""));
+                                  // String date =  (timeAdded.toString().replaceAll("]","")).replaceAll("[","");
+                                  // DateTime date1= DateFormat.jm().parse(date);
+                                  // reminderTime = date1;
+
+                                  //creating loop for each reminder
                                   if (_formKey.currentState.validate()) {
+                                    notifiID.clear();
+                                    for(var i =0; i<timeAdded.length; i++){
+                                      print(timeAdded[i]);
+                                      String date =  timeAdded[i];
+                                      DateTime date1= DateFormat.jm().parse(date);
+                                      reminderTime = date1;
+                                      createNotification();
+                                    }
+
                                     _firestore.collection('Medicine').add({
                                       'userID':UserID,
                                       'Name': medicineName.text,
@@ -356,8 +397,10 @@ class _AddMedicineState extends State<AddMedicine> {
                                       'Stock': medicineStock.text,
                                       'Dose': intakeDose.text,
                                       'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[",""),
                                     }).whenComplete(() => Navigator.pop(context));
                                   }
+
                                 },
                               ),
                             ),

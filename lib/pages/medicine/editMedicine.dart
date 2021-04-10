@@ -2,7 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:intl/intl.dart';
 import 'package:my_health/bottomNavigation.dart';
+import 'package:my_health/notification/notification_plugin.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/medicine/addMedicine.dart';
 
@@ -36,7 +39,11 @@ class _EditMedicineState extends State<EditMedicine> {
   ListItem _selectedItem;
   TimeOfDay _time = TimeOfDay.now().replacing(minute: 30);
   List<String> timeAdded = [];
-
+  int notificationID;
+  DateTime reminderTime;
+  final NotificationPlugin _notificationPlugin = NotificationPlugin();
+  String notiID;
+  List<String> nID;
   void initState() {
     super.initState();
     _dropdownMenuItems = buildDropDownMenuItems(_medicineType);
@@ -45,7 +52,11 @@ class _EditMedicineState extends State<EditMedicine> {
     medicineName = TextEditingController(text: widget.docToEdit.data()['Name']);
     medicineStock = TextEditingController(text: widget.docToEdit.data()['Stock']);
     intakeDose = TextEditingController(text: widget.docToEdit.data()['Dose']);
+    notiID = widget.docToEdit.data()['NotificationID'];
+    nID = notiID.split(',');
   }
+
+
 
   List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
     List<DropdownMenuItem<ListItem>> items = List();
@@ -65,6 +76,22 @@ class _EditMedicineState extends State<EditMedicine> {
       _time = newTime;
     });
   }
+
+  List<String> notifiID = [];
+  createNotification() async {
+    final title = medicineName.text;
+    final description = "It is time to take your medication!";
+    final time = Time(reminderTime.hour, reminderTime.minute, 0);
+    var timeID = DateTime.now().millisecondsSinceEpoch.remainder(100000);
+    int id = int.parse(timeID.toString());
+    notificationID = id;
+    notifiID.add(notificationID.toString());
+    print('ID generated: $id , NotificationID:$notificationID');
+    print('Time for notifi:');
+    print(Time(reminderTime.hour, reminderTime.minute));
+    await _notificationPlugin.showDailyAtTime(time, id, title, description);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -312,11 +339,13 @@ class _EditMedicineState extends State<EditMedicine> {
                                       context: context,
                                       value: _time,
                                       onChange: onTimeChanged,
-                                      minuteInterval: MinuteInterval.FIVE,
+                                      minuteInterval: MinuteInterval.ONE,
+                                      blurredBackground: true,
                                       disableHour: false,
                                       disableMinute: false,
-                                      minMinute: 7,
-                                      maxMinute: 56,
+                                      minMinute: 0,
+                                      iosStylePicker: true,
+                                      maxMinute: 59,
                                       // Optional onChange to receive value as DateTime
                                       onChangeDateTime: (DateTime dateTime) {
                                         timeAdded.add(_time.format(context));
@@ -342,13 +371,32 @@ class _EditMedicineState extends State<EditMedicine> {
                                 buttonTitle: "Edit Medicine",
                                 onPressed: () {
                                   if (_formKey.currentState.validate()) {
+                                    for (var i = 0; i<nID.length; i++){
+                                      int x =0;
+                                      print("notification id canceled:");
+                                      print(nID[i]);
+                                      x = int.parse(nID[i]);
+                                      _notificationPlugin.cancelNotification(x);
+                                    }
+
+                                    notifiID.clear();
+                                    for(var i =0; i<timeAdded.length; i++){
+                                      print(timeAdded[i]);
+                                      String date =  timeAdded[i];
+                                      DateTime date1= DateFormat.jm().parse(date);
+                                      reminderTime = date1;
+                                      createNotification();
+                                    }
+
+
                                     widget.docToEdit.reference.update({
                                       'userID':UserID,
                                       'Name': medicineName.text,
                                       'MedicineType': _medicineType.elementAt(itemCount).name.toString(),
                                       'Stock': medicineStock.text,
                                       'Dose': intakeDose.text,
-                                      'ReminderTime': timeAdded,
+                                      'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[",""),
                                     }).whenComplete(() => Navigator.pop(context));
                                   }
                                 },
@@ -362,6 +410,13 @@ class _EditMedicineState extends State<EditMedicine> {
                               child: SmallButton(
                                 buttonTitle: "Delete Medicine",
                                 onPressed: () {
+                                  for (var i = 0; i<nID.length; i++){
+                                    int x =0;
+                                    print("notification id canceled:");
+                                    print(nID[i]);
+                                    x = int.parse(nID[i]);
+                                    _notificationPlugin.cancelNotification(x);
+                                  }
                                   widget.docToEdit.reference
                                       .delete()
                                       .whenComplete(() => Navigator.pop(context));

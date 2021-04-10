@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/bottomNavigation.dart';
+import 'package:my_health/notification/notification_plugin.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:random_color/random_color.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -50,17 +51,13 @@ class _HomePageState extends State<HomePage> {
     }
   }
   CalendarController _controller;
-
+  final NotificationPlugin notificationPlugin = NotificationPlugin();
   @override
   void initState() {
     super.initState();
     getCurrentUser();
     _controller = CalendarController();
-    var androidInitlizaer = new AndroidInitializationSettings('app_icon');
-    var IOSinitilize = new IOSInitializationSettings();
-    var initilizationsSettings = new InitializationSettings(android: androidInitlizaer,iOS: IOSinitilize);
-    fltrNotifcation = FlutterLocalNotificationsPlugin();
-    fltrNotifcation.initialize(initilizationsSettings,onSelectNotification: notifcationSelected);
+
 
   }
   // showNotification() async {
@@ -111,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.8),
-                      offset: Offset(0.0, 1.0), //(x,y)
+                      offset: Offset(-1.0, -7.0), //(x,y)
                       blurRadius: 6.0,
                     ),
                   ],
@@ -155,18 +152,7 @@ class _HomePageState extends State<HomePage> {
                                           itemBuilder: (_, index) {
                                             return GestureDetector(
                                               onTap: () {
-                                                print('MEdicine Detail');
-                                                Medicine med = Medicine(
-                                                    snapshot.data.docs[index].id,
-                                                    snapshot.data.docs[index].data()['Name'],
-                                                    snapshot.data.docs[index].data()['Dose'],
-                                                    snapshot.data.docs[index].data()['MedicineType'],
-                                                    "1",
-                                                    snapshot.data.docs[index].data()['ReminderTime']
-                                                );
-
-                                                print(med.docID);
-
+                                                
                                               },
                                               child: MedicineBadge(
                                                 medicineName: snapshot.data.docs[index]
@@ -200,7 +186,8 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           // showNotification();
-
+            notificationPlugin.cancelAllNotifications();
+            print('all notification cancelled');
 
         },
         child: Icon(Icons.add),
@@ -334,7 +321,6 @@ class MedicineBadge extends StatelessWidget {
                 SizedBox(width: 55.0,),
                 Container(
                   margin: const EdgeInsets.only(bottom: 6.0),
-                  //Same as `blurRadius` i guess
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16.0),
                     color: medicineTaken == true ? Colors.green[100] : Colors.white,
