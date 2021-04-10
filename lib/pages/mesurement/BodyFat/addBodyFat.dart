@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -28,7 +29,7 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2019, 1),
-        lastDate: DateTime(2111));
+        lastDate: DateTime.now());
     if (picked != null)
       setState(() {
         selectedDate = picked;
@@ -154,6 +155,7 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                                     controller: bodyFat,
                                     validator: (val) => val.isEmpty || int.parse(val)>100 ? 'Invalid value' : null,
                                     keyboardType: TextInputType.number,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),

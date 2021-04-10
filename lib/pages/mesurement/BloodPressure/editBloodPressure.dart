@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -32,7 +33,7 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2019, 1),
-        lastDate: DateTime(2111));
+        lastDate: DateTime.now());
     if (picked != null)
       setState(() {
         selectedDate = picked;
@@ -161,6 +162,7 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                                     keyboardType: TextInputType.number,
                                     validator: (val) =>
                                         val.isEmpty ? 'Enter value' : null,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),
@@ -200,6 +202,7 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                                     validator: (val) =>
                                         val.isEmpty ? 'Enter value' : null,
                                     keyboardType: TextInputType.number,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),

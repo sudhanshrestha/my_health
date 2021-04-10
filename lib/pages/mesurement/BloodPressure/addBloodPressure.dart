@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
@@ -32,7 +33,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2019, 1),
-        lastDate: DateTime(2111));
+        lastDate: DateTime.now());
     if (picked != null)
       setState(() {
         selectedDate = picked;
@@ -81,7 +82,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
               Stack(
                 children: [
                   Container(
-                    height: 175.0,
+                    height: 200.0,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
@@ -157,6 +158,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                     controller: sys,
                                     keyboardType: TextInputType.number,
                                     validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),
@@ -192,6 +194,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   child: TextFormField(
                                     controller: dia,
                                     validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(

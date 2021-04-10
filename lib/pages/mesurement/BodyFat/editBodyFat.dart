@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
@@ -29,7 +30,7 @@ class _EditBodyFatState extends State<EditBodyFat> {
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2019, 1),
-        lastDate: DateTime(2111));
+        lastDate: DateTime.now());
     if (picked != null)
       setState(() {
         selectedDate = picked;
@@ -156,6 +157,7 @@ class _EditBodyFatState extends State<EditBodyFat> {
                                   child: TextFormField(
                                     controller: bodyFat,
                                     validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(

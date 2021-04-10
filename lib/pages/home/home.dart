@@ -8,6 +8,7 @@ import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/notification/notification_plugin.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/home/medicineTaken.dart';
+import 'package:my_health/pages/medicine/addMedicine.dart';
 import 'package:random_color/random_color.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:my_health/pageAssets.dart';
@@ -51,6 +52,7 @@ class _HomePageState extends State<HomePage> {
       print(e);
     }
   }
+  bool medicineStat = false;
   CalendarController _controller;
   final NotificationPlugin notificationPlugin = NotificationPlugin();
   @override
@@ -58,8 +60,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getCurrentUser();
     _controller = CalendarController();
-
-
+    medicineStat = medicineTaken;
   }
   // showNotification() async {
   //   var androidDetails = AndroidNotificationDetails("channelId", "channelName", "channelDescription",
@@ -170,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                                                     .data()['ReminderTime'].toString(),
                                                 medicineIcon: FontAwesomeIcons.pills,
                                                 randomColor: randomColour,
-                                                medicineTaken: true,
+                                                medicineTaken: medicineStat,
                                               ),
                                             );
                                           }),
@@ -192,8 +193,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
           // showNotification();
-            notificationPlugin.cancelAllNotifications();
-            print('all notification cancelled');
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddMedicine()),);
 
         },
         child: Icon(Icons.add),

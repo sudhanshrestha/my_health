@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:my_health/bottomNavigation.dart';
@@ -234,7 +235,8 @@ class _AddMedicineState extends State<AddMedicine> {
                               focusNode: focusNodeStock,
                               controller: medicineStock,
                               keyboardType: TextInputType.number,
-                              validator: (val) => val.isEmpty? 'Invalid value' : null,
+                              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                              validator: (val) => val.isEmpty || int.parse(val)>100 ? 'Invalid value' : null,
                               decoration: InputDecoration(
                                 labelText: "Stock",
                                 labelStyle: TextStyle(
@@ -259,7 +261,8 @@ class _AddMedicineState extends State<AddMedicine> {
                               focusNode: focusNodeDose,
                               keyboardType: TextInputType.number,
                               controller: intakeDose,
-                              validator: (val) => val.isEmpty  ? 'Invalid value' : null,
+                              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                              validator: (val) => val.isEmpty || int.parse(val)>10 ? 'Invalid value' : null,
                               decoration: InputDecoration(
                                 labelText: "Intake Dose",
                                 labelStyle: TextStyle(

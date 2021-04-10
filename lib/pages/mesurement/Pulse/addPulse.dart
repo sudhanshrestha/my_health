@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -27,7 +28,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2019, 1),
-        lastDate: DateTime(2111));
+        lastDate: DateTime.now());
     if (picked != null)
       setState(() {
         selectedDate = picked;
@@ -154,6 +155,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   child: TextFormField(
                                     controller: pulse,
                                     validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
+                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
