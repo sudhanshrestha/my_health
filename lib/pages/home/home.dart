@@ -7,6 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/notification/notification_plugin.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
+import 'package:my_health/pages/home/medicineTaken.dart';
 import 'package:random_color/random_color.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:my_health/pageAssets.dart';
@@ -152,7 +153,12 @@ class _HomePageState extends State<HomePage> {
                                           itemBuilder: (_, index) {
                                             return GestureDetector(
                                               onTap: () {
-                                                
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (_) => MedicineTaken(
+                                                            docToEdit: snapshot
+                                                                .data.docs[index])));
                                               },
                                               child: MedicineBadge(
                                                 medicineName: snapshot.data.docs[index]
@@ -223,7 +229,7 @@ class MedicineBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: const EdgeInsets.only(top: 10.0,right: 10.0, left: 10.0),
       child: Container(
         margin: const EdgeInsets.only(bottom: 6.0),
         decoration: BoxDecoration(
@@ -318,7 +324,7 @@ class MedicineBadge extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(width: 55.0,),
+                SizedBox(width: 70.0,),
                 Container(
                   margin: const EdgeInsets.only(bottom: 6.0),
                   decoration: BoxDecoration(

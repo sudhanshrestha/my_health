@@ -72,6 +72,29 @@ class NotificationPlugin {
     );
     print('notification created ');
   }
+  Future<void> schedule(DateTime time, int id, String title, String description) async {
+    final androidPlatformChannelSpecifics = AndroidNotificationDetails(
+        'show weekly channel id',
+        'show weekly channel name',
+        'show weekly description',
+        importance: Importance.defaultImportance,
+        priority: Priority.defaultPriority,
+    );
+    final iOSPlatformChannelSpecifics = IOSNotificationDetails();
+    final platformChannelSpecifics = NotificationDetails(
+      android: androidPlatformChannelSpecifics,
+      iOS: iOSPlatformChannelSpecifics,
+    );
+    await _flutterLocalNotificationsPlugin.schedule(
+      id,
+      title,
+      description,
+      time,
+      platformChannelSpecifics,
+    );
+    print('notification created ');
+  }
+
 
   Future<List<PendingNotificationRequest>> getScheduledNotifications() async {
     final pendingNotifications =
