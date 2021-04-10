@@ -282,7 +282,7 @@ class _TrackMeState extends State<TrackMe> {
                                   });
                                   //Checking user position with timer to display aleart
                                   timerUser = Timer.periodic(
-                                      Duration(seconds: 10), (timer) {
+                                      Duration(seconds: 60), (timer) {
                                     print(
                                         "------------------ User Tracking Started ------------------");
                                     checkLocationStatus();

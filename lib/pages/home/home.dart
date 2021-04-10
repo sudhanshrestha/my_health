@@ -285,13 +285,37 @@ class MedicineBadge extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
-                      child: Text(
-                        medicineName,
-                        style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 2.0),
+                          child: Text(
+                            medicineName,
+                            style: TextStyle(
+                                fontSize: 22.0, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(width: 150.0,),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 6.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.0),
+                            color: medicineTaken == true ? Colors.green[100] : Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0.0, 1.0), //(x,y)
+                                blurRadius: 6.0,
+                              ),
+                            ],
+                          ),
+                          child: IconButton(
+                            icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
+                            onPressed: null,
+
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 5.0,
@@ -324,26 +348,7 @@ class MedicineBadge extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(width: 70.0,),
-                Container(
-                  margin: const EdgeInsets.only(bottom: 6.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.0),
-                    color: medicineTaken == true ? Colors.green[100] : Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(0.0, 1.0), //(x,y)
-                        blurRadius: 6.0,
-                      ),
-                    ],
-                  ),
-                  child: IconButton(
-                    icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
-                    onPressed: null,
 
-                  ),
-                ),
               ],
             ),
           ),

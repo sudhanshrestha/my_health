@@ -371,7 +371,7 @@ class _EditMedicineState extends State<EditMedicine> {
                             const EdgeInsets.only(top: 20.0, bottom: 20.0),
                             child: Center(
                               child: SmallButton(
-                                buttonTitle: "Edit Medicine",
+                                buttonTitle: "Save Medicine",
                                 onPressed: () {
                                   if (_formKey.currentState.validate()) {
                                     for (var i = 0; i<nID.length; i++){
