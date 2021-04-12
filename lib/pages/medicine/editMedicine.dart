@@ -381,7 +381,7 @@ class _EditMedicineState extends State<EditMedicine> {
                               child: SmallButton(
                                 buttonTitle: "Save Medicine",
                                 onPressed: () {
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKey.currentState.validate() && timeAdded.length>0) {
                                     for (var i = 0; i<nID.length; i++){
                                       int x =0;
                                       print("notification id canceled:");

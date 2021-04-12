@@ -81,6 +81,24 @@ class _MedicineTakenState extends State<MedicineTaken> {
     await _notificationPlugin.schedule(time, id, title, description);
   }
 
+  skipNotification() async {
+    var timeID = DateTime.now().millisecondsSinceEpoch.remainder(100000);
+    int id = int.parse(timeID.toString());
+    final title = medicineName;
+    final description =
+        "You have not taken your medication!";
+    final now = DateTime.now();
+    //use this to make set reminder after 10 hr
+    //final time = DateTime(now.year, now.month, now.day,now.hour + 10);
+    //for after a day
+    //final time = DateTime(now.year, now.month, now.day + 1);
+
+    // Currently the reminder is set to 2 min after the medicine is taken
+    final time = DateTime(
+        now.year, now.month, now.day, now.hour, now.minute + 5);
+    await _notificationPlugin.schedule(time, id, title, description);
+  }
+
   final _firestore = FirebaseFirestore.instance;
 
   @override
@@ -262,7 +280,7 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                     }
 
                                     /*
-                                    * Checking the boolean value to send the boolean to indicake medicine taken status
+                                    * Checking the boolean value to send the boolean to indicate medicine taken status
                                     * */
                                     int totalTrue = 0;
                                     int totalItems = boolVal.length;
@@ -274,7 +292,9 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                       print('loop started');
                                       // ' true' is added as firebase list is entered with space
                                       if (boolVal[i] == 'true' ||
-                                          boolVal[i] == ' true') {
+                                          boolVal[i] == ' true' ||
+                                          boolVal[i] == '  true'
+                                      ) {
                                         print("Boolean Value");
                                         print(boolVal[i]);
                                         totalTrue = totalTrue + 1;
@@ -338,7 +358,10 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                 TinyButton(
                                   buttonTitle: 'Skip',
                                   onPressed: () {
-                                    // medicineTaken = false;
+                                    /*
+                                    * Stores in the consumption history as not taken
+                                    * */
+                                    skipNotification();
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(

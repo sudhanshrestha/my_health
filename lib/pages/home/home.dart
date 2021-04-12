@@ -58,47 +58,6 @@ class _HomePageState extends State<HomePage> {
   String firebaseBooleans;
 
 
-  //  void checkMedicineStatus(String booleanVal){
-  //   String boolVal = booleanVal;
-  //   List<String> booleanValue =boolVal.split(',');
-  //   int totalItems = booleanValue.length;
-  //   int totalTrue = 0;
-  //   for(var i=0; i<totalItems; i++){
-  //     if(booleanValue[i] == 'true') {
-  //       print("Boolean Value");
-  //       print(booleanValue[i]);
-  //       totalTrue = totalTrue+1;
-  //     }
-  //   }
-  //   print('Total item : $totalItems');
-  //   print('Total true : $totalTrue');
-  //   if(totalTrue == totalItems){
-  //     medicineStat = true;
-  //     print('Medicine status : $medicineStat');
-  //   }
-  //   else{
-  //     medicineStat = false;
-  //     print('Medicine status : $medicineStat');
-  //   }
-  //
-  // }
-
-
-  /*
-  * Method to check date and rest medicine data ;
-  * Updates the boolean data to make medicine not taken for the day
-  *
-  * */
-
-  // final ref = FirebaseFirestore.instance
-  //     .collection('Medicine').where('userID', isEqualTo: UserID).snapshots();
-  //   changeMedicineDate() async{
-  //    await  ref.forEach((snapshot) {
-  //      snapshot.
-  //    });
-  // }
-
-
   bool medicineStatus;
   CalendarController _controller;
   final NotificationPlugin notificationPlugin = NotificationPlugin();
@@ -110,16 +69,6 @@ class _HomePageState extends State<HomePage> {
 
 
   }
-  // showNotification() async {
-  //   var androidDetails = AndroidNotificationDetails("channelId", "channelName", "channelDescription",
-  //       importance: Importance.max);
-  //   var IOSDetails = new IOSNotificationDetails();
-  //   var generalNotificationDetails = NotificationDetails(android: androidDetails,iOS: IOSDetails);
-  //   //shedualling notification daily
-  //   await fltrNotifcation.showDailyAtTime(0, "My Health", "Medicine Reminder",RepeatInterval.daily, generalNotificationDetails);
-  // }
-
-
 
 
   @override
@@ -227,15 +176,18 @@ class _HomePageState extends State<HomePage> {
                                               });
 
                                             }
-                                            
+
                                             return GestureDetector(
                                               onTap: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (_) => MedicineTaken(
-                                                            docToEdit: snapshot
-                                                                .data.docs[index])));
+                                                // only navigates if the value  false
+                                                if(snapshot.data.docs[index].data()['MedicineTaken'] !='true'){
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (_) => MedicineTaken(
+                                                              docToEdit: snapshot
+                                                                  .data.docs[index])));
+                                                }
                                               },
                                               child: Column(
                                                 children: [
@@ -329,110 +281,113 @@ class MedicineBadge extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: iconColor.withOpacity(0.5),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: iconColor.withOpacity(0.5),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20.0),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 10,
+                              blurRadius: 10,
+                            ),
+                          ],
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 10,
-                            blurRadius: 10,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 35.0, left: 15.0, right: 15.0, bottom: 35.0),
+                          child: Icon(
+                            medicineIcon,
+                            size: 40.0,
+                            color: iconColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2.0),
+                        child: Text(
+                          medicineName,
+                          style: TextStyle(
+                              fontSize: 22.0, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 2.0),
+                            child: Text(
+                              " $medicineAmount",
+                              style: TextStyle(
+                                  fontSize: 16.0, color: Colors.grey[700]),
+                            ),
+                          ),
+                          SizedBox(width: 150.0,),
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 6.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16.0),
+                              color: medicineTaken == true ? Colors.green[100] : Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0.0, 1.0), //(x,y)
+                                  blurRadius: 6.0,
+                                ),
+                              ],
+                            ),
+                            child: IconButton(
+                              icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
+                              onPressed: null,
+
+                            ),
                           ),
                         ],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 35.0, left: 15.0, right: 15.0, bottom: 35.0),
-                        child: Icon(
-                          medicineIcon,
-                          size: 40.0,
-                          color: iconColor,
-                        ),
+                      SizedBox(
+                        height: 15.0,
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
-                      child: Text(
-                        medicineName,
-                        style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 2.0),
-                          child: Text(
-                            " $medicineAmount",
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(MdiIcons.clock),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            medicineTime,
                             style: TextStyle(
-                                fontSize: 16.0, color: Colors.grey[700]),
+                                fontSize: 15.0, color: Colors.grey[700]),
                           ),
-                        ),
-                        SizedBox(width: 150.0,),
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 6.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16.0),
-                            color: medicineTaken == true ? Colors.green[100] : Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0.0, 1.0), //(x,y)
-                                blurRadius: 6.0,
-                              ),
-                            ],
-                          ),
-                          child: IconButton(
-                            icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
-                            onPressed: null,
+                        ],
+                      ),
+                    ],
+                  ),
 
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(MdiIcons.clock),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          medicineTime,
-                          style: TextStyle(
-                              fontSize: 15.0, color: Colors.grey[700]),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-
-              ],
+                ],
+              ),
             ),
           ),
         ),

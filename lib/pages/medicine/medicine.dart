@@ -174,86 +174,89 @@ class MedicineBadge extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Container(
-            child: Row(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: iconColor.withOpacity(0.5),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: iconColor.withOpacity(0.5),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20.0),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 10,
+                              blurRadius: 10,
+                            ),
+                          ],
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 10,
-                            blurRadius: 10,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 35.0, left: 15.0, right: 15.0, bottom: 35.0),
+                          child: Icon(
+                            medicineIcon,
+                            size: 40.0,
+                            color: iconColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2.0),
+                        child: Text(
+                          medicineName,
+                          style: TextStyle(
+                              fontSize: 22.0, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2.0),
+                        child: Text(
+                          " $medicineAmount",
+                          style: TextStyle(
+                              fontSize: 16.0, color: Colors.grey[700]),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(MdiIcons.clock),
+                          SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            medicineTime,
+                            style: TextStyle(
+                                fontSize: 15.0, color: Colors.grey[700]),
                           ),
                         ],
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 35.0, left: 15.0, right: 15.0, bottom: 35.0),
-                        child: Icon(
-                          medicineIcon,
-                          size: 40.0,
-                          color: iconColor,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 20.0,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
-                      child: Text(
-                        medicineName,
-                        style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
-                      child: Text(
-                        " $medicineAmount",
-                        style: TextStyle(
-                            fontSize: 16.0, color: Colors.grey[700]),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(MdiIcons.clock),
-                        SizedBox(
-                          width: 5.0,
-                        ),
-                        Text(
-                          medicineTime,
-                          style: TextStyle(
-                              fontSize: 15.0, color: Colors.grey[700]),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
 
-              ],
+                ],
+              ),
             ),
           ),
         ),

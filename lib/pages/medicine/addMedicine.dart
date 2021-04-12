@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -46,6 +47,7 @@ class _AddMedicineState extends State<AddMedicine> {
   ListItem _selectedItem;
   TimeOfDay _time = TimeOfDay.now().replacing(minute: 30);
   List<String> timeAdded = [];
+  bool timeChecker = true;
   void initState() {
     super.initState();
     _dropdownMenuItems = buildDropDownMenuItems(_medicineType);
@@ -303,7 +305,7 @@ class _AddMedicineState extends State<AddMedicine> {
                             children: <Widget>[
                               Container(
                                 height: 200.0,
-                                child: timeAdded == null
+                                child: timeAdded.length == 0
                                     ? Center(child: Text('No Time Added'))
                                     : ListView.builder(
                                       itemCount: timeAdded.length,
@@ -344,24 +346,40 @@ class _AddMedicineState extends State<AddMedicine> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).push(
-                                    showPicker(
-                                      context: context,
-                                      value: _time,
-                                      onChange: onTimeChanged,
-                                      blurredBackground: true,
-                                      minuteInterval: MinuteInterval.ONE,
-                                      disableHour: false,
-                                      disableMinute: false,
-                                      minMinute: 0,
-                                      iosStylePicker: true,
-                                      maxMinute: 59,
-                                      // Optional onChange to receive value as DateTime
-                                      onChangeDateTime: (DateTime dateTime) {
-                                        timeAdded.add(_time.format(context));
-                                      },
-                                    ),
-                                  );
+                                  if(timeAdded.length<5)
+                                    {
+                                      Navigator.of(context).push(
+                                        showPicker(
+                                          context: context,
+                                          value: _time,
+                                          onChange: onTimeChanged,
+                                          blurredBackground: true,
+                                          minuteInterval: MinuteInterval.ONE,
+                                          disableHour: false,
+                                          disableMinute: false,
+                                          minMinute: 0,
+                                          iosStylePicker: true,
+                                          maxMinute: 59,
+                                          // Optional onChange to receive value as DateTime
+                                          onChangeDateTime: (DateTime dateTime) {
+                                            timeChecker =true;
+                                            String tempTime = _time.format(context);
+                                            for(int i=0; i<timeAdded.length; i++){
+                                              if(timeAdded[i] == tempTime){
+                                                timeChecker = false;
+                                                break;
+                                              }
+                                            }
+                                            if(timeChecker == true)
+                                              {
+                                                timeAdded.add(_time.format(context));
+                                              }
+
+                                          },
+                                        ),
+                                      );
+                                    }
+
                                 },
                                 child: Text(
                                   "Select Time",
@@ -390,7 +408,7 @@ class _AddMedicineState extends State<AddMedicine> {
                                   // reminderTime = date1;
 
                                   //creating loop for each reminder
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKey.currentState.validate() && timeAdded.length>0) {
                                     notifiID.clear();
                                     boolVal.clear();
                                     for(var i =0; i<timeAdded.length; i++){
