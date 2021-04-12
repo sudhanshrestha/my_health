@@ -14,6 +14,7 @@ import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/Other/Profile/profileDisplay.dart';
 import 'package:my_health/pages/Other/Track/trackMapPage.dart';
 import 'package:my_health/pages/Other/Track/trackMe.dart';
+import 'package:my_health/pages/Other/medicineHistory/medicineHistory.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/home/medicineTaken.dart';
 import 'package:my_health/pages/loadingPage.dart';
@@ -82,6 +83,7 @@ class _MyHealthState extends State<MyHealth> {
         MedicineTaken.id: (context) => MedicineTaken(),
         // TracKMapPage.id : (context) => TracKMapPage(),
         TrackMe.id: (context) => TrackMe(),
+        MedicineHistory.id: (context) => MedicineHistory(),
       },
     );
   }

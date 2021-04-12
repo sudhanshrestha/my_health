@@ -11,6 +11,7 @@ import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/Other/Profile/profileDisplay.dart';
 import 'package:my_health/pages/Other/Track/trackMapPage.dart';
 import 'package:my_health/pages/Other/Track/trackMe.dart';
+import 'package:my_health/pages/Other/medicineHistory/medicineHistory.dart';
 import 'package:my_health/pages/login/login.dart';
 
 class OtherPage extends StatefulWidget {
@@ -140,6 +141,14 @@ class _OtherPageState extends State<OtherPage> {
                           onTap: (){
                             Navigator.pushNamed(context, TrackMe.id);
 
+                          },
+                        ),
+                        SizedBox(height: 15.0,),
+                        PCard2(
+                          mainLabel: "Medicine History",
+                          icons: Icons.location_on,
+                          onTap: (){
+                            Navigator.pushNamed(context, MedicineHistory.id);
                           },
                         ),
                         SizedBox(height: 15.0,),

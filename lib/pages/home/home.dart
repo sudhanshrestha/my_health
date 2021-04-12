@@ -227,8 +227,7 @@ class _HomePageState extends State<HomePage> {
                                               });
 
                                             }
-
-
+                                            
                                             return GestureDetector(
                                               onTap: () {
                                                 Navigator.push(

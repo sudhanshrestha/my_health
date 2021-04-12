@@ -75,8 +75,7 @@ class _DoctorPageState extends State<DoctorPage> {
                         SizedBox(height: 60.0,),
                         StreamBuilder<QuerySnapshot>(
                             stream: ref.snapshots(),
-                            builder: (context,
-                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                               return ClipRect(
                                 child: ListView.builder(
                                     scrollDirection: Axis.vertical,

@@ -67,7 +67,8 @@ class _MedicineTakenState extends State<MedicineTaken> {
     var timeID = DateTime.now().millisecondsSinceEpoch.remainder(100000);
     int id = int.parse(timeID.toString());
     final title = medicineName;
-    final description = "Your medicine stock is finished, Please Refill the stock !";
+    final description =
+        "Your medicine stock is finished, Please Refill the stock !";
     final now = DateTime.now();
     //use this to make set reminder after 10 hr
     //final time = DateTime(now.year, now.month, now.day,now.hour + 10);
@@ -75,8 +76,8 @@ class _MedicineTakenState extends State<MedicineTaken> {
     //final time = DateTime(now.year, now.month, now.day + 1);
 
     // Currently the reminder is set to 2 min after the medicine is taken
-    final time =
-    DateTime(now.year, now.month, now.day, now.hour, now.minute,now.second + 2);
+    final time = DateTime(
+        now.year, now.month, now.day, now.hour, now.minute, now.second + 2);
     await _notificationPlugin.schedule(time, id, title, description);
   }
 
@@ -225,7 +226,6 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                 TinyButton(
                                   buttonTitle: 'Take',
                                   onPressed: () {
-
                                     /*
                                     * On medicine intake to save intake history stored in a seperate table
                                     * Some specific information related to taken medicine is stored
@@ -302,11 +302,12 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                     int dose = int.parse(medicineDose);
                                     newStock = int.parse(medicineStock) - dose;
 
-                                    if (newStock ==0 || newStock < 0) {
+                                    if (newStock == 0 || newStock < 0) {
                                       createRefillNotification();
                                       widget.docToEdit.reference
                                           .delete()
-                                          .whenComplete(() => Navigator.pop(context));
+                                          .whenComplete(
+                                              () => Navigator.pop(context));
                                     }
 
                                     print(newStock);
