@@ -5,9 +5,9 @@ import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/main.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/Other/Other.dart';
-import 'package:my_health/pages/mesurement/BloodPressure/bloodPressure.dart';
-import 'package:my_health/pages/mesurement/BodyFat/bodyFat.dart';
-import 'package:my_health/pages/mesurement/Pulse/pulse.dart';
+import 'package:my_health/pages/measurement/BloodPressure/bloodPressure.dart';
+import 'package:my_health/pages/measurement/BodyFat/bodyFat.dart';
+import 'package:my_health/pages/measurement/Pulse/pulse.dart';
 
 class Measurement extends StatefulWidget {
   static const String id = 'MeasurementPage';

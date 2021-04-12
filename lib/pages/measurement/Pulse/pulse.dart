@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
-import 'package:my_health/pages/mesurement/Pulse/addPulse.dart';
-import 'package:my_health/pages/mesurement/Pulse/editPulse.dart';
+import 'package:my_health/pages/measurement/Pulse/addPulse.dart';
+import 'package:my_health/pages/measurement/Pulse/editPulse.dart';
 
 class PulsePage extends StatefulWidget {
   static const String id = 'PulsePage';

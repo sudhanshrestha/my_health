@@ -7,6 +7,7 @@ import 'package:geolocator/geolocator.dart' as geo;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:my_health/pages/Other/Track/trackTimer.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sms_maintained/sms.dart';
 import 'package:vibrate/vibrate.dart';
@@ -282,7 +283,7 @@ class _TrackMeState extends State<TrackMe> {
                                   });
                                   //Checking user position with timer to display aleart
                                   timerUser = Timer.periodic(
-                                      Duration(seconds: 60), (timer) {
+                                      Duration(minutes: minSelected), (timer) {
                                     print(
                                         "------------------ User Tracking Started ------------------");
                                     checkLocationStatus();

@@ -9,8 +9,8 @@ import 'package:my_health/pages/Other/Doctors/doctor.dart';
 import 'package:my_health/pages/Other/Notes/notes.dart';
 import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/Other/Profile/profileDisplay.dart';
-import 'package:my_health/pages/Other/Track/trackMapPage.dart';
 import 'package:my_health/pages/Other/Track/trackMe.dart';
+import 'package:my_health/pages/Other/Track/trackTimer.dart';
 import 'package:my_health/pages/Other/medicineHistory/medicineHistory.dart';
 import 'package:my_health/pages/login/login.dart';
 
@@ -139,7 +139,7 @@ class _OtherPageState extends State<OtherPage> {
                           mainLabel: "Track Me",
                           icons: Icons.location_on,
                           onTap: (){
-                            Navigator.pushNamed(context, TrackMe.id);
+                            Navigator.pushNamed(context, TrackTimer.id);
 
                           },
                         ),

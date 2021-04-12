@@ -1,21 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
-import 'package:my_health/pages/mesurement/BloodPressure/addBloodPressure.dart';
-import 'package:my_health/pages/mesurement/BloodPressure/editBloodPressure.dart';
-
-class BloodPressurePage extends StatefulWidget {
-  static const String id = 'BloodPressurePage';
-
+import 'package:my_health/pages/measurement/BodyFat/addBodyFat.dart';
+import 'package:my_health/pages/measurement/BodyFat/editBodyFat.dart';
+class BodyFatPage extends StatefulWidget {
+  static const String id = 'BodyFatPage';
   @override
-  _BloodPressurePageState createState() => _BloodPressurePageState();
+  _BodyFatPageState createState() => _BodyFatPageState();
 }
 
-class _BloodPressurePageState extends State<BloodPressurePage> {
+class _BodyFatPageState extends State<BodyFatPage> {
   final ref = FirebaseFirestore.instance
-      .collection('Measurement_BloodPressure')
+      .collection('Measurement_BodyFat')
       .where('userID', isEqualTo: UserID);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +30,7 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
-                        "Blood Pressure",
+                        "Body Fat",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 45.0,
@@ -50,6 +47,7 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                       onPressed: () {
                         Navigator.pop(context);
                       }),
+
                 ],
               ),
               Container(
@@ -79,7 +77,7 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 15.0),
                           child: Text(
-                            "Blood Pressure (mmHg)",
+                            "Body Fat (%)",
                             style: TextStyle(
                                 fontSize: 18.0, fontWeight: FontWeight.bold),
                           ),
@@ -102,7 +100,7 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (_) => EditBloodPressure(
+                                                  builder: (_) => EditBodyFat(
                                                       docToEdit: snapshot
                                                           .data.docs[index])));
                                         },
@@ -117,38 +115,28 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius:
-                                                    BorderRadius.circular(16.0),
+                                                BorderRadius.circular(16.0),
                                               ),
                                               child: Column(
                                                 crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                                 children: [
                                                   Row(
                                                     children: [
                                                       Text(
                                                         snapshot.data.docs[index]
-                                                            .data()['sys'],
+                                                            .data()['bodyFat'],
                                                         style: TextStyle(
                                                             fontSize: 20.0,
                                                             fontWeight:
-                                                                FontWeight.bold),
+                                                            FontWeight.bold),
                                                       ),
                                                       Text(
-                                                        " / ",
+                                                        " % ",
                                                         style: TextStyle(
                                                             fontSize: 20.0,
                                                             fontWeight:
-                                                                FontWeight.bold),
-                                                      ),
-                                                      Text(
-                                                        snapshot.data.docs[index]
-                                                            .data()['dia'],
-                                                        style: TextStyle(
-                                                            fontSize: 20.0,
-                                                            fontWeight:
-                                                                FontWeight.bold),
-                                                        overflow:
-                                                            TextOverflow.ellipsis,
+                                                            FontWeight.bold),
                                                       ),
                                                       SizedBox(width: 50,),
                                                       Text(
@@ -207,7 +195,7 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Navigator.pushNamed(context, AddBloodPressure.id);
+          Navigator.pushNamed(context, AddBodyFatPage.id);
         },
         label: Text('Add measurement'),
         icon: Icon(Icons.add),

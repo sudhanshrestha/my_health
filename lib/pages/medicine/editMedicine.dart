@@ -390,6 +390,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                       _notificationPlugin.cancelNotification(x);
                                     }
 
+
                                     notifiID.clear();
                                     boolVal.clear();
                                     for(var i =0; i<timeAdded.length; i++){

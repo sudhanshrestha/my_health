@@ -5,7 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:my_health/pages/Other/Other.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/medicine/medicine.dart';
-import 'package:my_health/pages/mesurement/measurement.dart';
+import 'package:my_health/pages/measurement/measurement.dart';
 import 'package:random_color/random_color.dart';
 
 int selectedIndex = 0;
