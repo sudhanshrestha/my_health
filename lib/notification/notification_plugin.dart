@@ -63,6 +63,7 @@ class NotificationPlugin {
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
     );
+    // ignore: deprecated_member_use
     await _flutterLocalNotificationsPlugin.showDailyAtTime(
       id,
       title,
@@ -85,6 +86,7 @@ class NotificationPlugin {
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
     );
+    // ignore: deprecated_member_use
     await _flutterLocalNotificationsPlugin.schedule(
       id,
       title,
