@@ -17,7 +17,7 @@ class EditMedicine extends StatefulWidget {
   DocumentSnapshot docToEdit;
   EditMedicine({this.docToEdit});
 
-  static const String id = 'MedicinePage';
+  static const String id = 'EditMedicinePage';
   @override
   _EditMedicineState createState() => _EditMedicineState();
 }
@@ -25,7 +25,7 @@ class EditMedicine extends StatefulWidget {
 class _EditMedicineState extends State<EditMedicine> {
 
   TextEditingController medicineName = TextEditingController();
-  TextEditingController medicineStock = TextEditingController();
+  // TextEditingController medicineStock = TextEditingController();
   TextEditingController intakeDose = TextEditingController();
   final List<ListItem> _medicineType = [
     ListItem(1, "Pill"),
@@ -51,7 +51,7 @@ class _EditMedicineState extends State<EditMedicine> {
     _selectedItem = _dropdownMenuItems[0].value;
     timeAdded.clear();
     medicineName = TextEditingController(text: widget.docToEdit.data()['Name']);
-    medicineStock = TextEditingController(text: widget.docToEdit.data()['Stock']);
+    // medicineStock = TextEditingController(text: widget.docToEdit.data()['Stock']);
     intakeDose = TextEditingController(text: widget.docToEdit.data()['Dose']);
     notiID = widget.docToEdit.data()['NotificationID'];
     nID = notiID.split(',');
@@ -79,6 +79,7 @@ class _EditMedicineState extends State<EditMedicine> {
   }
 
   List<String> notifiID = [];
+  List<String> boolVal = [];
   createNotification() async {
     final title = medicineName.text;
     final description = "It is time to take your medication!";
@@ -87,6 +88,7 @@ class _EditMedicineState extends State<EditMedicine> {
     int id = int.parse(timeID.toString());
     notificationID = id;
     notifiID.add(notificationID.toString());
+    boolVal.add('false');
     print('ID generated: $id , NotificationID:$notificationID');
     print('Time for notifi:');
     print(Time(reminderTime.hour, reminderTime.minute));
@@ -228,32 +230,38 @@ class _EditMedicineState extends State<EditMedicine> {
                               ),
                             ),
                           ),
-                          Container(
-                            padding:
-                            EdgeInsets.only(top: 25.0, left: 20.0, right: 25.0, ),
-                            child: TextFormField(
-                              focusNode: focusNodeStock,
-                              controller: medicineStock,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                              validator: (val) => val.isEmpty || int.parse(val)>100 ? 'Invalid value' : null,
-                              decoration: InputDecoration(
-                                labelText: "Stock",
-                                labelStyle: TextStyle(
-                                    color: focusNodeStock.hasFocus ? mainColor : Colors.black),
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: mainColor),
-                                ),
-                                disabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                              ),
-                            ),
-                          ),
+
+                          /*
+                          * Medicine Stock being taken out after re designing the medicne and adding the user history
+                          * */
+
+
+                          // Container(
+                          //   padding:
+                          //   EdgeInsets.only(top: 25.0, left: 20.0, right: 25.0, ),
+                          //   child: TextFormField(
+                          //     focusNode: focusNodeStock,
+                          //     controller: medicineStock,
+                          //     keyboardType: TextInputType.number,
+                          //     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          //     validator: (val) => val.isEmpty || int.parse(val)>100 ? 'Invalid value' : null,
+                          //     decoration: InputDecoration(
+                          //       labelText: "Stock",
+                          //       labelStyle: TextStyle(
+                          //           color: focusNodeStock.hasFocus ? mainColor : Colors.black),
+                          //       border: OutlineInputBorder(
+                          //         borderSide: BorderSide(color: Colors.black),
+                          //         borderRadius: BorderRadius.circular(10),
+                          //       ),
+                          //       focusedBorder: OutlineInputBorder(
+                          //         borderSide: BorderSide(color: mainColor),
+                          //       ),
+                          //       disabledBorder: OutlineInputBorder(
+                          //         borderSide: BorderSide(color: Colors.black),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                           Container(
                             padding:
                             EdgeInsets.only(top: 25.0, left: 20.0, right: 25.0, bottom: 20.0),
@@ -383,6 +391,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                     }
 
                                     notifiID.clear();
+                                    boolVal.clear();
                                     for(var i =0; i<timeAdded.length; i++){
                                       print(timeAdded[i]);
                                       String date =  timeAdded[i];
@@ -390,16 +399,19 @@ class _EditMedicineState extends State<EditMedicine> {
                                       reminderTime = date1;
                                       createNotification();
                                     }
-
-
+                                    DateTime now = DateTime.now();
+                                    var dateStamp = DateFormat('yyyy-MM-dd').format(now);
                                     widget.docToEdit.reference.update({
                                       'userID':UserID,
                                       'Name': medicineName.text,
                                       'MedicineType': _medicineType.elementAt(itemCount).name.toString(),
-                                      'Stock': medicineStock.text,
+                                      // 'Stock': medicineStock.text,
                                       'Dose': intakeDose.text,
                                       'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[",""),
                                       'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'DateStamp': dateStamp,
+                                      'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[",""),
+
                                     }).whenComplete(() => Navigator.pop(context));
                                   }
                                 },

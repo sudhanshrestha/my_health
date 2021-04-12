@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icofont_flutter/icofont_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/bottomNavigation.dart';
 import 'package:my_health/notification/notification_plugin.dart';
@@ -23,6 +24,7 @@ class Medicine {
   String medicineType;
   String medicineStock;
   String time;
+
 
   Medicine(this.docID,this.name,this.dose,this.medicineType,this.medicineStock,this.time);
 }
@@ -52,7 +54,52 @@ class _HomePageState extends State<HomePage> {
       print(e);
     }
   }
-  bool medicineStat = false;
+  bool medicineStat;
+  String firebaseBooleans;
+
+
+  //  void checkMedicineStatus(String booleanVal){
+  //   String boolVal = booleanVal;
+  //   List<String> booleanValue =boolVal.split(',');
+  //   int totalItems = booleanValue.length;
+  //   int totalTrue = 0;
+  //   for(var i=0; i<totalItems; i++){
+  //     if(booleanValue[i] == 'true') {
+  //       print("Boolean Value");
+  //       print(booleanValue[i]);
+  //       totalTrue = totalTrue+1;
+  //     }
+  //   }
+  //   print('Total item : $totalItems');
+  //   print('Total true : $totalTrue');
+  //   if(totalTrue == totalItems){
+  //     medicineStat = true;
+  //     print('Medicine status : $medicineStat');
+  //   }
+  //   else{
+  //     medicineStat = false;
+  //     print('Medicine status : $medicineStat');
+  //   }
+  //
+  // }
+
+
+  /*
+  * Method to check date and rest medicine data ;
+  * Updates the boolean data to make medicine not taken for the day
+  *
+  * */
+
+  // final ref = FirebaseFirestore.instance
+  //     .collection('Medicine').where('userID', isEqualTo: UserID).snapshots();
+  //   changeMedicineDate() async{
+  //    await  ref.forEach((snapshot) {
+  //      snapshot.
+  //    });
+  // }
+
+
+  bool medicineStatus;
   CalendarController _controller;
   final NotificationPlugin notificationPlugin = NotificationPlugin();
   @override
@@ -60,7 +107,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getCurrentUser();
     _controller = CalendarController();
-    medicineStat = medicineTaken;
+
+
   }
   // showNotification() async {
   //   var androidDetails = AndroidNotificationDetails("channelId", "channelName", "channelDescription",
@@ -71,7 +119,7 @@ class _HomePageState extends State<HomePage> {
   //   await fltrNotifcation.showDailyAtTime(0, "My Health", "Medicine Reminder",RepeatInterval.daily, generalNotificationDetails);
   // }
 
-  Future notifcationSelected(String payLoad) async{}
+
 
 
   @override
@@ -152,6 +200,35 @@ class _HomePageState extends State<HomePage> {
                                               ? snapshot.data.docs.length
                                               : 0,
                                           itemBuilder: (_, index) {
+
+                                            /*
+                                            * In item medicine card creation
+                                            * Check the date of data base with current date and
+                                            * Update the necessary values needed to be updated daily
+                                            * */
+                                            List<String> boolVal=[];
+                                            String boolValues=snapshot.data.docs[index].data()['BooleanValues'];
+                                            boolVal = boolValues.split(',');
+                                            int booleanLength = boolVal.length;
+                                            List<String> newboolVal=[];
+                                            DateTime now = DateTime.now();
+                                            var todayDate = DateFormat('yyyy-MM-dd').format(now);
+                                            String docDate = snapshot.data.docs[index].data()['DateStamp'];
+                                            //if docDate is not equals to current date
+                                            if(docDate != todayDate){
+                                              print('Daily changes made');
+                                              for(int i = 0; i<booleanLength; i++){
+                                                newboolVal.add('false');
+                                              }
+                                               snapshot.data.docs[index].reference.update({
+                                                 'DateStamp': todayDate,
+                                                 'BooleanValues': (newboolVal.toString().replaceAll("]","")).replaceAll("[",""),
+                                                 'MedicineTaken': 'false',
+                                              });
+
+                                            }
+
+
                                             return GestureDetector(
                                               onTap: () {
                                                 Navigator.push(
@@ -161,17 +238,22 @@ class _HomePageState extends State<HomePage> {
                                                             docToEdit: snapshot
                                                                 .data.docs[index])));
                                               },
-                                              child: MedicineBadge(
-                                                medicineName: snapshot.data.docs[index]
-                                                    .data()['Name'],
-                                                medicineAmount: snapshot.data.docs[index]
-                                                    .data()['Dose'] +" "+ snapshot.data.docs[index]
-                                                    .data()['MedicineType'],
-                                                medicineTime: snapshot.data.docs[index]
-                                                    .data()['ReminderTime'].toString(),
-                                                medicineIcon: FontAwesomeIcons.pills,
-                                                randomColor: randomColour,
-                                                medicineTaken: medicineStat,
+                                              child: Column(
+                                                children: [
+                                                  MedicineBadge(
+                                                    medicineName: snapshot.data.docs[index]
+                                                        .data()['Name'],
+                                                    medicineAmount: snapshot.data.docs[index]
+                                                        .data()['Dose'] +" "+ snapshot.data.docs[index]
+                                                        .data()['MedicineType'],
+                                                    medicineTime: snapshot.data.docs[index]
+                                                        .data()['ReminderTime'].toString(),
+                                                    medicineIcon: FontAwesomeIcons.pills,
+                                                    randomColor: randomColour,
+                                                    medicineTaken: medicineStat =snapshot.data.docs[index]
+                                                        .data()['MedicineTaken'] == 'true',
+                                                  ),
+                                                ],
                                               ),
                                             );
                                           }),
@@ -215,7 +297,9 @@ class MedicineBadge extends StatelessWidget {
       this.medicineDosage,
       this.medicineTime,
       this.medicineIcon,
-      this.randomColor,this.medicineTaken});
+      this.randomColor,
+      this.medicineTaken
+      });
 
   final String medicineName;
   final String medicineAmount;
@@ -285,14 +369,25 @@ class MedicineBadge extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 2.0),
+                      child: Text(
+                        medicineName,
+                        style: TextStyle(
+                            fontSize: 22.0, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
                     Row(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 2.0),
                           child: Text(
-                            medicineName,
+                            " $medicineAmount",
                             style: TextStyle(
-                                fontSize: 22.0, fontWeight: FontWeight.bold),
+                                fontSize: 16.0, color: Colors.grey[700]),
                           ),
                         ),
                         SizedBox(width: 150.0,),
@@ -316,17 +411,6 @@ class MedicineBadge extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
-                      child: Text(
-                        " $medicineAmount",
-                        style: TextStyle(
-                            fontSize: 16.0, color: Colors.grey[700]),
-                      ),
                     ),
                     SizedBox(
                       height: 15.0,

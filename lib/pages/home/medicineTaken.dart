@@ -2,16 +2,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:my_health/notification/notification_plugin.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
 
-bool medicineTaken = false;
+bool medicineTaken;
+
 class MedicineTaken extends StatefulWidget {
   DocumentSnapshot docToEdit;
 
   MedicineTaken({this.docToEdit});
-
 
   static const String id = 'medicineTakePage';
 
@@ -25,31 +26,61 @@ class _MedicineTakenState extends State<MedicineTaken> {
   String medicineType;
   String medicineStock;
   String intakeDose;
-
+  String docID;
+  String boolValues;
+  List<String> boolVal;
 
   @override
   void initState() {
     super.initState();
+    docID = widget.docToEdit.id;
     medicineName = widget.docToEdit.data()['Name'];
     medicineDose = widget.docToEdit.data()['Dose'];
     medicineType = widget.docToEdit.data()['MedicineType'];
     medicineStock = widget.docToEdit.data()['Stock'];
     intakeDose = widget.docToEdit.data()['Dose'];
-    medicineTaken=false;
+    boolValues = widget.docToEdit.data()['BooleanValues'];
+    boolVal = boolValues.split(',');
   }
+
   final NotificationPlugin _notificationPlugin = NotificationPlugin();
+
+  //Create notification to reminder the user to refill
   createNotification() async {
     var timeID = DateTime.now().millisecondsSinceEpoch.remainder(100000);
     int id = int.parse(timeID.toString());
     final title = medicineName;
     final description = "Your medicine stock is low!";
     final now = DateTime.now();
+    //use this to make set reminder after 10 hr
+    //final time = DateTime(now.year, now.month, now.day,now.hour + 10);
+    //for after a day
     //final time = DateTime(now.year, now.month, now.day + 1);
-    final time = DateTime(now.year, now.month, now.day, now.hour,now.minute + 2);
-    await _notificationPlugin.schedule(time, id,title, description);
+
+    // Currently the reminder is set to 2 min after the medicine is taken
+    final time =
+        DateTime(now.year, now.month, now.day, now.hour, now.minute + 2);
+    await _notificationPlugin.schedule(time, id, title, description);
   }
 
+  createRefillNotification() async {
+    var timeID = DateTime.now().millisecondsSinceEpoch.remainder(100000);
+    int id = int.parse(timeID.toString());
+    final title = medicineName;
+    final description = "Your medicine stock is finished, Please Refill the stock !";
+    final now = DateTime.now();
+    //use this to make set reminder after 10 hr
+    //final time = DateTime(now.year, now.month, now.day,now.hour + 10);
+    //for after a day
+    //final time = DateTime(now.year, now.month, now.day + 1);
 
+    // Currently the reminder is set to 2 min after the medicine is taken
+    final time =
+    DateTime(now.year, now.month, now.day, now.hour, now.minute,now.second + 2);
+    await _notificationPlugin.schedule(time, id, title, description);
+  }
+
+  final _firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +194,8 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                     height: 5.0,
                                   ),
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       SizedBox(
@@ -193,22 +225,110 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                 TinyButton(
                                   buttonTitle: 'Take',
                                   onPressed: () {
-                                    //when medicine is taken
-                                    medicineTaken = true;
-                                    int newStock =0;
+
+                                    /*
+                                    * On medicine intake to save intake history stored in a seperate table
+                                    * Some specific information related to taken medicine is stored
+                                    *
+                                    * */
+                                    DateTime now = DateTime.now();
+                                    var dateStamp =
+                                        DateFormat('yyyy-MM-dd – h:mm a')
+                                            .format(now);
+                                    print(dateStamp);
+
+                                    _firestore
+                                        .collection('MedicineConsume')
+                                        .add({
+                                      'userID': UserID,
+                                      'Name': medicineName,
+                                      'MedicineType': medicineType,
+                                      'ConsumeAmount': intakeDose,
+                                      'DateTime': dateStamp,
+                                      'FK_docID': docID,
+                                    });
+
+                                    /*
+                                    * After storing the consumption history
+                                    * Changing the boolean values once as a medicine is taken only once if mulitple reminders
+                                    * */
+                                    int count = 1;
+                                    for (var i = 0; i < boolVal.length; i++) {
+                                      if (count == 1) {
+                                        boolVal.removeAt(0);
+                                        boolVal.add('true');
+                                        count = count + 1;
+                                      }
+                                    }
+
+                                    /*
+                                    * Checking the boolean value to send the boolean to indicake medicine taken status
+                                    * */
+                                    int totalTrue = 0;
+                                    int totalItems = boolVal.length;
+                                    print(totalItems);
+                                    int length = totalItems;
+                                    for (var i = 0; i < length; i++) {
+                                      print('Values in list :');
+                                      print(boolVal[i]);
+                                      print('loop started');
+                                      // ' true' is added as firebase list is entered with space
+                                      if (boolVal[i] == 'true' ||
+                                          boolVal[i] == ' true') {
+                                        print("Boolean Value");
+                                        print(boolVal[i]);
+                                        totalTrue = totalTrue + 1;
+                                      }
+                                    }
+                                    print('Total item : $totalItems');
+                                    print('Total true : $totalTrue');
+                                    if (totalTrue == totalItems) {
+                                      widget.docToEdit.reference.update({
+                                        'MedicineTaken': 'true',
+                                      });
+                                    } else {
+                                      widget.docToEdit.reference.update({
+                                        'MedicineTaken': 'false',
+                                      });
+                                    }
+
+                                    //Checking medicine stock to send reminder
+                                    // medicineTaken = true;
+                                    /*
+                                    * Updating the stock in the medicine and the boolean values
+                                    * */
+
+                                    int newStock = 0;
                                     int dose = int.parse(medicineDose);
                                     newStock = int.parse(medicineStock) - dose;
+
+                                    if (newStock ==0 || newStock < 0) {
+                                      createRefillNotification();
+                                      widget.docToEdit.reference
+                                          .delete()
+                                          .whenComplete(() => Navigator.pop(context));
+                                    }
+
                                     print(newStock);
-                                    if(newStock<=5){
+                                    if (newStock <= 5) {
                                       createNotification();
                                     }
                                     widget.docToEdit.reference.update({
-                                      'userID':UserID,
+                                      'userID': UserID,
                                       'Name': medicineName,
                                       'MedicineType': medicineType,
                                       'Stock': newStock.toString(),
                                       'Dose': intakeDose,
-                                    }).whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),));
+                                      'BooleanValues': (boolVal
+                                              .toString()
+                                              .replaceAll("]", ""))
+                                          .replaceAll("[", ""),
+                                    }).whenComplete(() =>
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => HomePage()),
+                                        ));
                                   },
                                 ),
                                 SizedBox(
@@ -217,8 +337,12 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                 TinyButton(
                                   buttonTitle: 'Skip',
                                   onPressed: () {
-                                    medicineTaken = false;
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),);
+                                    // medicineTaken = false;
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()),
+                                    );
                                   },
                                 ),
                               ],

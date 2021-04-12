@@ -78,7 +78,13 @@ class _AddMedicineState extends State<AddMedicine> {
       _time = newTime;
     });
   }
+
+  /*
+  * Created a list for notification ID storage and
+  * A list to store the boolean [false] to verify medicine intake
+  * */
   List<String> notifiID = [];
+  List<String> boolVal = [];
    createNotification() async {
     final title = medicineName.text;
     final description = "It is time to take your medication!";
@@ -87,6 +93,7 @@ class _AddMedicineState extends State<AddMedicine> {
     int id = int.parse(timeID.toString());
     notificationID = id;
     notifiID.add(notificationID.toString());
+    boolVal.add('false');
     print('ID generated: $id , NotificationID:$notificationID');
     print('Time for notifi:');
     print(Time(reminderTime.hour, reminderTime.minute));
@@ -385,6 +392,7 @@ class _AddMedicineState extends State<AddMedicine> {
                                   //creating loop for each reminder
                                   if (_formKey.currentState.validate()) {
                                     notifiID.clear();
+                                    boolVal.clear();
                                     for(var i =0; i<timeAdded.length; i++){
                                       print(timeAdded[i]);
                                       String date =  timeAdded[i];
@@ -392,6 +400,8 @@ class _AddMedicineState extends State<AddMedicine> {
                                       reminderTime = date1;
                                       createNotification();
                                     }
+                                    DateTime now = DateTime.now();
+                                    var dateStamp = DateFormat('yyyy-MM-dd').format(now);
 
                                     _firestore.collection('Medicine').add({
                                       'userID':UserID,
@@ -401,6 +411,9 @@ class _AddMedicineState extends State<AddMedicine> {
                                       'Dose': intakeDose.text,
                                       'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[",""),
                                       'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'DateStamp': dateStamp,
+                                      'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'MedicineTaken': 'false',
                                     }).whenComplete(() => Navigator.pop(context));
                                   }
 
