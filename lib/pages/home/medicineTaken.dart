@@ -343,7 +343,7 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                       'BooleanValues': (boolVal
                                               .toString()
                                               .replaceAll("]", ""))
-                                          .replaceAll("[", ""),
+                                          .replaceAll("[", "").replaceAll(' ', '')
                                     }).whenComplete(() =>
                                         Navigator.pushReplacement(
                                           context,

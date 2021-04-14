@@ -101,12 +101,12 @@ class _AddMedicineState extends State<AddMedicine> {
     print(Time(reminderTime.hour, reminderTime.minute));
     await _notificationPlugin.showDailyAtTime(time, id, title, description);
   }
-
+  //TODO: put golbal key out of build in every page.
+  final _formKey = GlobalKey<FormState>();
 
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
     FocusNode focusNodeMedicineName = FocusNode();
     FocusNode focusNodeStock = FocusNode();
     FocusNode focusNodeDose = FocusNode();
@@ -346,7 +346,8 @@ class _AddMedicineState extends State<AddMedicine> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  if(timeAdded.length<5)
+                                  //change this to change the number of timers
+                                  if(timeAdded.length<6)
                                     {
                                       Navigator.of(context).push(
                                         showPicker(
@@ -427,10 +428,10 @@ class _AddMedicineState extends State<AddMedicine> {
                                       'MedicineType': _medicineType.elementAt(itemCount).name.toString(),
                                       'Stock': medicineStock.text,
                                       'Dose': intakeDose.text,
-                                      'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[",""),
-                                      'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
+                                      'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
                                       'DateStamp': dateStamp,
-                                      'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
                                       'MedicineTaken': 'false',
                                     }).whenComplete(() => Navigator.pop(context));
                                   }

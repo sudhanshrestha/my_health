@@ -345,24 +345,27 @@ class _EditMedicineState extends State<EditMedicine> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).push(
-                                    showPicker(
-                                      context: context,
-                                      value: _time,
-                                      onChange: onTimeChanged,
-                                      minuteInterval: MinuteInterval.ONE,
-                                      blurredBackground: true,
-                                      disableHour: false,
-                                      disableMinute: false,
-                                      minMinute: 0,
-                                      iosStylePicker: true,
-                                      maxMinute: 59,
-                                      // Optional onChange to receive value as DateTime
-                                      onChangeDateTime: (DateTime dateTime) {
-                                        timeAdded.add(_time.format(context));
-                                      },
-                                    ),
-                                  );
+                                  //change this to change the number of timers
+                                  if(timeAdded.length<6){
+                                    Navigator.of(context).push(
+                                      showPicker(
+                                        context: context,
+                                        value: _time,
+                                        onChange: onTimeChanged,
+                                        minuteInterval: MinuteInterval.ONE,
+                                        blurredBackground: true,
+                                        disableHour: false,
+                                        disableMinute: false,
+                                        minMinute: 0,
+                                        iosStylePicker: true,
+                                        maxMinute: 59,
+                                        // Optional onChange to receive value as DateTime
+                                        onChangeDateTime: (DateTime dateTime) {
+                                          timeAdded.add(_time.format(context));
+                                        },
+                                      ),
+                                    );
+                                  }
                                 },
                                 child: Text(
                                   "Select Time",
@@ -408,10 +411,10 @@ class _EditMedicineState extends State<EditMedicine> {
                                       'MedicineType': _medicineType.elementAt(itemCount).name.toString(),
                                       // 'Stock': medicineStock.text,
                                       'Dose': intakeDose.text,
-                                      'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[",""),
-                                      'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
+                                      'NotificationID' : (notifiID.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
                                       'DateStamp': dateStamp,
-                                      'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[",""),
+                                      'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
 
                                     }).whenComplete(() => Navigator.pop(context));
                                   }
