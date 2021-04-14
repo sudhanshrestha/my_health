@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
@@ -9,6 +10,7 @@ import 'package:intl/intl.dart';
 
 class AddPulsePage extends StatefulWidget {
   static const String id = 'AddPulsePage';
+
   @override
   _AddPulsePageState createState() => _AddPulsePageState();
 }
@@ -32,7 +34,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
     if (picked != null)
       setState(() {
         selectedDate = picked;
-        date =  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+        date = '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
       });
   }
 
@@ -46,7 +48,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
     if (timePicked != null)
       setState(() {
         _selectedTime = timePicked;
-        time= formatTimeOfDay(_selectedTime);
+        time = formatTimeOfDay(_selectedTime);
       });
 
     print(_selectedTime.toString());
@@ -59,13 +61,17 @@ class _AddPulsePageState extends State<AddPulsePage> {
     return format.format(dt);
   }
 
+  void onTimeChanged(TimeOfDay newTime) {
+    setState(() {
+      _selectedTime = newTime;
+    });
+  }
   @override
   void initState() {
-    time= formatTimeOfDay(_selectedTime);
-    date =  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
+    time = formatTimeOfDay(_selectedTime);
+    date = '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -154,17 +160,24 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
                                     controller: pulse,
-                                    validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
-                                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                                    validator: (val) =>
+                                        val.isEmpty || int.parse(val) > 200
+                                            ? 'Invalid value'
+                                            : null,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly
+                                    ],
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           5.0, 10.0, 5.0, 10.0),
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       hintText: "Pulse",
                                       hintStyle: TextStyle(
@@ -204,7 +217,9 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                 MdiIcons.clock,
                                 color: mainColor,
                               ),
-                              SizedBox(width: 15.0,),
+                              SizedBox(
+                                width: 15.0,
+                              ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
@@ -228,7 +243,14 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   primary: Colors.white,
                                   elevation: 0,
                                 ),
-                                onPressed: () => _selectTime(context),
+                                onPressed: () => Navigator.of(context).push(
+                                  showPicker(
+                                    value: _selectedTime,
+                                    onChange: onTimeChanged,
+                                    blurredBackground: true,
+                                    iosStylePicker: true
+                                  ),
+                                ),
                                 child: Text(
                                   formatTimeOfDay(_selectedTime),
                                   style: TextStyle(
@@ -276,10 +298,12 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                     maxLines: null,
                                     decoration: InputDecoration(
                                       enabledBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       focusedBorder: UnderlineInputBorder(
-                                        borderSide: BorderSide(color: mainColor),
+                                        borderSide:
+                                            BorderSide(color: mainColor),
                                       ),
                                       hintText: "Notes ",
                                       hintStyle: TextStyle(
@@ -297,20 +321,19 @@ class _AddPulsePageState extends State<AddPulsePage> {
                           ),
                           Center(
                               child: SmallButton(
-                                buttonTitle: "Save",
-                                onPressed: () {
-                                  if (_formKey.currentState.validate()) {
-                                    _firestore.collection('Measurement_Pulse').add({
-                                      'userID':UserID,
-                                      'pulse': pulse.text,
-                                      'date': date,
-                                      'time': time,
-                                      'note': pulseNote.text,
-                                    }).whenComplete(() => Navigator.pop(context));
-                                  }
-
-                                },
-                              )),
+                            buttonTitle: "Save",
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                _firestore.collection('Measurement_Pulse').add({
+                                  'userID': UserID,
+                                  'pulse': pulse.text,
+                                  'date': date,
+                                  'time': formatTimeOfDay(_selectedTime),
+                                  'note': pulseNote.text,
+                                }).whenComplete(() => Navigator.pop(context));
+                              }
+                            },
+                          )),
                         ]),
                   ),
                 ),

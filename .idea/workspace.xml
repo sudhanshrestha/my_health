@@ -22,41 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="854fc566-50a1-4b14-b37b-78af359c0571" name="Default Changelist" comment="supressing errors">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+    <list default="true" id="854fc566-50a1-4b14-b37b-78af359c0571" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/libs.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/libs.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/cloud_firestore/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/cloud_firestore/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/firebase_auth/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/firebase_auth/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/firebase_core/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/firebase_core/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/integration_test/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/integration_test/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/medicineTaken.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/medicineTaken.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/medicine/addMedicine.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/medicine/addMedicine.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/medicine/editMedicine.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/medicine/editMedicine.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/measurement/BloodPressure/addBloodPressure.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/BloodPressure/addBloodPressure.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/measurement/BloodPressure/editBloodPressure.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/BloodPressure/editBloodPressure.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/measurement/BodyFat/addBodyFat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/BodyFat/addBodyFat.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/measurement/BodyFat/editBodyFat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/BodyFat/editBodyFat.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/measurement/Pulse/addPulse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/Pulse/addPulse.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/measurement/Pulse/editPulse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/Pulse/editPulse.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -457,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618266123108</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="fixed spaces in list that creates error for checking boolean">
+      <created>1618407847656</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1618407847656</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +454,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="profile error solved" />
     <MESSAGE value="blood pressure adding sucessfull" />
     <MESSAGE value="adding of measurement completed" />
     <MESSAGE value="measuremnt completed i think" />
@@ -499,7 +478,8 @@
     <MESSAGE value="fixed some of the bugs in medicine pages" />
     <MESSAGE value="user can select timer for map alert" />
     <MESSAGE value="supressing errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="supressing errors" />
+    <MESSAGE value="fixed spaces in list that creates error for checking boolean" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed spaces in list that creates error for checking boolean" />
   </component>
   <component name="WindowStateProjectService">
     <state x="89" y="-896" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1616264118383">
@@ -518,10 +498,10 @@
     <state x="74" y="79" width="1025" height="679" key="AVDManager/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613665400994" />
     <state x="74" y="79" width="1025" height="679" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1618125427254" />
     <state x="100" y="-980" width="1263" height="840" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1613058270856" />
-    <state x="392" y="-996" key="CommitChangelistDialog2" timestamp="1618266318914">
+    <state x="392" y="-996" key="CommitChangelistDialog2" timestamp="1618407808356">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="392" y="-996" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618266318914" />
+    <state x="392" y="-996" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618407808356" />
     <state x="314" y="0" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613401439913" />
     <state x="314" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615107081284" />
     <state x="574" y="-806" key="FileChooserDialogImpl" timestamp="1617989420610">
@@ -560,16 +540,16 @@
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
     <state x="489" y="-1064" width="1141" height="1015" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1617278103607" />
-    <state x="386" y="-828" key="Vcs.Push.Dialog.v2" timestamp="1618266137442">
+    <state x="386" y="-828" key="Vcs.Push.Dialog.v2" timestamp="1618407874976">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="386" y="-828" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618266137442" />
+    <state x="386" y="-828" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618407874976" />
     <state x="309" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613401427754" />
     <state x="309" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615107111206" />
-    <state x="501" y="0" width="1049" height="908" maximized="true" key="dock-window-1" timestamp="1618237361316">
+    <state x="319" y="0" width="1231" height="908" key="dock-window-1" timestamp="1618408729639">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="501" y="0" width="1049" height="908" maximized="true" key="dock-window-1/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618237361316" />
+    <state x="319" y="0" width="1231" height="908" key="dock-window-1/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618408729639" />
     <state x="339" y="0" width="1211" height="908" key="dock-window-2" timestamp="1618243762576">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

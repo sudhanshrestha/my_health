@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -26,7 +27,11 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
 
 
   DateTime selectedDate = DateTime.now();
-
+  void onTimeChanged(TimeOfDay newTime) {
+    setState(() {
+      _selectedTime = newTime;
+    });
+  }
   Future<Null> _selectDate(BuildContext context) async {
     date = '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}';
     final DateTime picked = await showDatePicker(
@@ -176,7 +181,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                     ),
                                     style: TextStyle(
                                         fontSize: 20.0,
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w500,
                                         color: Colors.black),
                                   ),
                                 ),
@@ -213,7 +218,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                     ),
                                     style: TextStyle(
                                         fontSize: 20.0,
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w500,
                                         color: Colors.black),
                                   ),
                                 ),
@@ -255,7 +260,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                       .toString(),
                                   style: TextStyle(
                                       fontSize: 18.0,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.normal,
                                       color: Colors.black),
                                 ),
                               ),
@@ -267,12 +272,19 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   primary: Colors.white,
                                   elevation: 0,
                                 ),
-                                onPressed: () => _selectTime(context),
+                                onPressed: () =>  Navigator.of(context).push(
+                                  showPicker(
+                                      value: _selectedTime,
+                                      onChange: onTimeChanged,
+                                      blurredBackground: true,
+                                      iosStylePicker: true
+                                  ),
+                                ),
                                 child: Text(
                                   formatTimeOfDay(_selectedTime),
                                   style: TextStyle(
                                       fontSize: 18.0,
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.normal,
                                       color: Colors.black),
                                 ),
                               ),
@@ -310,7 +322,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                           fontSize: 18.0, color: Colors.black),
                                     ),
                                     style: TextStyle(
-                                        fontSize: 18.0, color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 18.0, color: Colors.black),
                                   ),
                                 ),
                               ),
@@ -330,7 +342,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   'sys': sys.text,
                                   'dia': dia.text,
                                   'date': date,
-                                  'time': time,
+                                  'time': formatTimeOfDay(_selectedTime),
                                   'note': bpNote.text,
                                 }).whenComplete(() => Navigator.pop(context));
                               }

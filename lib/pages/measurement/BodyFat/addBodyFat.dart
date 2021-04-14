@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_boxicons/flutter_boxicons.dart';
@@ -38,18 +39,23 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
   }
 
   TimeOfDay _selectedTime = TimeOfDay.now();
-
-  Future<Null> _selectTime(BuildContext context) async {
-    final TimeOfDay timePicked = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-    );
-    if (timePicked != null)
-      setState(() {
-        _selectedTime = timePicked;
-        time = formatTimeOfDay(_selectedTime);
-      });
-
+  //
+  // Future<Null> _selectTime(BuildContext context) async {
+  //   final TimeOfDay timePicked = await showTimePicker(
+  //     context: context,
+  //     initialTime: TimeOfDay.now(),
+  //   );
+  //   if (timePicked != null)
+  //     setState(() {
+  //       _selectedTime = timePicked;
+  //       time = formatTimeOfDay(_selectedTime);
+  //     });
+  //
+  // }
+  void onTimeChanged(TimeOfDay newTime) {
+    setState(() {
+      _selectedTime = newTime;
+    });
   }
 
   String formatTimeOfDay(TimeOfDay tod) {
@@ -227,7 +233,14 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                                   primary: Colors.white,
                                   elevation: 0,
                                 ),
-                                onPressed: () => _selectTime(context),
+                                onPressed: () => Navigator.of(context).push(
+                                  showPicker(
+                                      value: _selectedTime,
+                                      onChange: onTimeChanged,
+                                      blurredBackground: true,
+                                      iosStylePicker: true
+                                  ),
+                                ),
                                 child: Text(
                                   formatTimeOfDay(_selectedTime),
                                   style: TextStyle(
@@ -303,7 +316,7 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                                       'userID':UserID,
                                       'bodyFat': bodyFat.text,
                                       'date': date,
-                                      'time': time,
+                                      'time': formatTimeOfDay(_selectedTime),
                                       'note': bfNote.text,
                                     }).whenComplete(() => Navigator.pop(context));
                                   }

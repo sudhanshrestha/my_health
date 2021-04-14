@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,6 +26,11 @@ class _EditPulseState extends State<EditPulse> {
   final _formKey = GlobalKey<FormState>();
 
   DateTime selectedDate = DateTime.now();
+  void onTimeChanged(TimeOfDay newTime) {
+    setState(() {
+      _selectedTime = newTime;
+    });
+  }
 
   Future<Null> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
@@ -240,7 +246,15 @@ class _EditPulseState extends State<EditPulse> {
                                   primary: Colors.white,
                                   elevation: 0,
                                 ),
-                                onPressed: () => _selectTime(context),
+                                onPressed: () => Navigator.of(context).push(
+                                  showPicker(
+                                      value: _selectedTime,
+                                      onChange: onTimeChanged,
+                                      blurredBackground: true,
+                                      iosStylePicker: true
+                                  ),
+                                ),
+                                    // _selectTime(context),
                                 child: Text(
                                   formatTimeOfDay(_selectedTime),
                                   style: TextStyle(
@@ -317,7 +331,7 @@ class _EditPulseState extends State<EditPulse> {
                                   widget.docToEdit.reference.update({
                                     'pulse': pulse.text,
                                     'date': date,
-                                    'time': time,
+                                    'time': formatTimeOfDay(_selectedTime),
                                     'note': pulseNote.text,
                                   }).whenComplete(() => Navigator.pop(context));
                                 }
