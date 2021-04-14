@@ -79,7 +79,8 @@ class _AddDoctorPageState extends State<AddDoctorPage> {
                       ),
                       Center(
                         child: CircleAvatar(
-                            backgroundImage: AssetImage("images/doctor.jpg"),
+                            backgroundImage: AssetImage("images/Doctor.png"),
+                            backgroundColor: mainColor,
                             radius: 50),
                       ),
                       SingleChildScrollView(

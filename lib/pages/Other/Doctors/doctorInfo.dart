@@ -75,7 +75,8 @@ class _DoctorInfoState extends State<DoctorInfo> {
                     SizedBox(height: 30,),
                   Center(
                       child: CircleAvatar(
-                          backgroundImage: AssetImage("images/person.png"),
+                          backgroundImage: AssetImage("images/Doctor.png"),
+                          backgroundColor: mainColor,
                           radius: 50)),
                   Container(
                     margin: EdgeInsets.all(15.0),

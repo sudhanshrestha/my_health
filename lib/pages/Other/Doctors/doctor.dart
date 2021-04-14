@@ -133,7 +133,8 @@ class _DoctorPageState extends State<DoctorPage> {
                                                               Padding(
                                                                 padding: const EdgeInsets.all(10.0),
                                                                 child: CircleAvatar(
-                                                                    backgroundImage: AssetImage("images/doctor.jpg"),
+                                                                    backgroundImage: AssetImage("images/Doctor.png"),
+                                                                    backgroundColor: mainColor,
                                                                     radius: 32),
                                                               ),
                                                             ],
