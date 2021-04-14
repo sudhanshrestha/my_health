@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:my_health/main.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:my_health/pages/Other/Profile/profile.dart';
 import 'package:my_health/pages/Other/Profile/profileDisplay.dart';
-
+String editGender;
 class EditProfile extends StatefulWidget {
   static const String id = 'EditProfile';
   DocumentSnapshot docToEdit;
@@ -20,6 +22,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController gender = TextEditingController();
   TextEditingController emrNumber = TextEditingController();
   var docRef = FirebaseFirestore.instance.collection("profile").doc(UserID);
+
   @override
   void initState() {
     // TODO: implement initState
@@ -87,7 +90,7 @@ class _EditProfileState extends State<EditProfile> {
                       ),
                       Center(
                         child: CircleAvatar(
-                            backgroundImage: AssetImage("images/person.png"),
+                            backgroundImage: editGender == 'Male'? AssetImage("images/Male.png"):AssetImage("images/Female.png"),
                             radius: 50),
                       ),
                       SingleChildScrollView(
@@ -145,12 +148,12 @@ class _EditProfileState extends State<EditProfile> {
                                               hintText: "Enter name",
                                               hintStyle: TextStyle(
                                                   fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontWeight: FontWeight.normal,
                                                   color: Colors.black),
                                             ),
                                             style: TextStyle(
                                                 fontSize: 20.0,
-                                                fontWeight: FontWeight.bold,
+                                                fontWeight: FontWeight.normal,
                                                 color: Colors.black),
                                           ),
                                         ),
@@ -158,37 +161,61 @@ class _EditProfileState extends State<EditProfile> {
                                           height: 5.0,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.all(15.0),
-                                          child: TextField(
-                                            controller: gender,
-                                            decoration: InputDecoration(
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.black),
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: mainColor),
-                                              ),
-                                              disabledBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.black),
-                                              ),
-                                              hintText: "Enter name",
-                                              hintStyle: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.black),
+                                          padding: const EdgeInsets.only(left:18.0,right: 18.0),
+                                          child: Container(
+                                            height: 65,
+                                            padding: const EdgeInsets.only(left:15.0,right: 10.0),
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  width: 1.1,
+                                                  color: Colors.grey[700],
+                                                ),
+                                                borderRadius: BorderRadius.all(Radius.circular(10))),
+                                            child: DropDown(
+                                              showUnderline: false,
+                                              isExpanded: true,
+                                              items: ["Male", "Female", "Other"],
+                                              hint: Text("Select Gender",style: TextStyle(fontSize: 20.0,color: Colors.grey[800]),),
+                                              onChanged: (value){
+                                                editGender = value.toString();
+                                                setState(() {
+                                                });
+                                              },
                                             ),
-                                            style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black),
                                           ),
                                         ),
+                                        // Padding(
+                                        //   padding: const EdgeInsets.all(15.0),
+                                        //   child: TextField(
+                                        //     controller: gender,
+                                        //     decoration: InputDecoration(
+                                        //       border: OutlineInputBorder(
+                                        //         borderSide: BorderSide(
+                                        //             color: Colors.black),
+                                        //         borderRadius:
+                                        //             BorderRadius.circular(10),
+                                        //       ),
+                                        //       focusedBorder: OutlineInputBorder(
+                                        //         borderSide: BorderSide(
+                                        //             color: mainColor),
+                                        //       ),
+                                        //       disabledBorder:
+                                        //           OutlineInputBorder(
+                                        //         borderSide: BorderSide(
+                                        //             color: Colors.black),
+                                        //       ),
+                                        //       hintText: "Enter name",
+                                        //       hintStyle: TextStyle(
+                                        //           fontSize: 20.0,
+                                        //           fontWeight: FontWeight.bold,
+                                        //           color: Colors.black),
+                                        //     ),
+                                        //     style: TextStyle(
+                                        //         fontSize: 20.0,
+                                        //         fontWeight: FontWeight.bold,
+                                        //         color: Colors.black),
+                                        //   ),
+                                        // ),
                                         SizedBox(
                                           height: 5.0,
                                         ),
@@ -215,12 +242,12 @@ class _EditProfileState extends State<EditProfile> {
                                               hintText: "Enter name",
                                               hintStyle: TextStyle(
                                                   fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontWeight: FontWeight.normal,
                                                   color: Colors.black),
                                             ),
                                             style: TextStyle(
                                                 fontSize: 20.0,
-                                                fontWeight: FontWeight.bold,
+                                                fontWeight: FontWeight.normal,
                                                 color: Colors.black),
                                           ),
                                         ),
@@ -250,12 +277,12 @@ class _EditProfileState extends State<EditProfile> {
                                               hintText: "Enter name",
                                               hintStyle: TextStyle(
                                                   fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontWeight: FontWeight.normal,
                                                   color: Colors.black),
                                             ),
                                             style: TextStyle(
                                                 fontSize: 20.0,
-                                                fontWeight: FontWeight.bold,
+                                                fontWeight: FontWeight.normal,
                                                 color: Colors.black),
                                           ),
                                         ),
@@ -288,7 +315,7 @@ class _EditProfileState extends State<EditProfile> {
 
                                     docRef.update({
                                       'name': name.text,
-                                      'gender': gender.text,
+                                      'gender': editGender,
                                       'dob': dob.text,
                                       'emrNumber': emrNumber.text
                                     }).whenComplete(

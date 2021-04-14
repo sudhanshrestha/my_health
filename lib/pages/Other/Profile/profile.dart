@@ -122,54 +122,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         SizedBox(
                           height: 60.0,
                         ),
-                        // Center(
-                        //   child: GestureDetector(
-                        //       onTap: () => getImage(),
-                        //       child: (imageFile == null)
-                        //           ? Container(
-                        //         height: 150,
-                        //         width: 150,
-                        //         child: Icon(
-                        //             MdiIcons.cameraPlus,
-                        //             size: 40
-                        //         ),
-                        //         decoration: BoxDecoration(
-                        //             borderRadius: BorderRadius.circular(25),
-                        //             color: Colors.white
-                        //         ),
-                        //       )
-                        //           : Container(
-                        //         height: 180,
-                        //         width: 130,
-                        //         decoration: BoxDecoration(
-                        //             image: DecorationImage(
-                        //                 fit: BoxFit.cover,
-                        //                 image: FileImage(imageFile)
-                        //             )
-                        //         ),
-                        //       ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //   child: MaterialButton(
-                        //     onPressed: getImage,
-                        //     child: CircleAvatar(
-                        //       backgroundColor: Colors.transparent,
-                        //       radius: 60.0,
-                        //       child: CircleAvatar(
-                        //         radius: 40.0,
-                        //         backgroundImage: (imageFile != null)
-                        //             ? Image.file(imageFile)
-                        //             : AssetImage("images/p.jpg"),
-                        //         backgroundColor: Colors.white,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //     child: CircleAvatar(
-                        //         backgroundImage: AssetImage("images/p.jpg"),
-                        //         radius: 50)),
                         SizedBox(
                           height: 30.0,
                         ),
@@ -297,8 +249,8 @@ class _DOBPickerState extends State<DOBPicker> {
           showDatePicker(
             context: context,
             initialDate: DateTime.now(),
-            firstDate: DateTime(1990),
-            lastDate: DateTime(2077),
+            firstDate: DateTime(1900),
+            lastDate: DateTime.now(),
           ).then((date) {
             setState(() {
               dateTime = date;

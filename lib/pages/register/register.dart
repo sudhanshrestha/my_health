@@ -8,11 +8,10 @@ import 'package:my_health/pages/home/home.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 //Variables to store data in firebase
-String name;
 String email;
 String password;
-String gender;
-String dob;
+String password2;
+
 
 class Register extends StatefulWidget {
   static const String id = 'registerPage';
@@ -26,35 +25,35 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   bool showSpinner = false;
 
-
-  //for dropdown menu
-  final List<ListItem> _dropdownItems = [
-    ListItem(1, "Male"),
-    ListItem(2, "Female"),
-  ];
-
-  List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
-  ListItem _selectedItem;
+  //
+  // //for dropdown menu
+  // final List<ListItem> _dropdownItems = [
+  //   ListItem(1, "Male"),
+  //   ListItem(2, "Female"),
+  // ];
+  //
+  // List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
+  // ListItem _selectedItem;
 
   void initState() {
     super.initState();
-    _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
-    _selectedItem = _dropdownMenuItems[0].value;
+    // _dropdownMenuItems = buildDropDownMenuItems(_dropdownItems);
+    // _selectedItem = _dropdownMenuItems[0].value;
     bool _passwordVisible = false;
   }
 
-  List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
-    List<DropdownMenuItem<ListItem>> items = List();
-    for (ListItem listItem in listItems) {
-      items.add(
-        DropdownMenuItem(
-          child: Text(listItem.name),
-          value: listItem,
-        ),
-      );
-    }
-    return items;
-  }
+  // List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
+  //   List<DropdownMenuItem<ListItem>> items = List();
+  //   for (ListItem listItem in listItems) {
+  //     items.add(
+  //       DropdownMenuItem(
+  //         child: Text(listItem.name),
+  //         value: listItem,
+  //       ),
+  //     );
+  //   }
+  //   return items;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -131,46 +130,15 @@ class _RegisterState extends State<Register> {
                           SizedBox(
                             height: 20.0,
                           ),
+                          RegisterPassword2TextField(),
+                          SizedBox(
+                            height: 20.0,
+                          ),
                           RegisterPasswordTextField(),
                           SizedBox(
                             height: 20.0,
                           ),
-                          // Center(
-                          //   child: Container(
-                          //     width: 370.0,
-                          //     height: 58.0,
-                          //     padding: EdgeInsets.fromLTRB(50, 1, 20, 1),
-                          //     decoration: BoxDecoration(
-                          //         borderRadius: BorderRadius.circular(8.0),
-                          //         color: Colors.white,
-                          //         border: Border.all(
-                          //           width: 0.7,
-                          //           color: Colors.grey[700],
-                          //         )),
-                          //     child: DropdownButtonHideUnderline(
-                          //       child: DropdownButton(
-                          //           style: TextStyle(
-                          //             fontSize: 18.0,
-                          //             color: Colors.grey[800],
-                          //           ),
-                          //           hint: Text("Select Gender"),
-                          //           value: _selectedItem,
-                          //           items: _dropdownMenuItems,
-                          //           onChanged: (value) {
-                          //             _dropdownItems.indexOf(value) == 0
-                          //                 ? gender = "Male"
-                          //                 : gender = "Female";
-                          //             setState(() {
-                          //               _selectedItem = value;
-                          //             });
-                          //           }),
-                          //     ),
-                          //   ),
-                          // ),
-                          // SizedBox(
-                          //   height: 20.0,
-                          // ),
-                          // Center(child: DOBPicker()),
+
                           SizedBox(
                             height: 25.0,
                           ),
@@ -181,48 +149,77 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   showSpinner = true;
                                 });
-                                if(_formKey.currentState.validate()){
-                                  try{
-                                    final newUser =
-                                    await _auth.createUserWithEmailAndPassword(
-                                        email: email, password: password)
-                                        .catchError((err) {
-                                      showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return AlertDialog(
-                                              title: Text("Error"),
-                                              content: Text(err.message),
-                                              actions: [
-                                                ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                    primary: mainColor,
-                                                    shape: RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.circular(8),
+                                if(password==password2){
+                                  if(_formKey.currentState.validate()){
+                                    try{
+                                      final newUser =
+                                      await _auth.createUserWithEmailAndPassword(
+                                          email: email, password: password)
+                                          .catchError((err) {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: Text("Error"),
+                                                content: Text(err.message),
+                                                actions: [
+                                                  ElevatedButton(
+                                                    style: ElevatedButton.styleFrom(
+                                                      primary: mainColor,
+                                                      shape: RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(8),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  child: Text("Ok"),
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                )
-                                              ],
-                                            );
-                                          });
-                                    });
-                                    if(newUser !=null) {
-                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()),);
+                                                    child: Text("Ok"),
+                                                    onPressed: () {
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                  )
+                                                ],
+                                              );
+                                            });
+                                      });
+                                      if(newUser !=null) {
+                                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()),);
 
+                                      }
+                                      setState(() {
+                                        showSpinner = false;
+                                      });
                                     }
-                                    setState(() {
-                                      showSpinner = false;
-                                    });
-                                  }
-                                  catch (e)
-                                  {
-                                    print(e);
+                                    catch (e)
+                                    {
+                                      print(e);
+                                    }
                                   }
                                 }
+                                else{
+                                  print('Password do not match');
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          content: const Text('Make sure your passwords match !'),
+                                          actions: <Widget>[
+                                            ElevatedButton(
+                                                child: Text('OK'),
+                                                style: ElevatedButton.styleFrom(
+                                                  primary: mainColor,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(8),
+                                                  ),
+                                                ),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    showSpinner = false;
+                                                  });
+                                                  Navigator.of(context, rootNavigator: true).pop();
+                                                })
+                                          ],
+                                        );
+                                      });
+                                }
+
 
 
                               },
@@ -242,79 +239,79 @@ class _RegisterState extends State<Register> {
   }
 }
 
-DateTime dateTime;
-
-// ignore: must_be_immutable
-class DOBPicker extends StatefulWidget {
-  @override
-  _DOBPickerState createState() => _DOBPickerState();
-}
-
-class _DOBPickerState extends State<DOBPicker> {
-  @override
-  Widget build(BuildContext context) {
-    String birthDateInString;
-    DateTime birthDate;
-    bool isDateSelected = false;
-    return Container(
-      child: InkWell(
-        onTap: () {
-          showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1990),
-            lastDate: DateTime(2077),
-          ).then((date) {
-            setState(() {
-              dateTime = date;
-              dob = "${dateTime.year}-${dateTime.month}-${dateTime.day}";
-            });
-          });
-        },
-        child: Container(
-          width: 370.0,
-          height: 58.0,
-          decoration: BoxDecoration(
-              border: Border.all(
-                width: 0.7,
-                color: Colors.grey[700],
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Padding(
-            padding: const EdgeInsets.only(
-                left: 20.0, right: 18.0, top: 10.0, bottom: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(
-                    dateTime == null
-                        ? "Select Date of Birth"
-                        : "Date of Birth: ${dateTime.year}-${dateTime.month}-${dateTime.day}",
-                    style: TextStyle(fontSize: 17.0, color: Colors.grey[800]),
-                  ),
-                ),
-                SizedBox(
-                  width: 30.0,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//list for gender picker
-class ListItem {
-  int value;
-  String name;
-
-  ListItem(this.value, this.name);
-}
+// DateTime dateTime;
+//
+// // ignore: must_be_immutable
+// class DOBPicker extends StatefulWidget {
+//   @override
+//   _DOBPickerState createState() => _DOBPickerState();
+// }
+//
+// class _DOBPickerState extends State<DOBPicker> {
+//   @override
+//   Widget build(BuildContext context) {
+//     String birthDateInString;
+//     DateTime birthDate;
+//     bool isDateSelected = false;
+//     return Container(
+//       child: InkWell(
+//         onTap: () {
+//           showDatePicker(
+//             context: context,
+//             initialDate: DateTime.now(),
+//             firstDate: DateTime(1990),
+//             lastDate: DateTime(2077),
+//           ).then((date) {
+//             setState(() {
+//               dateTime = date;
+//               dob = "${dateTime.year}-${dateTime.month}-${dateTime.day}";
+//             });
+//           });
+//         },
+//         child: Container(
+//           width: 370.0,
+//           height: 58.0,
+//           decoration: BoxDecoration(
+//               border: Border.all(
+//                 width: 0.7,
+//                 color: Colors.grey[700],
+//               ),
+//               borderRadius: BorderRadius.all(Radius.circular(10))),
+//           child: Padding(
+//             padding: const EdgeInsets.only(
+//                 left: 20.0, right: 18.0, top: 10.0, bottom: 10.0),
+//             child: Row(
+//               mainAxisAlignment: MainAxisAlignment.start,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Padding(
+//                   padding: const EdgeInsets.only(top: 4.0),
+//                   child: Text(
+//                     dateTime == null
+//                         ? "Select Date of Birth"
+//                         : "Date of Birth: ${dateTime.year}-${dateTime.month}-${dateTime.day}",
+//                     style: TextStyle(fontSize: 17.0, color: Colors.grey[800]),
+//                   ),
+//                 ),
+//                 SizedBox(
+//                   width: 30.0,
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+// //list for gender picker
+// class ListItem {
+//   int value;
+//   String name;
+//
+//   ListItem(this.value, this.name);
+// }
 
 
 //TextField for Email
@@ -399,6 +396,80 @@ class _RegisterPasswordTextFieldState extends State<RegisterPasswordTextField> {
         obscureText: !_passwordVisible,
         onChanged: (value) {
           password = value;
+        },
+        decoration: InputDecoration(
+          suffixIcon: GestureDetector(
+            onLongPress: () {
+              setState(() {
+                _passwordVisible = true;
+                isPressed = true;
+              });
+            },
+            onLongPressUp: () {
+              setState(() {
+                _passwordVisible = false;
+                isPressed = false;
+              });
+            },
+            child: (isPressed)
+                ? Icon(MdiIcons.eye,
+                color: Colors.black)
+                : Icon(
+              MdiIcons.eyeOff,
+              color: Colors.black,
+            ),
+          ),
+          labelText: "Confirm Password",
+          labelStyle: TextStyle(
+              color: focusNodePassword.hasFocus ? mainColor : Colors.black),
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: mainColor),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class RegisterPassword2TextField extends StatefulWidget {
+  @override
+  _RegisterPassword2TextFieldState createState() =>
+      _RegisterPassword2TextFieldState();
+}
+
+class _RegisterPassword2TextFieldState extends State<RegisterPassword2TextField> {
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final myController = TextEditingController();
+  FocusNode focusNodePassword = FocusNode();
+  bool _passwordVisible = false;
+  bool isPressed = false;
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+      child: TextFormField(
+        validator: (val)=> val.length <6 ? 'Enter a password with more than 5 characters':null,
+        focusNode: focusNodePassword,
+        obscureText: !_passwordVisible,
+        onChanged: (value) {
+          password2 = value;
         },
         decoration: InputDecoration(
           suffixIcon: GestureDetector(

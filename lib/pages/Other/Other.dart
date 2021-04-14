@@ -24,25 +24,10 @@ class _OtherPageState extends State<OtherPage> {
   final auth = FirebaseAuth.instance;
   final ref = FirebaseFirestore.instance.collection('profile').doc(UserID);
   final _auth = FirebaseAuth.instance;
+  String gender;
   User loggedInUser;
-  // void getCurrentUser() {
-  //   try {
-  //     final user = _auth.currentUser;
-  //     if (user != null) {
-  //       loggedInUser = user;
-  //       UserID = loggedInUser.uid;
-  //       print(loggedInUser.email);
-  //       print(UserID);
-  //     }
-  //   }
-  //   catch(e){
-  //     print(e);
-  //   }
-  // }
-  @override
-  void initState() {
+  String genderDisplay;
 
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,32 +42,35 @@ class _OtherPageState extends State<OtherPage> {
                 height: 220.0,
                 child: Column(
                   children: [
-                    SizedBox(height: 20.0,),
-                    CircleAvatar(backgroundImage: AssetImage("images/person.png"), radius: 50),
-                    SizedBox(height: 20.0,),
-                    Center(
-                      child: StreamBuilder(
-                        stream: FirebaseFirestore.instance
-                          .collection('profile')
-                          .doc(UserID)
-                          .snapshots(),
-                        builder: (context,snapshot){
-                          if(!snapshot.hasData){
-                            return Text("Loading");
-                          }
-                          var usrData = snapshot.data;
-                          return  Text(
-                                usrData["name"],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 35.0,
-                                    fontWeight: FontWeight.bold),
-                              );
+                StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('profile')
+                    .doc(UserID)
+                    .snapshots(),
+            builder: (context,snapshot){
+              if(!snapshot.hasData){
+                return Text("Loading");
+              }
+              var usrData = snapshot.data;
+              gender = usrData['gender'];
+              genderDisplay = gender;
+              return  Column(
+                children: [
+                  SizedBox(height: 20.0,),
+                  Center(child: CircleAvatar(backgroundImage: AssetImage("images/$genderDisplay.png") , radius: 60)),
+                  SizedBox(height: 20.0,),
+                  Text(
+                    usrData["name"],
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              );
+            },
+          ),
 
-                        },
-                      ),
-
-                    ),
                   ],
                 ),
               ),
