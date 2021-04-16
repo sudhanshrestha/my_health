@@ -14,7 +14,6 @@ import 'package:my_health/pageAssets.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 int itemCount=0;
 int index = 0;
-
 String medType;
 class AddMedicine extends StatefulWidget {
   static const String id = 'AddMedicinePage';
@@ -398,15 +397,7 @@ class _AddMedicineState extends State<AddMedicine> {
                             child: Center(
                               child: SmallButton(
                                 buttonTitle: "Add Medicine",
-                                onPressed: () {
-                                  // print(medicineName.text);
-                                  // print(_medicineType.elementAt(itemCount).name);
-                                  // print(medicineStock.text);
-                                  // print(intakeDose.text);
-                                  // print(timeAdded);
-                                  // String date =  (timeAdded.toString().replaceAll("]","")).replaceAll("[","");
-                                  // DateTime date1= DateFormat.jm().parse(date);
-                                  // reminderTime = date1;
+                                onPressed: ()  {
 
                                   //creating loop for each reminder
                                   if (_formKey.currentState.validate() && timeAdded.length>0  ) {
