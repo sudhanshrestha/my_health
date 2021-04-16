@@ -421,7 +421,7 @@ class MedicineBadge extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: 150.0,
+                            width: 140.0,
                           ),
                           Container(
                             margin: const EdgeInsets.only(bottom: 6.0),

@@ -3,6 +3,7 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:my_health/bottomNavigation.dart';
@@ -12,6 +13,7 @@ import 'package:my_health/pages/medicine/addMedicine.dart';
 
 int itemCount=0;
 int index = 0;
+String medicineType;
 class EditMedicine extends StatefulWidget {
 
   DocumentSnapshot docToEdit;
@@ -23,22 +25,24 @@ class EditMedicine extends StatefulWidget {
 }
 
 class _EditMedicineState extends State<EditMedicine> {
+  bool timeChecker = true;
 
   TextEditingController medicineName = TextEditingController();
   // TextEditingController medicineStock = TextEditingController();
   TextEditingController intakeDose = TextEditingController();
   String medicineStock;
-  final List<ListItem> _medicineType = [
-    ListItem(1, "Pill"),
-    ListItem(2, "Solution"),
-    ListItem(3, "Injection"),
-    ListItem(4, "Powder"),
-    ListItem(6, "Drops"),
-    ListItem(7, "Inhaler"),
-  ];
 
-  List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
-  ListItem _selectedItem;
+  // final List<ListItem> _Type = [
+  //   ListItem(1, "Pill"),
+  //   ListItem(2, "Solution"),
+  //   ListItem(3, "Injection"),
+  //   ListItem(4, "Powder"),
+  //   ListItem(6, "Drops"),
+  //   ListItem(7, "Inhaler"),
+  // ];
+
+  // List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
+  // ListItem _selectedItem;
   TimeOfDay _time = TimeOfDay.now().replacing(minute: 30);
   List<String> timeAdded = [];
   int notificationID;
@@ -48,8 +52,8 @@ class _EditMedicineState extends State<EditMedicine> {
   List<String> nID;
   void initState() {
     super.initState();
-    _dropdownMenuItems = buildDropDownMenuItems(_medicineType);
-    _selectedItem = _dropdownMenuItems[0].value;
+    // _dropdownMenuItems = buildDropDownMenuItems(_medicineType);
+    // _selectedItem = _dropdownMenuItems[0].value;
     timeAdded.clear();
     medicineName = TextEditingController(text: widget.docToEdit.data()['Name']);
     // medicineStock = TextEditingController(text: widget.docToEdit.data()['Stock']);
@@ -61,18 +65,18 @@ class _EditMedicineState extends State<EditMedicine> {
 
 
 
-  List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
-    List<DropdownMenuItem<ListItem>> items = List();
-    for (ListItem listItem in listItems) {
-      items.add(
-        DropdownMenuItem(
-          child: Text(listItem.name),
-          value: listItem,
-        ),
-      );
-    }
-    return items;
-  }
+  // List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
+  //   List<DropdownMenuItem<ListItem>> items = [];
+  //   for (ListItem listItem in listItems) {
+  //     items.add(
+  //       DropdownMenuItem(
+  //         child: Text(listItem.name),
+  //         value: listItem,
+  //       ),
+  //     );
+  //   }
+  //   return items;
+  // }
 
   void onTimeChanged(TimeOfDay newTime) {
     setState(() {
@@ -213,22 +217,28 @@ class _EditMedicineState extends State<EditMedicine> {
                                     color: Colors.grey[700],
                                   )),
                               child: DropdownButtonHideUnderline(
-                                child: DropdownButton(
+                                child: DropDown(
+                                  showUnderline: false,
+                                  initialValue: 'Pill',
+                                  isExpanded: true,
+                                  items: [
+                                    "Pill",
+                                    "Solution",
+                                    "Injection",
+                                    "Powder",
+                                    "Drops",
+                                    "Inhaler"],
+                                  hint: Text(
+                                    "Select medicine type",
                                     style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.grey[800],
-                                    ),
-                                    hint: Text("Select Type"),
-                                    value: _selectedItem,
-                                    items: _dropdownMenuItems,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _selectedItem = value;
-                                        itemCount =_medicineType.indexOf(value);
-                                        print(itemCount);
-                                        medType = _medicineType.elementAt(itemCount).name;
-                                      });
-                                    }),
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.black),
+                                  ),
+                                  onChanged: (value) {
+                                    medicineType = value.toString();
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -288,7 +298,7 @@ class _EditMedicineState extends State<EditMedicine> {
                             children: <Widget>[
                               Container(
                                 height: 250.0,
-                                child: timeAdded == null
+                                child: timeAdded.length == 0
                                     ? Center(child: Text('No Time Added'))
                                     : ListView.builder(
                                   itemCount: timeAdded.length,
@@ -345,7 +355,18 @@ class _EditMedicineState extends State<EditMedicine> {
                                         maxMinute: 59,
                                         // Optional onChange to receive value as DateTime
                                         onChangeDateTime: (DateTime dateTime) {
-                                          timeAdded.add(_time.format(context));
+                                          timeChecker =true;
+                                          String tempTime = _time.format(context);
+                                          for(int i=0; i<timeAdded.length; i++){
+                                            if(timeAdded[i] == tempTime){
+                                              timeChecker = false;
+                                              break;
+                                            }
+                                          }
+                                          if(timeChecker == true)
+                                          {
+                                            timeAdded.add(_time.format(context));
+                                          }
                                         },
                                       ),
                                     );
@@ -392,7 +413,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                     widget.docToEdit.reference.update({
                                       'userID':UserID,
                                       'Name': medicineName.text,
-                                      'MedicineType': _medicineType.elementAt(itemCount).name.toString(),
+                                      'MedicineType': medicineType,
                                       // 'Stock': medicineStock.text,
                                       'Dose': intakeDose.text,
                                       'ReminderTime': (timeAdded.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
@@ -403,6 +424,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                     });
                                     Navigator.pop(context);
                                   }
+
                                 },
                               ),
                             ),
