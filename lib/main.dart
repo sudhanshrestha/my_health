@@ -49,7 +49,7 @@ class _MyHealthState extends State<MyHealth> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: "OpenSans"),
+      theme: ThemeData(fontFamily: "Poppins"),
       home: LoadingPage(),
       initialRoute: LoadingPage.id,
       routes: {

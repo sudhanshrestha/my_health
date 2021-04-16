@@ -10,15 +10,13 @@ class ProfileDisplay extends StatefulWidget {
   @override
   _ProfileDisplayState createState() => _ProfileDisplayState();
 }
+
 String gender;
 String name;
 String DOB;
 String Enumber;
 
-
-
 class _ProfileDisplayState extends State<ProfileDisplay> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +55,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
               ),
               Container(
                 width: double.infinity,
-                height: 720,
+                height: 500,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -76,7 +74,9 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        SizedBox(height: 30,),
+                        SizedBox(
+                          height: 30,
+                        ),
                         StreamBuilder(
                             stream: FirebaseFirestore.instance
                                 .collection('profile')
@@ -92,36 +92,42 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                 children: [
                                   Center(
                                     child: CircleAvatar(
-                                        backgroundImage: AssetImage("images/$gender.png"), radius: 60),
+                                        backgroundImage:
+                                            AssetImage("images/$gender.png"),
+                                        radius: 60),
                                   ),
                                   Container(
                                     margin: EdgeInsets.all(15.0),
                                     padding: EdgeInsets.all(15.0),
-                                    height: 300.0,
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Text(
-                                                'Name:  ' ,
+                                                'Name:  ',
                                                 style: TextStyle(
-                                                    fontSize: 25.0,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontSize: 20.0,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               Text(
                                                 userDocument["name"],
                                                 style: TextStyle(
-                                                    fontSize: 25.0,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontSize: 20.0,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                             ],
                                           ),
@@ -130,19 +136,21 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                           height: 5.0,
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'Gender:  ' ,
+                                              'Gender:  ',
                                               style: TextStyle(
-                                                  fontSize: 25.0,
+                                                  fontSize: 20.0,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             Text(
                                               userDocument["gender"],
                                               style: TextStyle(
-                                                  fontSize: 25.0,
+                                                  fontSize: 20.0,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ],
@@ -151,22 +159,23 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                           height: 5.0,
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'DOB:  ' ,
+                                              'DOB:  ',
                                               style: TextStyle(
-                                                  fontSize: 25.0,
+                                                  fontSize: 20.0,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             Text(
                                               userDocument["dob"],
                                               style: TextStyle(
-                                                  fontSize: 25.0,
+                                                  fontSize: 20.0,
                                                   fontWeight: FontWeight.bold),
                                             ),
-
                                           ],
                                         ),
                                         SizedBox(
@@ -175,20 +184,24 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                         SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Text(
-                                                'Emergency Number:  ' ,
+                                                'Emergency Number:  ',
                                                 style: TextStyle(
-                                                    fontSize: 25.0,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontSize: 20.0,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                               Text(
                                                 userDocument["emrNumber"],
                                                 style: TextStyle(
-                                                    fontSize: 25.0,
-                                                    fontWeight: FontWeight.bold),
+                                                    fontSize: 20.0,
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                               ),
                                             ],
                                           ),
@@ -205,7 +218,11 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                             child: SmallButton(
                               buttonTitle: "Edit",
                               onPressed: () {
-                                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => EditProfile()),);
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditProfile()),
+                                );
                                 // EditProfile(docToEdit: snapshot.data
                                 //     .docs[index])));
                               },

@@ -28,7 +28,7 @@ class _MeasurementState extends State<Measurement> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                height: 175.0,
+                height: 150.0,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                   child: Text(

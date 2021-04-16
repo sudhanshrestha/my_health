@@ -22,8 +22,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="854fc566-50a1-4b14-b37b-78af359c0571" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/pages/home/calendar.dart" afterDir="false" />
+    <list default="true" id="854fc566-50a1-4b14-b37b-78af359c0571" name="Default Changelist" comment="improvements done in UI">
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-Black.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-BlackItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-BoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-ExtraBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-ExtraBoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-ExtraLight.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-ExtraLightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-Italic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-LightItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-MediumItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-SemiBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-SemiBoldItalic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-Thin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts/Poppins-ThinItalic.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -34,17 +51,69 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/AssetManifest.json.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/AssetManifest.json.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/FontManifest.json.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/FontManifest.json.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-Bold.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-BoldItalic.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-ExtraBold.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-ExtraBoldItalic.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-Italic.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-Light.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-LightItalic.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-Regular.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-SemiBold.ttf.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/fonts/OpenSans-SemiBoldItalic.ttf.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/AssetManifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/FontManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/FontManifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/fonts/OpenSans-SemiBoldItalic.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/flutter/debug/flutter_build.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/AssetManifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/FontManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/FontManifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/fonts/OpenSans-SemiBoldItalic.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/intermediates/merged_assets/debug/out/flutter_assets/kernel_blob.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/Other/Other.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Other/Other.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/Other/medicineHistory/medicineHistory.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Other/medicineHistory/medicineHistory.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/outputs/flutter-apk/app.apk.sha1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/OpenSans-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/Other/Profile/editProfile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Other/Profile/editProfile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/Other/Profile/profileDisplay.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Other/Profile/profileDisplay.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/measurement/BloodPressure/bloodPressure.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/BloodPressure/bloodPressure.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/measurement/BodyFat/bodyFat.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/BodyFat/bodyFat.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/measurement/Pulse/pulse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/Pulse/pulse.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/medicine/medicine.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/medicine/medicine.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/measurement/measurement.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/measurement/measurement.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,15 +157,16 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health" />
+      <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\images" />
       <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\lib\notification" />
       <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\res\drawable" />
       <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app" />
       <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\lib\pages" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -115,13 +185,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611754777378</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Register page made">
-      <created>1612960811602</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1612960811602</updated>
     </task>
     <task id="LOCAL-00004" summary="Register page fix">
       <created>1612962097238</created>
@@ -459,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618418443396</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="fixed height issues and changes in home page">
+      <created>1618587477987</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1618587477987</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -476,7 +546,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="medicine added to firebase" />
     <MESSAGE value="medicine added to firebase (2)" />
     <MESSAGE value="edit medication done" />
     <MESSAGE value="map done need to check" />
@@ -501,7 +570,8 @@
     <MESSAGE value="minor UI updates" />
     <MESSAGE value="changes in image" />
     <MESSAGE value="changes in doctor images" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in doctor images" />
+    <MESSAGE value="fixed height issues and changes in home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed height issues and changes in home page" />
   </component>
   <component name="WindowStateProjectService">
     <state x="89" y="-896" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1616264118383">
@@ -520,41 +590,41 @@
     <state x="74" y="79" width="1025" height="679" key="AVDManager/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613665400994" />
     <state x="74" y="79" width="1025" height="679" key="AVDManager/0.0.1536.824@0.0.1536.824" timestamp="1618125427254" />
     <state x="100" y="-980" width="1263" height="840" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1613058270856" />
-    <state x="392" y="-996" key="CommitChangelistDialog2" timestamp="1618418386479">
+    <state x="392" y="-996" key="CommitChangelistDialog2" timestamp="1618590014159">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="392" y="-996" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618418386479" />
+    <state x="392" y="-996" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618590014159" />
     <state x="314" y="0" key="CommitChangelistDialog2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613401439913" />
     <state x="314" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1615107081284" />
     <state x="574" y="-806" key="FileChooserDialogImpl" timestamp="1617989420610">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
     <state x="574" y="-806" key="FileChooserDialogImpl/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1617989420610" />
-    <state width="1514" height="254" key="GridCell.Tab.0.bottom" timestamp="1618580282171">
+    <state width="1446" height="256" key="GridCell.Tab.0.bottom" timestamp="1618589000210">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1514" height="254" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618580282171" />
+    <state width="1446" height="256" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618589000210" />
     <state width="1875" height="277" key="GridCell.Tab.0.bottom/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1617522988507" />
     <state width="1169" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1618125393019" />
     <state width="1542" height="275" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1612967827511" />
-    <state width="1514" height="254" key="GridCell.Tab.0.center" timestamp="1618580282171">
+    <state width="1446" height="256" key="GridCell.Tab.0.center" timestamp="1618589000210">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1514" height="254" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618580282171" />
+    <state width="1446" height="256" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618589000210" />
     <state width="1875" height="277" key="GridCell.Tab.0.center/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1617522988507" />
     <state width="1169" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1618125393018" />
     <state width="1542" height="275" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1612967827510" />
-    <state width="1514" height="254" key="GridCell.Tab.0.left" timestamp="1618580282170">
+    <state width="1446" height="256" key="GridCell.Tab.0.left" timestamp="1618589000210">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1514" height="254" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618580282170" />
+    <state width="1446" height="256" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618589000210" />
     <state width="1875" height="277" key="GridCell.Tab.0.left/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1617522988507" />
     <state width="1169" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1618125393018" />
     <state width="1542" height="275" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1612967827510" />
-    <state width="1514" height="254" key="GridCell.Tab.0.right" timestamp="1618580282171">
+    <state width="1446" height="256" key="GridCell.Tab.0.right" timestamp="1618589000210">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state width="1514" height="254" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618580282171" />
+    <state width="1446" height="256" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618589000210" />
     <state width="1875" height="277" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1617522988507" />
     <state width="1169" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1618125393018" />
     <state width="1542" height="275" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1612967827510" />
@@ -562,10 +632,10 @@
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
     <state x="489" y="-1064" width="1141" height="1015" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1617278103607" />
-    <state x="386" y="-828" key="Vcs.Push.Dialog.v2" timestamp="1618418390696">
+    <state x="386" y="-828" key="Vcs.Push.Dialog.v2" timestamp="1618587491848">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="386" y="-828" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618418390696" />
+    <state x="386" y="-828" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1618587491848" />
     <state x="309" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1613401427754" />
     <state x="309" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1615107111206" />
     <state x="481" y="-1064" width="958" height="1015" key="dock-window-1" timestamp="1618579763097">
