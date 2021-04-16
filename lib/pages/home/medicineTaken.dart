@@ -77,7 +77,7 @@ class _MedicineTakenState extends State<MedicineTaken> {
 
     // Currently the reminder is set to 2 min after the medicine is taken
     final time = DateTime(
-        now.year, now.month, now.day, now.hour, now.minute, now.second + 2);
+        now.year, now.month, now.day, now.hour, now.minute, now.second + 5);
     await _notificationPlugin.schedule(time, id, title, description);
   }
 
@@ -268,7 +268,7 @@ class _MedicineTakenState extends State<MedicineTaken> {
 
                                     /*
                                     * After storing the consumption history
-                                    * Changing the boolean values once as a medicine is taken only once if mulitple reminders
+                                    * Changing the boolean values once as a medicine is taken only once if multiple reminders
                                     * */
                                     int count = 1;
                                     for (var i = 0; i < boolVal.length; i++) {
