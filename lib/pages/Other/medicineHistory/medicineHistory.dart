@@ -52,7 +52,7 @@ class _MedicineHistoryState extends State<MedicineHistory> {
                 ],
               ),
               Container(
-                height: 500,
+                height: 700,
                 padding: EdgeInsets.only(top: 20.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -187,8 +187,8 @@ class _MedicineHistoryState extends State<MedicineHistory> {
                                                             Text(
                                                               'Date/Time: '+snapshot.data.docs[index].data()['DateTime'],
                                                               style: TextStyle(
-                                                                  fontSize: 14.0,
-                                                                  fontWeight: FontWeight.w600,
+                                                                  fontSize: 12.0,
+                                                                  fontWeight: FontWeight.w500,
                                                                   color: Colors.grey[700]),
                                                             ),
                                                           ],

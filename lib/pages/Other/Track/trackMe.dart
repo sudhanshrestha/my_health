@@ -228,8 +228,8 @@ class _TrackMeState extends State<TrackMe> {
   @override
   void initState() {
     super.initState();
-    getUserData();
     locatePosition();
+    getUserData();
     calculateDistance();
   }
   @override

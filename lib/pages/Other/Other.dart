@@ -84,7 +84,7 @@ class _OtherPageState extends State<OtherPage> {
               ),
               Container(
                 width: double.infinity,
-                height: 600,
+                height: 900,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

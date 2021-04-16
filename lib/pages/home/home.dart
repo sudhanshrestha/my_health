@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                 // child: TopCalender(controller: _controller),
               ),
               Container(
-                height: 500,
+                height: 700,
                 padding: EdgeInsets.only(top: 20.0),
                 margin: const EdgeInsets.only(bottom: 2.0),
                 decoration: BoxDecoration(

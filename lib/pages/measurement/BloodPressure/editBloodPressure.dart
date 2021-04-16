@@ -6,6 +6,7 @@ import 'package:icofont_flutter/icofont_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
+import 'package:my_health/pages/measurement/BloodPressure/bloodPressure.dart';
 
 class EditBloodPressure extends StatefulWidget {
   static const String id = 'EditBloodPressure';
@@ -92,11 +93,11 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
               Stack(
                 children: [
                   Container(
-                    height: 175.0,
+                    height: 220.0,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
-                        "Add Blood Pressure",
+                        "Edit Blood Pressure",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 38.0,
@@ -168,7 +169,9 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                                     controller: sys,
                                     keyboardType: TextInputType.number,
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter value' : null,
+                                        val.isEmpty || int.parse(val) > 140 || int.parse(val) < 85
+                                        ? 'Invalid value'
+                                        : null,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
@@ -183,7 +186,7 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                                       ),
                                       hintText: "Sys(high)",
                                       hintStyle: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 15.0,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                     ),
@@ -207,7 +210,9 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                                   child: TextFormField(
                                     controller: dia,
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter value' : null,
+                                    val.isEmpty || int.parse(val) > 95 || int.parse(val) < 55
+                                        ? 'Invalid value'
+                                        : null,
                                     keyboardType: TextInputType.number,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
@@ -221,9 +226,9 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                                         borderSide:
                                             BorderSide(color: mainColor),
                                       ),
-                                      hintText: "Sys(high)",
+                                      hintText: "Dai(low)",
                                       hintStyle: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 15.0,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                     ),
@@ -356,7 +361,12 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                                     'date': date,
                                     'time': formatTimeOfDay(_selectedTime),
                                     'note': bpNote.text,
-                                  }).whenComplete(() => Navigator.pop(context));
+                                  });
+                                  Navigator.pop(context);
+                                  // Navigator.pushReplacement(
+                                  //   context,
+                                  //   MaterialPageRoute(builder: (context) => BloodPressurePage()),
+                                  // );
                                 }
                               },
                             ),
@@ -369,8 +379,8 @@ class _EditBloodPressureState extends State<EditBloodPressure> {
                               buttonTitle: "Delete",
                               onPressed: () {
                                 widget.docToEdit.reference
-                                    .delete()
-                                    .whenComplete(() => Navigator.pop(context));
+                                    .delete();
+                                Navigator.pop(context);
                               },
                             ),
                           ),

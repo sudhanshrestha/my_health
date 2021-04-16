@@ -125,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         SizedBox(
                           height: 30.0,
                         ),
-                        ProfileNameTextField(),
+                        Center(child: ProfileNameTextField()),
                         SizedBox(
                           height: 20.0,
                         ),
@@ -137,6 +137,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Padding(
                             padding: const EdgeInsets.only(left:18.0,right: 18.0),
                             child: Container(
+                              width: 380.0,
+                              height: 65.0,
                               padding: const EdgeInsets.only(left:15.0,right: 10.0),
                               decoration: BoxDecoration(
                                   border: Border.all(
@@ -159,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         SizedBox(
                           height: 20.0,
                         ),
-                        EmergencyNumberTF(),
+                        Center(child: EmergencyNumberTF()),
                         SizedBox(
                           height: 20.0,
                         ),
@@ -243,50 +245,53 @@ class _DOBPickerState extends State<DOBPicker> {
     String birthDateInString;
     DateTime birthDate;
     bool isDateSelected = false;
-    return Container(
-      child: InkWell(
-        onTap: () {
-          showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(1900),
-            lastDate: DateTime.now(),
-          ).then((date) {
-            setState(() {
-              dateTime = date;
-              _dob = '${dateTime.year}-${dateTime.month}-${dateTime.day}'.toString();
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0,right:15.0),
+      child: Container(
+        child: InkWell(
+          onTap: () {
+            showDatePicker(
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime(1900),
+              lastDate: DateTime.now(),
+            ).then((date) {
+              setState(() {
+                dateTime = date;
+                _dob = '${dateTime.year}-${dateTime.month}-${dateTime.day}'.toString();
+              });
             });
-          });
-        },
-        child: Container(
-          width: 380.0,
-          height: 58.0,
-          decoration: BoxDecoration(
-              border: Border.all(
-                width: 0.7,
-                color: Colors.grey[700],
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Padding(
-            padding: const EdgeInsets.only(
-                left: 20.0, right: 18.0, top: 10.0, bottom: 10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(
-                    dateTime == null
-                        ? "Select Date of Birth"
-                        : "Date of Birth: ${dateTime.year}-${dateTime.month}-${dateTime.day}",
-                    style: TextStyle(fontSize: 17.0, color: Colors.grey[800]),
+          },
+          child: Container(
+            width: 380.0,
+            height: 62.0,
+            decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0.7,
+                  color: Colors.grey[700],
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 20.0, right: 18.0, top: 10.0, bottom: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0),
+                    child: Text(
+                      dateTime == null
+                          ? "Select Date of Birth"
+                          : "Date of Birth: ${dateTime.year}-${dateTime.month}-${dateTime.day}",
+                      style: TextStyle(fontSize: 17.0, color: Colors.grey[800]),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 30.0,
-                ),
-              ],
+                  SizedBox(
+                    width: 30.0,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -411,7 +416,7 @@ class _EmergencyNumberTFState extends State<EmergencyNumberTF> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0),
       child: TextFormField(
         validator: (val) => val.length < 10
             ? 'Enter correct Number'

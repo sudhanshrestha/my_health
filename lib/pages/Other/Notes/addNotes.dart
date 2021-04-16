@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_health/pageAssets.dart';
 
 
@@ -96,11 +97,18 @@ class _AddNoteState extends State<AddNote> {
                         child: AddButton(
                           buttonTitle: "Add Note",
                           onPressed: () {
+                            DateTime now = DateTime.now();
+                            var dateStamp =
+                            DateFormat('yyyy-MM-dd – h:mm a')
+                                .format(now);
+                            print(dateStamp);
                             _firestore.collection('notes').add({
                               'userID':UserID,
                               'title': title.text,
                               'description': description.text,
-                            }).whenComplete(() => Navigator.pop(context));
+                              'DateTime': dateStamp,
+                            });
+                            Navigator.pop(context);
 
                           },
                         ),

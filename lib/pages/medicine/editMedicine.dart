@@ -27,6 +27,7 @@ class _EditMedicineState extends State<EditMedicine> {
   TextEditingController medicineName = TextEditingController();
   // TextEditingController medicineStock = TextEditingController();
   TextEditingController intakeDose = TextEditingController();
+  String medicineStock;
   final List<ListItem> _medicineType = [
     ListItem(1, "Pill"),
     ListItem(2, "Solution"),
@@ -53,6 +54,7 @@ class _EditMedicineState extends State<EditMedicine> {
     medicineName = TextEditingController(text: widget.docToEdit.data()['Name']);
     // medicineStock = TextEditingController(text: widget.docToEdit.data()['Stock']);
     intakeDose = TextEditingController(text: widget.docToEdit.data()['Dose']);
+    medicineStock = widget.docToEdit.data()['Stock'];
     notiID = widget.docToEdit.data()['NotificationID'];
     nID = notiID.split(',');
   }
@@ -230,38 +232,6 @@ class _EditMedicineState extends State<EditMedicine> {
                               ),
                             ),
                           ),
-
-                          /*
-                          * Medicine Stock being taken out after re designing the medicne and adding the user history
-                          * */
-
-
-                          // Container(
-                          //   padding:
-                          //   EdgeInsets.only(top: 25.0, left: 20.0, right: 25.0, ),
-                          //   child: TextFormField(
-                          //     focusNode: focusNodeStock,
-                          //     controller: medicineStock,
-                          //     keyboardType: TextInputType.number,
-                          //     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                          //     validator: (val) => val.isEmpty || int.parse(val)>100 ? 'Invalid value' : null,
-                          //     decoration: InputDecoration(
-                          //       labelText: "Stock",
-                          //       labelStyle: TextStyle(
-                          //           color: focusNodeStock.hasFocus ? mainColor : Colors.black),
-                          //       border: OutlineInputBorder(
-                          //         borderSide: BorderSide(color: Colors.black),
-                          //         borderRadius: BorderRadius.circular(10),
-                          //       ),
-                          //       focusedBorder: OutlineInputBorder(
-                          //         borderSide: BorderSide(color: mainColor),
-                          //       ),
-                          //       disabledBorder: OutlineInputBorder(
-                          //         borderSide: BorderSide(color: Colors.black),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
                           Container(
                             padding:
                             EdgeInsets.only(top: 25.0, left: 20.0, right: 25.0, bottom: 20.0),
@@ -288,13 +258,27 @@ class _EditMedicineState extends State<EditMedicine> {
                               ),
                             ),
                           ),
+                          /*
+                          * Medicine Stock being taken out after re designing the medicne and adding the user history
+                          * */
+                          SizedBox(height: 5.0,),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text(
+                              "Medicine Stock : $medicineStock ",
+                              style: TextStyle(
+                                  fontSize: 20.0, fontWeight: FontWeight.w500,color: Colors.grey[700]),
+                            ),
+                          ),
+
+
                           SizedBox(
                             height: 25.0,
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Text(
-                              "Reminder Time:",
+                              "Reminder Time :",
                               style: TextStyle(
                                   fontSize: 20.0, fontWeight: FontWeight.bold),
                             ),
@@ -303,7 +287,7 @@ class _EditMedicineState extends State<EditMedicine> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                height: 150.0,
+                                height: 250.0,
                                 child: timeAdded == null
                                     ? Center(child: Text('No Time Added'))
                                     : ListView.builder(
@@ -416,7 +400,8 @@ class _EditMedicineState extends State<EditMedicine> {
                                       'DateStamp': dateStamp,
                                       'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
 
-                                    }).whenComplete(() => Navigator.pop(context));
+                                    });
+                                    Navigator.pop(context);
                                   }
                                 },
                               ),
@@ -437,8 +422,8 @@ class _EditMedicineState extends State<EditMedicine> {
                                     _notificationPlugin.cancelNotification(x);
                                   }
                                   widget.docToEdit.reference
-                                      .delete()
-                                      .whenComplete(() => Navigator.pop(context));
+                                      .delete();
+                                  Navigator.pop(context);
                                 },
                               ),
                             ),

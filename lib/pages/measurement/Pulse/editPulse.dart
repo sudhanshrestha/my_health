@@ -168,7 +168,9 @@ class _EditPulseState extends State<EditPulse> {
                                   child: TextFormField(
                                     controller: pulse,
                                     validator: (val) =>
-                                        val.isEmpty ? 'Enter value' : null,
+                                    val.isEmpty || int.parse(val) > 250 || int.parse(val) < 55
+                                        ? 'Invalid value'
+                                        : null,
                                     keyboardType: TextInputType.number,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
@@ -333,7 +335,8 @@ class _EditPulseState extends State<EditPulse> {
                                     'date': date,
                                     'time': formatTimeOfDay(_selectedTime),
                                     'note': pulseNote.text,
-                                  }).whenComplete(() => Navigator.pop(context));
+                                  });
+                                  Navigator.pop(context);
                                 }
                               },
                             ),
@@ -343,7 +346,8 @@ class _EditPulseState extends State<EditPulse> {
                             child: SmallButton(
                               buttonTitle: "Delete",
                               onPressed: () {
-                                widget.docToEdit.reference.delete().whenComplete(() => Navigator.pop(context));
+                                widget.docToEdit.reference.delete();
+                                Navigator.pop(context);
                               },
                             ),
                           ),

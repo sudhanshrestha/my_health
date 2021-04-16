@@ -433,7 +433,8 @@ class _AddMedicineState extends State<AddMedicine> {
                                       'DateStamp': dateStamp,
                                       'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
                                       'MedicineTaken': 'false',
-                                    }).whenComplete(() => Navigator.pop(context));
+                                    });
+                                    Navigator.pop(context);
                                   }
 
                                 },

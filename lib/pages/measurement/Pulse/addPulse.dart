@@ -161,7 +161,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   child: TextFormField(
                                     controller: pulse,
                                     validator: (val) =>
-                                        val.isEmpty || int.parse(val) > 200
+                                        val.isEmpty || int.parse(val) > 250 || int.parse(val) < 55
                                             ? 'Invalid value'
                                             : null,
                                     inputFormatters: [
@@ -330,7 +330,8 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                   'date': date,
                                   'time': formatTimeOfDay(_selectedTime),
                                   'note': pulseNote.text,
-                                }).whenComplete(() => Navigator.pop(context));
+                                });
+                                Navigator.pop(context);
                               }
                             },
                           )),

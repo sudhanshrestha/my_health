@@ -65,7 +65,7 @@ class _EditDoctorState extends State<EditDoctor> {
               ),
               Container(
                 width: double.infinity,
-                height: 700,
+                height: 900,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -276,12 +276,25 @@ class _EditDoctorState extends State<EditDoctor> {
                                         'Speciality': docSpeciality.text,
                                         'Number': docNumber.text,
                                         'Email': docEmail.text,
-                                      }).whenComplete(() => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DoctorPage()),));
+                                      });
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DoctorPage()),);
 
                                     }
                                   },
                                 ),
                               ),
+                              SizedBox(height: 20.0,),
+                              Center(
+                                child: SmallButton(
+                                  buttonTitle: "Delete",
+                                  onPressed: () {
+                                    widget.docToEdit.reference
+                                        .delete();
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DoctorPage()),);
+                                  },
+                                ),
+                              ),
+
                               SizedBox(
                                 height: 15.0,
                               ),

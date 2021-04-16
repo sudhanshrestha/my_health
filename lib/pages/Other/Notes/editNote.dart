@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_health/pageAssets.dart';
 
 class EditNote extends StatefulWidget {
@@ -101,11 +102,18 @@ class _EditNoteState extends State<EditNote> {
                         child: Button_edt(
                           buttonTitle: "Save",
                           onPressed: () {
+                            DateTime now = DateTime.now();
+                            var dateStamp =
+                            DateFormat('yyyy-MM-dd – h:mm a')
+                                .format(now);
+                            print(dateStamp);
 
                             widget.docToEdit.reference.update({
                               'title': title.text,
                               'description': description.text,
-                            }).whenComplete(() => Navigator.pop(context));
+                              'DateTime': dateStamp,
+                            });
+                            Navigator.pop(context);
 
                             // _firestore.collection('notes').add({
                             //   'title': title.text,
@@ -121,7 +129,8 @@ class _EditNoteState extends State<EditNote> {
                           buttonTitle: "Delete",
                           onPressed: () {
 
-                            widget.docToEdit.reference.delete().whenComplete(() => Navigator.pop(context));
+                            widget.docToEdit.reference.delete();
+                            Navigator.pop(context);
 
 
                           },

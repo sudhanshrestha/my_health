@@ -277,13 +277,13 @@ class _EditProfileState extends State<EditProfile> {
                                           'gender': editGender,
                                           'dob': dob,
                                           'emrNumber': emrNumber.text
-                                        }).whenComplete(
-                                                () => Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ProfileDisplay()),
-                                            ));
+                                        });
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ProfileDisplay()),
+                                        );
                                       }
 
 

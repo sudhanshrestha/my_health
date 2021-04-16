@@ -192,6 +192,9 @@ class _RegisterState extends State<Register> {
                                       print(e);
                                     }
                                   }
+                                  setState(() {
+                                    showSpinner = false;
+                                  });
                                 }
                                 else{
                                   print('Password do not match');

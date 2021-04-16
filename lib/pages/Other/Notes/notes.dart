@@ -115,6 +115,21 @@ class _NotePageState extends State<NotePage> {
                                               ),
                                               overflow: TextOverflow.ellipsis,
                                             ),
+                                            SizedBox(height: 20,),
+                                            Row(
+                                              children: [
+                                                SizedBox(width: 170.0,),
+                                                Text(
+                                                  snapshot.data.docs[index]
+                                                      .data()['DateTime'],
+                                                  style: TextStyle(
+                                                    fontSize: 12.0,
+                                                    color: Colors.grey
+                                                  ),
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+                                              ],
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -140,12 +155,6 @@ class _NotePageState extends State<NotePage> {
   }
 }
 
-class _test {
-  String title;
-  String description;
-
-  _test(this.title, this.description);
-}
 
 // class NotesCard extends StatelessWidget {
 //   final Note note;

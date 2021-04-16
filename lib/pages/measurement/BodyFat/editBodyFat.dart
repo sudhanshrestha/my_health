@@ -150,7 +150,9 @@ class _EditBodyFatState extends State<EditBodyFat> {
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
                                     controller: bodyFat,
-                                    validator: (val) => val.isEmpty ? 'Enter value' : null,
+                                    validator: (val) => val.isEmpty || int.parse(val) > 75 || int.parse(val) < 1.5
+                                        ? 'Invalid value'
+                                        : null,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
@@ -293,7 +295,8 @@ class _EditBodyFatState extends State<EditBodyFat> {
                                       'date': date,
                                       'time': formatTimeOfDay(_selectedTime),
                                       'note': bfNote.text,
-                                    }).whenComplete(() => Navigator.pop(context));
+                                    });
+                                    Navigator.pop(context);
                                   }
                                 },
                               ),),
@@ -302,7 +305,8 @@ class _EditBodyFatState extends State<EditBodyFat> {
                             child: SmallButton(
                               buttonTitle: "Delete",
                               onPressed: () {
-                                widget.docToEdit.reference.delete().whenComplete(() => Navigator.pop(context));
+                                widget.docToEdit.reference.delete();
+                                Navigator.pop(context);
                               },
                             ),
                           ),

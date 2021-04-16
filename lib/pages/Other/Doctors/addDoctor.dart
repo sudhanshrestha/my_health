@@ -248,7 +248,8 @@ class _AddDoctorPageState extends State<AddDoctorPage> {
                                           'Speciality': docSpeciality.text,
                                           'Number': docNumber.text,
                                           'Email': docEmail.text,
-                                        }).whenComplete(() => Navigator.pop(context));
+                                        });
+                                        Navigator.pop(context);
                                       }
                                     },
                                   ),

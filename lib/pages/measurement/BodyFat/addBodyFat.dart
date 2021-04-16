@@ -159,7 +159,9 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
                                     controller: bodyFat,
-                                    validator: (val) => val.isEmpty || int.parse(val)>100 ? 'Invalid value' : null,
+                                    validator: (val) =>  val.isEmpty || int.parse(val) > 70 || int.parse(val) < 1.5
+                                        ? 'Invalid value'
+                                        : null,
                                     keyboardType: TextInputType.number,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
@@ -318,7 +320,8 @@ class _AddBodyFatPageState extends State<AddBodyFatPage> {
                                       'date': date,
                                       'time': formatTimeOfDay(_selectedTime),
                                       'note': bfNote.text,
-                                    }).whenComplete(() => Navigator.pop(context));
+                                    });
+                                        Navigator.pop(context);
                                   }
                                 },
                               )),

@@ -87,7 +87,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
               Stack(
                 children: [
                   Container(
-                    height: 200.0,
+                    height: 220.0,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
@@ -162,7 +162,9 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   child: TextFormField(
                                     controller: sys,
                                     keyboardType: TextInputType.number,
-                                    validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
+                                    validator: (val) => val.isEmpty || int.parse(val) > 140 || int.parse(val) < 85
+                                        ? 'Invalid value'
+                                        : null,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
@@ -175,7 +177,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                       ),
                                       hintText: "Sys(high)",
                                       hintStyle: TextStyle(
-                                          fontSize: 16.0,
+                                          fontSize: 15.0,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                     ),
@@ -198,7 +200,9 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   padding: EdgeInsets.all(20),
                                   child: TextFormField(
                                     controller: dia,
-                                    validator: (val) => val.isEmpty || int.parse(val)>200 ? 'Invalid value' : null,
+                                    validator: (val) => val.isEmpty || int.parse(val) > 95 || int.parse(val) < 55
+                                        ? 'Invalid value'
+                                        : null,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     keyboardType: TextInputType.number,
                                     decoration: InputDecoration(
@@ -212,7 +216,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                       ),
                                       hintText: "Dia(low)",
                                       hintStyle: TextStyle(
-                                          fontSize: 16.0,
+                                          fontSize: 15.0,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                     ),
@@ -344,7 +348,8 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                   'date': date,
                                   'time': formatTimeOfDay(_selectedTime),
                                   'note': bpNote.text,
-                                }).whenComplete(() => Navigator.pop(context));
+                                });
+                                Navigator.pop(context);
                               }
                             },
                           )),

@@ -111,7 +111,7 @@ class _BodyFatPageState extends State<BodyFatPage> {
                                             child: Container(
                                               margin: EdgeInsets.all(15.0),
                                               padding: EdgeInsets.all(15.0),
-                                              height: 95.0,
+                                              height: 100.0,
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
                                                 borderRadius:
@@ -143,14 +143,14 @@ class _BodyFatPageState extends State<BodyFatPage> {
                                                         snapshot.data.docs[index]
                                                             .data()['date'],
                                                         style: TextStyle(
-                                                            fontSize: 18.0,
+                                                            fontSize: 16.0,
                                                             fontWeight:
                                                             FontWeight.normal),
                                                       ),
                                                       Text(
                                                         " , ",
                                                         style: TextStyle(
-                                                            fontSize: 18.0,
+                                                            fontSize: 16.0,
                                                             fontWeight:
                                                             FontWeight.normal),
                                                       ),
@@ -158,7 +158,7 @@ class _BodyFatPageState extends State<BodyFatPage> {
                                                         snapshot.data.docs[index]
                                                             .data()['time'],
                                                         style: TextStyle(
-                                                            fontSize: 18.0,
+                                                            fontSize: 16.0,
                                                             fontWeight:
                                                             FontWeight.normal),
                                                       ),

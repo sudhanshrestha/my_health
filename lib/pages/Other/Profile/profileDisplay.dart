@@ -55,7 +55,7 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
               ),
               Container(
                 width: double.infinity,
-                height: 500,
+                height: 700,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

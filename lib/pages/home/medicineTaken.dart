@@ -59,7 +59,7 @@ class _MedicineTakenState extends State<MedicineTaken> {
 
     // Currently the reminder is set to 2 min after the medicine is taken
     final time =
-        DateTime(now.year, now.month, now.day, now.hour, now.minute + 2);
+        DateTime(now.year, now.month, now.day, now.hour, now.minute,now.second + 5);
     await _notificationPlugin.schedule(time, id, title, description);
   }
 
@@ -95,7 +95,7 @@ class _MedicineTakenState extends State<MedicineTaken> {
 
     // Currently the reminder is set to 2 min after the medicine is taken
     final time = DateTime(
-        now.year, now.month, now.day, now.hour, now.minute + 5);
+        now.year, now.month, now.day, now.hour, now.minute + 2);
     await _notificationPlugin.schedule(time, id, title, description);
   }
 
@@ -325,9 +325,8 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                     if (newStock == 0 || newStock < 0) {
                                       createRefillNotification();
                                       widget.docToEdit.reference
-                                          .delete()
-                                          .whenComplete(
-                                              () => Navigator.pop(context));
+                                          .delete();
+                                      Navigator.pop(context);
                                     }
 
                                     print(newStock);
@@ -344,12 +343,12 @@ class _MedicineTakenState extends State<MedicineTaken> {
                                               .toString()
                                               .replaceAll("]", ""))
                                           .replaceAll("[", "").replaceAll(' ', '')
-                                    }).whenComplete(() =>
-                                        Navigator.pushReplacement(
+                                    });
+                                    Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) => HomePage()),
-                                        ));
+                                        );
                                   },
                                 ),
                                 SizedBox(
