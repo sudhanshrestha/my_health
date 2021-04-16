@@ -53,7 +53,7 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                 ],
               ),
               Container(
-                width: double.infinity,
+                padding: EdgeInsets.only(top: 20.0),
                 height: 700,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -198,6 +198,7 @@ class _BloodPressurePageState extends State<BloodPressurePage> {
                                     }),
                               );
                             }),
+                        SizedBox(height: 400,),
                       ]),
                 ),
               ),

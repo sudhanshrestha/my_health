@@ -52,7 +52,8 @@ class _MedicineHistoryState extends State<MedicineHistory> {
                 ],
               ),
               Container(
-                width: double.infinity,
+                height: 500,
+                padding: EdgeInsets.only(top: 20.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -205,6 +206,7 @@ class _MedicineHistoryState extends State<MedicineHistory> {
                                   }),
                             );
                           }),
+                      SizedBox(height: 150,),
                     ],
                   ),
                 ),

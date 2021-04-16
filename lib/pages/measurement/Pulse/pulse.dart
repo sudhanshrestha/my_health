@@ -52,8 +52,8 @@ class _PulsePageState extends State<PulsePage> {
                 ],
               ),
               Container(
-                width: double.infinity,
                 height: 700,
+                padding: EdgeInsets.only(top: 20.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -187,6 +187,7 @@ class _PulsePageState extends State<PulsePage> {
                                     }),
                               );
                             }),
+                        SizedBox(height: 400,),
                       ]),
                 ),
               ),

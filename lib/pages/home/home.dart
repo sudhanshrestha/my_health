@@ -25,9 +25,10 @@ class Medicine {
   String medicineStock;
   String time;
 
-
-  Medicine(this.docID,this.name,this.dose,this.medicineType,this.medicineStock,this.time);
+  Medicine(this.docID, this.name, this.dose, this.medicineType,
+      this.medicineStock, this.time);
 }
+
 class HomePage extends StatefulWidget {
   static const String id = 'HomePage';
 
@@ -38,8 +39,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   FlutterLocalNotificationsPlugin fltrNotifcation;
   final _auth = FirebaseAuth.instance;
+  final ref = FirebaseFirestore.instance.collection('profile').doc(UserID);
+
   // final ref = ;
   User loggedInUser;
+
   void getCurrentUser() {
     try {
       final user = _auth.currentUser;
@@ -49,55 +53,112 @@ class _HomePageState extends State<HomePage> {
         print(loggedInUser.email);
         print(UserID);
       }
-    }
-    catch(e){
+    } catch (e) {
       print(e);
     }
   }
+
   bool medicineStat;
   String firebaseBooleans;
-
 
   bool medicineStatus;
   CalendarController _controller;
   final NotificationPlugin notificationPlugin = NotificationPlugin();
+
+  String displayDate = new DateFormat("MMMM d").format(DateTime.now());
+
   @override
   void initState() {
     super.initState();
     getCurrentUser();
     _controller = CalendarController();
-
-
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: mainColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 220.0,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
+              Container(
+                height: 200.0,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: mainColor,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0, top: 25.0),
+                      child: Row(
+                        children: [
+                          StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection('profile')
+                                .doc(UserID)
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData) {
+                                return Text("Loading");
+                              }
+                              var usrData = snapshot.data;
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 20.0,
+                                  ),
+                                  Text(
+                                    "Hi ${usrData["name"]},",
+                                    style: TextStyle(
+                                        fontSize: 28.0,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                    child: TopCalender(controller: _controller),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 50.0,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Today, ',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 28.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            displayDate.toString(),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 28.0,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                // child: TopCalender(controller: _controller),
               ),
               Container(
-                //remove this if error
+                height: 500,
+                padding: EdgeInsets.only(top: 20.0),
                 margin: const EdgeInsets.only(bottom: 2.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -106,116 +167,132 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.8),
+                      color: mainColor.withOpacity(0.8),
                       offset: Offset(-1.0, -7.0), //(x,y)
                       blurRadius: 6.0,
                     ),
                   ],
                 ),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 8.0, bottom: 8.0, left: 12.0, right: 12.0),
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15.0,top: 20.0),
-                                child: Text(
-                                  "Today activities",
-                                  style: TextStyle(
-                                      fontSize: 24.0, fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20.0,
-                              ),
-                              StreamBuilder<QuerySnapshot>(
-                                  stream: FirebaseFirestore.instance
-                                      .collection('Medicine')
-                                      .where('userID', isEqualTo: UserID).snapshots(),
-                                  builder: (context,
-                                      AsyncSnapshot<QuerySnapshot> snapshot) {
-                                    return ClipRect(
-                                      child: ListView.builder(
-                                          scrollDirection: Axis.vertical,
-                                          shrinkWrap: true,
-                                          physics: ScrollPhysics(),
-                                          itemCount: snapshot.hasData
-                                              ? snapshot.data.docs.length
-                                              : 0,
-                                          itemBuilder: (_, index) {
-
-                                            /*
-                                            * In item medicine card creation
-                                            * Check the date of data base with current date and
-                                            * Update the necessary values needed to be updated daily
-                                            * */
-                                            List<String> boolVal=[];
-                                            String boolValues=snapshot.data.docs[index].data()['BooleanValues'];
-                                            boolVal = boolValues.split(',');
-                                            int booleanLength = boolVal.length;
-                                            List<String> newboolVal=[];
-                                            DateTime now = DateTime.now();
-                                            var todayDate = DateFormat('yyyy-MM-dd').format(now);
-                                            String docDate = snapshot.data.docs[index].data()['DateStamp'];
-                                            //if docDate is not equals to current date
-                                            if(docDate != todayDate){
-                                              print('Daily changes made');
-                                              for(int i = 0; i<booleanLength; i++){
-                                                newboolVal.add('false');
-                                              }
-                                               snapshot.data.docs[index].reference.update({
-                                                 'DateStamp': todayDate,
-                                                 'BooleanValues': (newboolVal.toString().replaceAll("]","")).replaceAll("[",""),
-                                                 'MedicineTaken': 'false',
-                                              });
-
-                                            }
-
-                                            return GestureDetector(
-                                              onTap: () {
-                                                // only navigates if the value  false
-                                                if(snapshot.data.docs[index].data()['MedicineTaken'] !='true'){
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (_) => MedicineTaken(
-                                                              docToEdit: snapshot
-                                                                  .data.docs[index])));
-                                                }
-                                              },
-                                              child: Column(
-                                                children: [
-                                                  MedicineBadge(
-                                                    medicineName: snapshot.data.docs[index]
-                                                        .data()['Name'],
-                                                    medicineAmount: snapshot.data.docs[index]
-                                                        .data()['Dose'] +" "+ snapshot.data.docs[index]
-                                                        .data()['MedicineType'],
-                                                    medicineTime: snapshot.data.docs[index]
-                                                        .data()['ReminderTime'].toString(),
-                                                    medicineIcon: FontAwesomeIcons.pills,
-                                                    randomColor: randomColour,
-                                                    medicineTaken: medicineStat =snapshot.data.docs[index]
-                                                        .data()['MedicineTaken'] == 'true',
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          }),
-                                    );
-                                  }),
-
-                            ],
+                  child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0, top: 20.0),
+                          child: Text(
+                            "Today activities",
+                            style: TextStyle(
+                                fontSize: 24.0, fontWeight: FontWeight.bold),
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('Medicine')
+                                .where('userID', isEqualTo: UserID)
+                                .snapshots(),
+                            builder: (context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              return ClipRect(
+                                child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap: true,
+                                    physics: ScrollPhysics(),
+                                    itemCount: snapshot.hasData
+                                        ? snapshot.data.docs.length
+                                        : 0,
+                                    itemBuilder: (_, index) {
+                                      /*
+                                      * In item medicine card creation
+                                      * Check the date of data base with current date and
+                                      * Update the necessary values needed to be updated daily
+                                      * */
+                                      List<String> boolVal = [];
+                                      String boolValues = snapshot
+                                          .data.docs[index]
+                                          .data()['BooleanValues'];
+                                      boolVal = boolValues.split(',');
+                                      int booleanLength = boolVal.length;
+                                      List<String> newboolVal = [];
+                                      DateTime now = DateTime.now();
+                                      var todayDate = DateFormat('yyyy-MM-dd')
+                                          .format(now);
+                                      String docDate = snapshot
+                                          .data.docs[index]
+                                          .data()['DateStamp'];
+                                      //if docDate is not equals to current date
+                                      if (docDate != todayDate) {
+                                        print('Daily changes made');
+                                        for (int i = 0;
+                                            i < booleanLength;
+                                            i++) {
+                                          newboolVal.add('false');
+                                        }
+                                        snapshot.data.docs[index].reference
+                                            .update({
+                                          'DateStamp': todayDate,
+                                          'BooleanValues': (newboolVal
+                                                  .toString()
+                                                  .replaceAll("]", ""))
+                                              .replaceAll("[", ""),
+                                          'MedicineTaken': 'false',
+                                        });
+                                      }
+                                      return GestureDetector(
+                                        onTap: () {
+                                          // only navigates if the value  false
+                                          if (snapshot.data.docs[index]
+                                                  .data()['MedicineTaken'] !=
+                                              'true') {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        MedicineTaken(
+                                                            docToEdit:
+                                                                snapshot.data
+                                                                        .docs[
+                                                                    index])));
+                                          }
+                                        },
+                                        child: Column(
+                                          children: [
+                                            MedicineBadge(
+                                              medicineName: snapshot
+                                                  .data.docs[index]
+                                                  .data()['Name'],
+                                              medicineAmount: snapshot
+                                                      .data.docs[index]
+                                                      .data()['Dose'] +
+                                                  " " +
+                                                  snapshot.data.docs[index]
+                                                      .data()['MedicineType'],
+                                              medicineTime: snapshot
+                                                  .data.docs[index]
+                                                  .data()['ReminderTime']
+                                                  .toString(),
+                                              medicineIcon:
+                                                  FontAwesomeIcons.pills,
+                                              randomColor: randomColour,
+                                              medicineTaken: medicineStat =
+                                                  snapshot.data.docs[index]
+                                                              .data()[
+                                                          'MedicineTaken'] ==
+                                                      'true',
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                              );
+                            }),
+                        SizedBox(height: 150,),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -224,16 +301,17 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           // showNotification();
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AddMedicine()),);
-
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => AddMedicine()),
+          );
         },
         child: Icon(Icons.add),
-        shape:RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(16.0))
-        ),
-        backgroundColor: Colors.indigo,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16.0))),
+        backgroundColor: mainColor,
       ),
       bottomNavigationBar: BottomNavigation(),
     );
@@ -249,8 +327,7 @@ class MedicineBadge extends StatelessWidget {
       this.medicineTime,
       this.medicineIcon,
       this.randomColor,
-      this.medicineTaken
-      });
+      this.medicineTaken});
 
   final String medicineName;
   final String medicineAmount;
@@ -264,7 +341,7 @@ class MedicineBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0,right: 10.0, left: 10.0),
+      padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 10.0),
       child: Container(
         margin: const EdgeInsets.only(bottom: 6.0),
         decoration: BoxDecoration(
@@ -343,12 +420,16 @@ class MedicineBadge extends StatelessWidget {
                                   fontSize: 16.0, color: Colors.grey[700]),
                             ),
                           ),
-                          SizedBox(width: 150.0,),
+                          SizedBox(
+                            width: 150.0,
+                          ),
                           Container(
                             margin: const EdgeInsets.only(bottom: 6.0),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16.0),
-                              color: medicineTaken == true ? Colors.green[100] : Colors.white,
+                              color: medicineTaken == true
+                                  ? Colors.green[100]
+                                  : Colors.white,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey,
@@ -358,9 +439,13 @@ class MedicineBadge extends StatelessWidget {
                               ],
                             ),
                             child: IconButton(
-                              icon: Icon(IcoFontIcons.tickMark,color: medicineTaken == true ? Colors.green : Colors.grey,),
+                              icon: Icon(
+                                IcoFontIcons.tickMark,
+                                color: medicineTaken == true
+                                    ? Colors.green
+                                    : Colors.grey,
+                              ),
                               onPressed: null,
-
                             ),
                           ),
                         ],
@@ -385,7 +470,6 @@ class MedicineBadge extends StatelessWidget {
                       ),
                     ],
                   ),
-
                 ],
               ),
             ),
@@ -427,7 +511,7 @@ class TopCalender extends StatelessWidget {
                 child: TableCalendar(
                   initialCalendarFormat: CalendarFormat.week,
                   calendarStyle: CalendarStyle(
-                      todayColor: Colors.green,
+                      todayColor: Colors.indigoAccent,
                       selectedColor: mainColor,
                       todayStyle: TextStyle(
                         fontWeight: FontWeight.bold,

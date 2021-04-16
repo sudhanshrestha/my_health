@@ -51,8 +51,8 @@ class _BodyFatPageState extends State<BodyFatPage> {
                 ],
               ),
               Container(
-                width: double.infinity,
                 height: 700,
+                padding: EdgeInsets.only(top: 20.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -186,6 +186,7 @@ class _BodyFatPageState extends State<BodyFatPage> {
                                     }),
                               );
                             }),
+                        SizedBox(height: 400,),
                       ]),
                 ),
               ),

@@ -47,6 +47,7 @@ class _MedicinePageState extends State<MedicinePage> {
                 ),
               ),
               Container(
+                padding: EdgeInsets.only(top:20.0),
                 height: MediaQuery.of(context).size.height * 0.79,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -62,57 +63,60 @@ class _MedicinePageState extends State<MedicinePage> {
                     ),
                   ],
                 ),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 50.0,),
-                    StreamBuilder<QuerySnapshot>(
-                        stream: ref.snapshots(),
-                        builder: (context,
-                            AsyncSnapshot<QuerySnapshot> snapshot) {
-                          return ClipRect(
-                            child: ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                shrinkWrap: true,
-                                physics: ScrollPhysics(),
-                                itemCount: snapshot.hasData
-                                    ? snapshot.data.docs.length
-                                    : 0,
-                                itemBuilder: (_, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => EditMedicine(
-                                                  docToEdit: snapshot
-                                                      .data.docs[index])));
-                                    },
-                                    child: MedicineBadge(
-                                      medicineName: snapshot.data.docs[index]
-                                          .data()['Name'],
-                                        medicineAmount: snapshot.data.docs[index]
-                                            .data()['Dose'] +" "+ snapshot.data.docs[index]
-                                            .data()['MedicineType'],
-                                        medicineTime: snapshot.data.docs[index]
-                                            .data()['ReminderTime'].toString(),
-                                        medicineIcon: FontAwesomeIcons.pills,
-                                        randomColor: randomColour,
-                                        medicineTaken: true,
-                                    ),
-                                  );
-                                }),
-                          );
-                        }),
-                    // MedicineBadge(
-                    //   medicineName: "Glemipiride",
-                    //   medicineAmount: "2 pills",
-                    //   medicineDosage: "5 mg",
-                    //   medicineTime: "8:00 AM - 9:00 AM",
-                    //   medicineIcon: FontAwesomeIcons.pills,
-                    //   randomColor: randomColour,
-                    //   medicineTaken: true,
-                    // ),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 50.0,),
+                      StreamBuilder<QuerySnapshot>(
+                          stream: ref.snapshots(),
+                          builder: (context,
+                              AsyncSnapshot<QuerySnapshot> snapshot) {
+                            return ClipRect(
+                              child: ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  physics: ScrollPhysics(),
+                                  itemCount: snapshot.hasData
+                                      ? snapshot.data.docs.length
+                                      : 0,
+                                  itemBuilder: (_, index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) => EditMedicine(
+                                                    docToEdit: snapshot
+                                                        .data.docs[index])));
+                                      },
+                                      child: MedicineBadge(
+                                        medicineName: snapshot.data.docs[index]
+                                            .data()['Name'],
+                                          medicineAmount: snapshot.data.docs[index]
+                                              .data()['Dose'] +" "+ snapshot.data.docs[index]
+                                              .data()['MedicineType'],
+                                          medicineTime: snapshot.data.docs[index]
+                                              .data()['ReminderTime'].toString(),
+                                          medicineIcon: FontAwesomeIcons.pills,
+                                          randomColor: randomColour,
+                                          medicineTaken: true,
+                                      ),
+                                    );
+                                  }),
+                            );
+                          }),
+                      // MedicineBadge(
+                      //   medicineName: "Glemipiride",
+                      //   medicineAmount: "2 pills",
+                      //   medicineDosage: "5 mg",
+                      //   medicineTime: "8:00 AM - 9:00 AM",
+                      //   medicineIcon: FontAwesomeIcons.pills,
+                      //   randomColor: randomColour,
+                      //   medicineTaken: true,
+                      // ),
+                      SizedBox(height: 150),
+                    ],
+                  ),
                 ),
               ),
             ],

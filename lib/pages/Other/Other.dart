@@ -16,6 +16,7 @@ import 'package:my_health/pages/login/login.dart';
 
 class OtherPage extends StatefulWidget {
   static const String id = 'OtherPage';
+
   @override
   _OtherPageState createState() => _OtherPageState();
 }
@@ -42,35 +43,42 @@ class _OtherPageState extends State<OtherPage> {
                 height: 220.0,
                 child: Column(
                   children: [
-                StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection('profile')
-                    .doc(UserID)
-                    .snapshots(),
-            builder: (context,snapshot){
-              if(!snapshot.hasData){
-                return Text("Loading");
-              }
-              var usrData = snapshot.data;
-              gender = usrData['gender'];
-              genderDisplay = gender;
-              return  Column(
-                children: [
-                  SizedBox(height: 20.0,),
-                  Center(child: CircleAvatar(backgroundImage: AssetImage("images/$genderDisplay.png") , radius: 60)),
-                  SizedBox(height: 20.0,),
-                  Text(
-                    usrData["name"],
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 35.0,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-              );
-            },
-          ),
-
+                    StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                          .collection('profile')
+                          .doc(UserID)
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return Text("Loading");
+                        }
+                        var usrData = snapshot.data;
+                        gender = usrData['gender'];
+                        genderDisplay = gender;
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Center(
+                                child: CircleAvatar(
+                                    backgroundImage:
+                                        AssetImage("images/$genderDisplay.png"),
+                                    radius: 60)),
+                            SizedBox(
+                              height: 20.0,
+                            ),
+                            Text(
+                              usrData["name"],
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 35.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -91,81 +99,86 @@ class _OtherPageState extends State<OtherPage> {
                     ),
                   ],
                 ),
-                child: SingleChildScrollView(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          height: 60.0,
-                        ),
-                        PCard2(
-                          mainLabel: "Notes",
-                          icons: MdiIcons.noteText,
-                          onTap: (){
-                            Navigator.pushNamed(context, NotePage.id);
-                          },
-                        ),
-                        SizedBox(height: 15.0,),
-                        PCard2(
-                          mainLabel: "Doctors",
-                          icons: IcoFontIcons.doctor,
-                          onTap: (){
-                            Navigator.pushNamed(context, DoctorPage.id);
-                          },
-                        ),
-                        SizedBox(height: 15.0,),
-                        PCard2(
-                          mainLabel: "Profile",
-                          icons: Icons.person,
-                          onTap: (){
-                            Navigator.pushNamed(context, ProfileDisplay.id);
-                          },
-                        ),
-                        SizedBox(height: 15.0,),
-                        PCard2(
-                          mainLabel: "Track Me",
-                          icons: Icons.location_on,
-                          onTap: (){
-                            Navigator.pushNamed(context, TrackTimer.id);
-
-                          },
-                        ),
-                        SizedBox(height: 15.0,),
-                        PCard2(
-                          mainLabel: "Medicine History",
-                          icons: Icons.location_on,
-                          onTap: (){
-                            Navigator.pushNamed(context, MedicineHistory.id);
-                          },
-                        ),
-                        SizedBox(height: 15.0,),
-                        PCard2(
-                          mainLabel: "Log Out",
-                          icons: Icons.person,
-                          onTap: (){
-                            auth.signOut();
-                            UserID = "";
-                            Navigator.pop(context,true);
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()),);
-
-                          },
-                        ),
-
-                      ]
-                  ),
-                ),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 60.0,
+                      ),
+                      PCard2(
+                        mainLabel: "Notes",
+                        icons: MdiIcons.noteText,
+                        onTap: () {
+                          Navigator.pushNamed(context, NotePage.id);
+                        },
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      PCard2(
+                        mainLabel: "Doctors",
+                        icons: IcoFontIcons.doctor,
+                        onTap: () {
+                          Navigator.pushNamed(context, DoctorPage.id);
+                        },
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      PCard2(
+                        mainLabel: "Profile",
+                        icons: Icons.person,
+                        onTap: () {
+                          Navigator.pushNamed(context, ProfileDisplay.id);
+                        },
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      PCard2(
+                        mainLabel: "Track Me",
+                        icons: Icons.location_on,
+                        onTap: () {
+                          Navigator.pushNamed(context, TrackTimer.id);
+                        },
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      PCard2(
+                        mainLabel: "Medicine History",
+                        icons: Icons.location_on,
+                        onTap: () {
+                          Navigator.pushNamed(context, MedicineHistory.id);
+                        },
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      PCard2(
+                        mainLabel: "Log Out",
+                        icons: Icons.person,
+                        onTap: () {
+                          auth.signOut();
+                          UserID = "";
+                          Navigator.pop(context, true);
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => Login()),
+                          );
+                        },
+                      ),
+                    ]),
               ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomNavigation(),
-
     );
   }
 }
-
 
 class PCard extends StatelessWidget {
   const PCard({this.mainLabel, this.sideLabel, this.icons, this.onTap});
@@ -244,7 +257,8 @@ class PCard extends StatelessWidget {
                         ),
                         Text(
                           sideLabel,
-                          style: TextStyle(color: Colors.grey[600],fontSize: 13.0),
+                          style: TextStyle(
+                              color: Colors.grey[600], fontSize: 13.0),
                         ),
                       ],
                     ),
