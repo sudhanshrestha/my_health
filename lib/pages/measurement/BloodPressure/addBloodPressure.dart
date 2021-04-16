@@ -175,7 +175,7 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                       ),
                                       hintText: "Sys(high)",
                                       hintStyle: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 16.0,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                     ),
@@ -210,9 +210,9 @@ class _AddBloodPressureState extends State<AddBloodPressure> {
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(color: mainColor),
                                       ),
-                                      hintText: "Sys(high)",
+                                      hintText: "Dia(low)",
                                       hintStyle: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 16.0,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                     ),

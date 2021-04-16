@@ -190,7 +190,7 @@ class _EditPulseState extends State<EditPulse> {
                                     ),
                                     style: TextStyle(
                                         fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w500,
                                         color: Colors.black),
                                   ),
                                 ),

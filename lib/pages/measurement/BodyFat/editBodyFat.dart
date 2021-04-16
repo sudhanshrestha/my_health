@@ -170,7 +170,7 @@ class _EditBodyFatState extends State<EditBodyFat> {
                                     ),
                                     style: TextStyle(
                                         fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w500,
                                         color: Colors.black),
                                   ),
                                 ),

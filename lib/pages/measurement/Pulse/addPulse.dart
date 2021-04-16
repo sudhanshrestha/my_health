@@ -187,7 +187,7 @@ class _AddPulsePageState extends State<AddPulsePage> {
                                     ),
                                     style: TextStyle(
                                         fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w500,
                                         color: Colors.black),
                                   ),
                                 ),
