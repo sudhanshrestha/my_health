@@ -18,6 +18,7 @@ import 'package:my_health/pages/Other/medicineHistory/medicineHistory.dart';
 import 'package:my_health/pages/home/home.dart';
 import 'package:my_health/pages/home/medicineTaken.dart';
 import 'package:my_health/pages/loadingPage.dart';
+import 'package:my_health/pages/login/ForgotPassword.dart';
 import 'package:my_health/pages/login/login.dart';
 import 'package:my_health/pages/medicine/addMedicine.dart';
 import 'package:my_health/pages/medicine/editMedicine.dart';
@@ -84,6 +85,7 @@ class _MyHealthState extends State<MyHealth> {
         TrackMe.id: (context) => TrackMe(),
         TrackTimer.id: (context) => TrackTimer(),
         MedicineHistory.id: (context) => MedicineHistory(),
+        ForgotPassword.id: (context) => ForgotPassword(),
       },
     );
   }

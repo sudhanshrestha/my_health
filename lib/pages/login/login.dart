@@ -5,11 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/home/home.dart';
+import 'package:my_health/pages/login/ForgotPassword.dart';
 import 'package:my_health/pages/register/register.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-
-
-
 
 class Login extends StatefulWidget {
   static const String id = 'loginPage';
@@ -40,11 +38,50 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 25,
+                ),
                 Container(
-                  height: 190.0,
+                  height: 270.0,
                   width: double.infinity,
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: 120,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0)),
+                          ),
+                          child: Image.asset('images/loginHeart.png'),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Center(
+                        child: Text(
+                          'My Health',
+                          style: TextStyle(
+                              fontSize: 45.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          'Your Health, Our Priority',
+                          style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey[200]),
+                        ),
+                      ),
+                    ],
+                  ),
                   // TODO: Need to create a background image and add if possible.
-
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height * 0.79,
@@ -88,6 +125,31 @@ class _LoginState extends State<Login> {
                             height: 10.0,
                           ),
                           LoginTextFieldPass(),
+                          SizedBox(height: 15,),
+                          Row(
+                            children: [
+                              SizedBox(width: 250,),
+                              RichText(
+                                textAlign: TextAlign.end,
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "Forgot Password?",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: mainColor,
+                                          fontWeight: FontWeight.bold),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.pushNamed(
+                                              context, ForgotPassword.id);
+                                        },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                           SizedBox(
                             height: 25.0,
                           ),
@@ -100,7 +162,10 @@ class _LoginState extends State<Login> {
                                 });
                                 if (_formKey.currentState.validate()) {
                                   try {
-                                    final user = await _auth.signInWithEmailAndPassword(email: userEmail, password: userPassword)
+                                    final user = await _auth
+                                        .signInWithEmailAndPassword(
+                                            email: userEmail,
+                                            password: userPassword)
                                         .catchError((err) {
                                       showDialog(
                                           context: context,
@@ -110,10 +175,14 @@ class _LoginState extends State<Login> {
                                               content: Text(err.message),
                                               actions: [
                                                 ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
                                                     primary: mainColor,
-                                                    shape: RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius.circular(8),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
                                                     ),
                                                   ),
                                                   child: Text("Ok"),
@@ -126,21 +195,26 @@ class _LoginState extends State<Login> {
                                           });
                                     });
                                     if (user != null) {
-                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),);
-                                    }
-                                    else {
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomePage()),
+                                      );
+                                    } else {
                                       setState(() {
                                         showSpinner = false;
                                       });
                                       AlertDialog(
                                         title: Text("Error"),
-                                        content: Text("Please enter the correct email and passowrd."),
+                                        content: Text(
+                                            "Please enter the correct email and passowrd."),
                                         actions: [
                                           ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                               primary: mainColor,
                                               shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(8),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
                                               ),
                                             ),
                                             child: Text("Ok"),
@@ -150,8 +224,6 @@ class _LoginState extends State<Login> {
                                           )
                                         ],
                                       );
-
-
                                     }
                                     setState(() {
                                       showSpinner = false;
@@ -250,12 +322,11 @@ class _LoginTextFieldPassState extends State<LoginTextFieldPass> {
               });
             },
             child: (isPressed)
-                ? Icon(MdiIcons.eye,
-                color: Colors.black)
+                ? Icon(MdiIcons.eye, color: Colors.black)
                 : Icon(
-              MdiIcons.eyeOff,
-              color: Colors.black,
-            ),
+                    MdiIcons.eyeOff,
+                    color: Colors.black,
+                  ),
           ),
           labelText: "Password",
           labelStyle:
@@ -293,7 +364,8 @@ class _LoginTextFieldEmailState extends State<LoginTextFieldEmail> {
           userEmail = value;
         },
         focusNode: focusNode,
-        validator: (val) => EmailValidator.validate(val) ? null : 'Enter correct email address',
+        validator: (val) =>
+            EmailValidator.validate(val) ? null : 'Enter correct email address',
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           labelText: "E-mail",
