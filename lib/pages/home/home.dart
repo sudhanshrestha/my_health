@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -66,6 +67,28 @@ class _HomePageState extends State<HomePage> {
   final NotificationPlugin notificationPlugin = NotificationPlugin();
 
   String displayDate = new DateFormat("MMMM d").format(DateTime.now());
+
+  iconMedicine (String medicine){
+    if(medicine == 'Pill'){
+      return FontAwesomeIcons.pills;
+    }
+    if(medicine == 'Inhaler'){
+      return MdiIcons.spray;
+    }
+    if(medicine == 'Solution'){
+      return MdiIcons.bottleTonicPlus;
+    }
+    if(medicine == 'Injection'){
+      return IcoFontIcons.injectionSyringe;
+    }
+    if(medicine == 'Powder'){
+      return IcoFontIcons.medicalSign;
+    }
+    if(medicine == 'Drops'){
+      return EvaIcons.droplet;
+    }
+
+  }
 
   @override
   void initState() {
@@ -275,8 +298,8 @@ class _HomePageState extends State<HomePage> {
                                                   .data.docs[index]
                                                   .data()['ReminderTime']
                                                   .toString(),
-                                              medicineIcon:
-                                                  FontAwesomeIcons.pills,
+                                              medicineIcon: iconMedicine(snapshot.data.docs[index]
+                                                  .data()['MedicineType'].toString()),
                                               randomColor: randomColour,
                                               medicineTaken: medicineStat =
                                                   snapshot.data.docs[index]

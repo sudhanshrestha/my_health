@@ -92,6 +92,12 @@
       "languageVersion": "1.24"
     },
     {
+      "name": "eva_icons_flutter",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/eva_icons_flutter-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0",
       "packageUri": "lib/",
@@ -494,7 +500,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-04-16T15:43:09.516334Z",
+  "generated": "2021-04-17T15:29:57.063299Z",
   "generator": "pub",
   "generatorVersion": "2.13.0-195.0.dev"
 }
