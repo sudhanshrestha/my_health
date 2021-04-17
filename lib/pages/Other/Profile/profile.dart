@@ -172,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: SmallButton(
                               buttonTitle: "Save",
                               onPressed: () {
-                                if(_formKey.currentState.validate()){
+                                if(_formKey.currentState.validate() && _gender != null){
                                   if(_name == null || _gender == null || _dob == null){
                                     print("empty");
                                     return AlertDialog(

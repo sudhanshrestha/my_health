@@ -190,7 +190,6 @@ class _EditProfileState extends State<EditProfile> {
                                                           Radius.circular(10))),
                                               child: DropDown(
                                                 showUnderline: false,
-                                                initialValue: 'Male',
                                                 isExpanded: true,
                                                 items: [
                                                   "Male",
@@ -271,7 +270,7 @@ class _EditProfileState extends State<EditProfile> {
                                   child: Button_edt(
                                     buttonTitle: "Save",
                                     onPressed: () {
-                                      if(_formKey.currentState.validate()){
+                                      if(_formKey.currentState.validate() && editGender !=null){
                                         docRef.update({
                                           'name': name.text,
                                           'gender': editGender,
@@ -285,8 +284,6 @@ class _EditProfileState extends State<EditProfile> {
                                                   ProfileDisplay()),
                                         );
                                       }
-
-
                                     },
                                   ),
                                 ),
