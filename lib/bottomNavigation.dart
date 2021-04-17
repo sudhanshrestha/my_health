@@ -50,10 +50,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
               onPress: (){
                 selectedIndex = 0;
                 HapticFeedback.vibrate();
-                Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) =>
-                    new HomePage())
-                );
+                Navigator.of(context).push(CustomPageRoute(HomePage()));
+                // Navigator.push(context,
+                //     new MaterialPageRoute(
+                //     builder: (context) =>
+                //     new HomePage())
+                // );
               },
             ),
             NavBarItem(
@@ -65,10 +67,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
               onPress: (){
                 selectedIndex = 1;
                 HapticFeedback.vibrate();
-                Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) =>
-                    new MedicinePage())
-                );
+                Navigator.of(context).push(CustomPageRoute(MedicinePage()));
+                // Navigator.push(context, new MaterialPageRoute(
+                //     builder: (context) =>
+                //     new MedicinePage())
+                // );
               },
             ),
             NavBarItem(
@@ -80,10 +83,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
               onPress: (){
                 selectedIndex = 2;
                 HapticFeedback.vibrate();
-                Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) =>
-                    new Measurement())
-                );
+                Navigator.of(context).push(CustomPageRoute(Measurement()));
+                // Navigator.push(context, new MaterialPageRoute(
+                //     builder: (context) =>
+                //     new Measurement())
+                // );
               },
             ),
             NavBarItem(
@@ -94,10 +98,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
               onPress: (){
                 selectedIndex = 3;
                 HapticFeedback.vibrate();
-                Navigator.push(context, new MaterialPageRoute(
-                    builder: (context) =>
-                    new OtherPage())
-                );
+                Navigator.of(context).push(CustomPageRoute(OtherPage()));
+                // Navigator.push(context, new MaterialPageRoute(
+                //     builder: (context) =>
+                //     new OtherPage())
+                // );
               },
             ),
           ],
@@ -106,6 +111,35 @@ class _BottomNavigationState extends State<BottomNavigation> {
     );
   }
 }
+
+//Navigation animation
+class CustomPageRoute<T> extends PageRoute<T> {
+  CustomPageRoute(this.child);
+  @override
+  // TODO: implement barrierColor
+  Color get barrierColor => Colors.black;
+
+  @override
+  String get barrierLabel => null;
+
+  final Widget child;
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return FadeTransition(
+      opacity: animation,
+      child: child,
+    );
+  }
+
+  @override
+  bool get maintainState => true;
+
+  @override
+  Duration get transitionDuration => Duration(milliseconds: 500);
+}
+
 
 class NavBarItem extends StatefulWidget {
   NavBarItem(

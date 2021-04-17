@@ -50,7 +50,10 @@ class _MyHealthState extends State<MyHealth> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(fontFamily: "Poppins"),
+      theme: ThemeData(
+        fontFamily: "Poppins",
+        pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),
+      ),
       home: LoadingPage(),
       initialRoute: LoadingPage.id,
       routes: {

@@ -128,7 +128,10 @@ class _HomePageState extends State<HomePage> {
                                 .snapshots(),
                             builder: (context, snapshot) {
                               if (!snapshot.hasData) {
-                                return Text("Loading");
+                                return Text("Loading",style:TextStyle(
+                                    fontSize: 28.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),);
                               }
                               var usrData = snapshot.data;
                               return Column(
