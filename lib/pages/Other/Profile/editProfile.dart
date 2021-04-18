@@ -21,20 +21,15 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  TextEditingController name = TextEditingController();
 
-  // TextEditingController dob = TextEditingController();
-  TextEditingController gender = TextEditingController();
-  TextEditingController emrNumber = TextEditingController();
   var docRef = FirebaseFirestore.instance.collection("profile").doc(UserID);
   final _formKey = GlobalKey<FormState>();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
+  TextEditingController name = TextEditingController();
+  // TextEditingController dob = TextEditingController();
+  TextEditingController gender = TextEditingController();
+  TextEditingController emrNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -204,7 +199,7 @@ class _EditProfileState extends State<EditProfile> {
                                                 ),
                                                 onChanged: (value) {
                                                   editGender = value.toString();
-                                                  setState(() {});
+                                                  // setState(() {});
                                                 },
                                               ),
                                             ),
