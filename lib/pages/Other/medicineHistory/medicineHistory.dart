@@ -11,9 +11,7 @@ class MedicineHistory extends StatefulWidget {
   _MedicineHistoryState createState() => _MedicineHistoryState();
 }
 
-final ref = FirebaseFirestore.instance
-    .collection('MedicineConsume')
-    .where('userID', isEqualTo: UserID);
+final ref = FirebaseFirestore.instance.collection('MedicineConsume').where('userID', isEqualTo: UserID);
 
 class _MedicineHistoryState extends State<MedicineHistory> {
   @override

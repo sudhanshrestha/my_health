@@ -193,8 +193,7 @@ class _EditProfileState extends State<EditProfile> {
                                                 isExpanded: true,
                                                 items: [
                                                   "Male",
-                                                  "Female",
-                                                  "Other"
+                                                  "Female"
                                                 ],
                                                 hint: Text(
                                                   "Select Gender",

@@ -103,110 +103,113 @@ class _ProfileDisplayState extends State<ProfileDisplay> {
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'Name:  ',
-                                                style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Text(
-                                                userDocument["name"],
-                                                style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 5.0,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                    child: Card(
+                                      elevation:5,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.center,
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              'Gender:  ',
-                                              style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold),
+                                            SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Name:  ',
+                                                    style: TextStyle(
+                                                        fontSize: 17.0,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  Text(
+                                                    userDocument["name"],
+                                                    style: TextStyle(
+                                                        fontSize: 17.0,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                            Text(
-                                              userDocument["gender"],
-                                              style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold),
+                                            SizedBox(
+                                              height: 5.0,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Gender:  ',
+                                                  style: TextStyle(
+                                                      fontSize: 17.0,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  userDocument["gender"],
+                                                  style: TextStyle(
+                                                      fontSize: 17.0,
+                                                      fontWeight: FontWeight.w600),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 5.0,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'DOB:  ',
+                                                  style: TextStyle(
+                                                      fontSize: 17.0,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  userDocument["dob"],
+                                                  style: TextStyle(
+                                                      fontSize: 17.0,
+                                                      fontWeight: FontWeight.w600),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 5.0,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'Emergency Number:  ',
+                                                  style: TextStyle(
+                                                      fontSize: 17.0,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  userDocument["emrNumber"],
+                                                  style: TextStyle(
+                                                      fontSize: 17.0,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
-                                          height: 5.0,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'DOB:  ',
-                                              style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(
-                                              userDocument["dob"],
-                                              style: TextStyle(
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 5.0,
-                                        ),
-                                        SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'Emergency Number:  ',
-                                                style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              Text(
-                                                userDocument["emrNumber"],
-                                                style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 ],

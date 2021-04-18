@@ -186,7 +186,6 @@ class MedicineBadge extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10.0,left: 20.0,right: 20.0),
       child: Container(
         margin: const EdgeInsets.only(bottom: 6.0),
-        //Same as `blurRadius` i guess
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: Colors.white,

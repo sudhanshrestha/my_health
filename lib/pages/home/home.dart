@@ -286,29 +286,33 @@ class _HomePageState extends State<HomePage> {
                                           }
                                         },
                                         child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-                                            MedicineBadge(
-                                              medicineName: snapshot
-                                                  .data.docs[index]
-                                                  .data()['Name'],
-                                              medicineAmount: snapshot
-                                                      .data.docs[index]
-                                                      .data()['Dose'] +
-                                                  " " +
-                                                  snapshot.data.docs[index]
-                                                      .data()['MedicineType'],
-                                              medicineTime: snapshot
-                                                  .data.docs[index]
-                                                  .data()['ReminderTime']
-                                                  .toString(),
-                                              medicineIcon: iconMedicine(snapshot.data.docs[index]
-                                                  .data()['MedicineType'].toString()),
-                                              randomColor: randomColour,
-                                              medicineTaken: medicineStat =
-                                                  snapshot.data.docs[index]
-                                                              .data()[
-                                                          'MedicineTaken'] ==
-                                                      'true',
+                                            Center(
+                                              child: MedicineBadge(
+                                                medicineName: snapshot
+                                                    .data.docs[index]
+                                                    .data()['Name'],
+                                                medicineAmount: snapshot
+                                                        .data.docs[index]
+                                                        .data()['Dose'] +
+                                                    " " +
+                                                    snapshot.data.docs[index]
+                                                        .data()['MedicineType'],
+                                                medicineTime: snapshot
+                                                    .data.docs[index]
+                                                    .data()['ReminderTime']
+                                                    .toString(),
+                                                medicineIcon: iconMedicine(snapshot.data.docs[index]
+                                                    .data()['MedicineType'].toString()),
+                                                randomColor: randomColour,
+                                                medicineTaken: medicineStat =
+                                                    snapshot.data.docs[index]
+                                                                .data()[
+                                                            'MedicineTaken'] ==
+                                                        'true',
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -344,6 +348,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+
+
 // ignore: must_be_immutable
 class MedicineBadge extends StatelessWidget {
   MedicineBadge(
@@ -367,8 +373,9 @@ class MedicineBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0, right: 10.0, left: 10.0),
+      padding: const EdgeInsets.only(top: 15.0,left: 20.0,right: 20.0),
       child: Container(
+        width: 390,
         margin: const EdgeInsets.only(bottom: 6.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
@@ -436,45 +443,13 @@ class MedicineBadge extends StatelessWidget {
                       SizedBox(
                         height: 5.0,
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 2.0),
-                            child: Text(
-                              " $medicineAmount",
-                              style: TextStyle(
-                                  fontSize: 16.0, color: Colors.grey[700]),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 140.0,
-                          ),
-                          Container(
-                            margin: const EdgeInsets.only(bottom: 6.0),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16.0),
-                              color: medicineTaken == true
-                                  ? Colors.green[100]
-                                  : Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  offset: Offset(0.0, 1.0), //(x,y)
-                                  blurRadius: 6.0,
-                                ),
-                              ],
-                            ),
-                            child: IconButton(
-                              icon: Icon(
-                                IcoFontIcons.tickMark,
-                                color: medicineTaken == true
-                                    ? Colors.green
-                                    : Colors.grey,
-                              ),
-                              onPressed: null,
-                            ),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(left: 2.0),
+                        child: Text(
+                          " $medicineAmount",
+                          style: TextStyle(
+                              fontSize: 16.0, color: Colors.grey[700]),
+                        ),
                       ),
                       SizedBox(
                         height: 15.0,
@@ -496,6 +471,39 @@ class MedicineBadge extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(width: 50,),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 6.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.0),
+                          color: medicineTaken == true
+                              ? Colors.green[100]
+                              : Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 1.0), //(x,y)
+                              blurRadius: 6.0,
+                            ),
+                          ],
+                        ),
+                        child: IconButton(
+                          icon: Icon(
+                            IcoFontIcons.tickMark,
+                            color: medicineTaken == true
+                                ? Colors.green
+                                : Colors.grey,
+                          ),
+                          onPressed: null,
+                        ),
+                      ),
+                    ],
+                  ),
+
                 ],
               ),
             ),

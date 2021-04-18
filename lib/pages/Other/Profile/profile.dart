@@ -149,7 +149,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: DropDown(
                                 showUnderline: false,
                                 isExpanded: true,
-                                items: ["Male", "Female", "Other"],
+                                items: ["Male", "Female"],
                                 hint: Text("Select Gender",style: TextStyle(fontSize: 17.0,color: Colors.grey[800]),),
                                 onChanged: (value){
                                   _gender = value.toString();
