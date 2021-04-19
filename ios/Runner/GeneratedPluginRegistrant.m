@@ -70,6 +70,12 @@
 @import sms_maintained;
 #endif
 
+#if __has_include(<url_launcher/FLTURLLauncherPlugin.h>)
+#import <url_launcher/FLTURLLauncherPlugin.h>
+#else
+@import url_launcher;
+#endif
+
 #if __has_include(<vibrate/VibratePlugin.h>)
 #import <vibrate/VibratePlugin.h>
 #else
@@ -90,6 +96,7 @@
   [LocationPlugin registerWithRegistrar:[registry registrarForPlugin:@"LocationPlugin"]];
   [PermissionHandlerPlugin registerWithRegistrar:[registry registrarForPlugin:@"PermissionHandlerPlugin"]];
   [SmsPlugin registerWithRegistrar:[registry registrarForPlugin:@"SmsPlugin"]];
+  [FLTURLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTURLLauncherPlugin"]];
   [VibratePlugin registerWithRegistrar:[registry registrarForPlugin:@"VibratePlugin"]];
 }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/Other/Doctors/doctor.dart';
 import 'package:my_health/pages/Other/Doctors/editDoctor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DoctorInfo extends StatefulWidget {
   DocumentSnapshot docToView;
@@ -200,6 +201,33 @@ class _DoctorInfoState extends State<DoctorInfo> {
                         ),
                       ),
                       Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left:18.0,right: 18.0),
+                          child: Row(
+                            children: [
+                              TinyButton(
+                                buttonTitle: "Call",
+                                iconData: Icons.phone,
+                                onPressed: () {
+                                  String phone = widget.docToView.data()['Number'];
+                                  launch(('tel://$phone'));
+                                },
+                              ),
+                              SizedBox(width: 50,),
+                              TinyButton(
+                                buttonTitle: "E-mail",
+                                iconData: Icons.mail,
+                                onPressed: () {
+                                  String email = widget.docToView.data()['Email'];
+                                  launch(('mailto://$email'));
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 40,),
+                      Center(
                         child: SmallButton(
                           buttonTitle: "Edit",
                           onPressed: () {
@@ -211,6 +239,8 @@ class _DoctorInfoState extends State<DoctorInfo> {
                           },
                         ),
                       ),
+
+
 
                     ]),
               ),

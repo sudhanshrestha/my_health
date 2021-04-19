@@ -27,6 +27,7 @@ public final class GeneratedPluginRegistrant {
     flutterEngine.getPlugins().add(new com.lyokone.location.LocationPlugin());
     flutterEngine.getPlugins().add(new com.baseflow.permissionhandler.PermissionHandlerPlugin());
       com.babariviere.sms.SmsPlugin.registerWith(shimPluginRegistry.registrarFor("com.babariviere.sms.SmsPlugin"));
+    flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());
       flutter.plugins.vibrate.VibratePlugin.registerWith(shimPluginRegistry.registrarFor("flutter.plugins.vibrate.VibratePlugin"));
   }
 }

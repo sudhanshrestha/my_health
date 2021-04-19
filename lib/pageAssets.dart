@@ -11,12 +11,8 @@ String userPassword;
 Color mainColor = Color(0xff6c5dd4);
 RandomColor randomColor = RandomColor();
 
-Color randomColour = randomColor.randomColor(
-    colorSaturation: ColorSaturation.highSaturation
-);
-
-
-
+Color randomColour =
+    randomColor.randomColor(colorSaturation: ColorSaturation.highSaturation);
 
 class PageButtons extends StatelessWidget {
   PageButtons({this.buttonTitle, this.onPressed, this.iconName});
@@ -66,7 +62,6 @@ class PageButtons extends StatelessWidget {
   }
 }
 
-
 class SmallButton extends StatelessWidget {
   SmallButton({this.buttonTitle, this.onPressed});
 
@@ -89,7 +84,61 @@ class SmallButton extends StatelessWidget {
           onPressed: onPressed,
           child: Text(
             buttonTitle,
-            style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'OpenSans'),
+            style: TextStyle(
+                color: Colors.white, fontSize: 20, fontFamily: 'OpenSans'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TinyButton extends StatelessWidget {
+  TinyButton({this.buttonTitle, this.onPressed, this.iconData});
+
+  final String buttonTitle;
+  final Function onPressed;
+  final IconData iconData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: SizedBox(
+        width: 160,
+        height: 55,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: mainColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+          onPressed: onPressed,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Center(
+                child: Row(
+                  children: [
+                    Icon(
+                      iconData,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      buttonTitle,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: 'OpenSans'),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),
