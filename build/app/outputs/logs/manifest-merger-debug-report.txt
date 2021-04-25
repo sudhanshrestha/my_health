@@ -5,6 +5,7 @@ INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\ma
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
 MERGED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml:1:1-55:12
+MERGED from [:fluttertoast] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_maps_flutter] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_plugin_android_lifecycle] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:geocoder] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\geocoder\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -233,6 +234,8 @@ uses-sdk
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
 INJECTED from E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\android\app\src\main\AndroidManifest.xml
+MERGED from [:fluttertoast] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:fluttertoast] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\fluttertoast\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\google_maps_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_plugin_android_lifecycle] E:\ISLINGTON FILES\Year 3\FYP\Program\my_health\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

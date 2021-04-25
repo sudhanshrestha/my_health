@@ -219,7 +219,7 @@ class _DoctorInfoState extends State<DoctorInfo> {
                                 iconData: Icons.mail,
                                 onPressed: () {
                                   String email = widget.docToView.data()['Email'];
-                                  launch(('mailto://$email'));
+                                  launch(('mailto:$email'));
                                 },
                               ),
                             ],

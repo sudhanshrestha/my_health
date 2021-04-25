@@ -220,7 +220,7 @@ class _EditProfileState extends State<EditProfile> {
                                             child: TextFormField(
                                               controller: emrNumber,
                                               validator: (val) =>
-                                                  val.length < 10
+                                                  val.length > 10
                                                       ? 'Enter correct Number'
                                                       : null,
                                               decoration: InputDecoration(

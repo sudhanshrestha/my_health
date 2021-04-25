@@ -40,7 +40,7 @@ class _EditNoteState extends State<EditNote> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15.0, top: 75.0),
                       child: Text(
-                        "Add note",
+                        "Edit note",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 45.0,

@@ -157,11 +157,11 @@ class _LoginState extends State<Login> {
                             child: PageButtons(
                               buttonTitle: "Login",
                               onPressed: () async {
-                                setState(() {
-                                  showSpinner = true;
-                                });
                                 if (_formKey.currentState.validate()) {
                                   try {
+                                    setState(() {
+                                      showSpinner = true;
+                                    });
                                     final user = await _auth
                                         .signInWithEmailAndPassword(
                                             email: userEmail,

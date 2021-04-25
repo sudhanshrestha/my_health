@@ -34,6 +34,7 @@ import 'package:my_health/pages/measurement/Pulse/editPulse.dart';
 import 'package:my_health/pages/measurement/Pulse/pulse.dart';
 import 'package:my_health/pages/measurement/measurement.dart';
 import 'package:my_health/pages/register/register.dart';
+import 'package:dcdg/dcdg.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +51,7 @@ class _MyHealthState extends State<MyHealth> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "Poppins",
         pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),

@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:my_health/bottomNavigation.dart';
-import 'package:my_health/notification/notifcation_data.dart';
+import 'package:my_health/pages/medicine/medicine.dart';
 import '../../notification/notification_plugin.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
@@ -425,7 +425,7 @@ class _AddMedicineState extends State<AddMedicine> {
                                       'BooleanValues': (boolVal.toString().replaceAll("]","")).replaceAll("[","").replaceAll(' ', ''),
                                       'MedicineTaken': 'false',
                                     });
-                                    Navigator.pop(context);
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MedicinePage()),);
                                   }
 
                                 },
