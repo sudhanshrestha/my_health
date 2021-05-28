@@ -49,7 +49,7 @@ class _DoctorInfoState extends State<DoctorInfo> {
                       ),
                       iconSize: 30.0,
                       onPressed: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DoctorPage()),);
+                        Navigator.pop(context);
                       }),
                 ],
               ),

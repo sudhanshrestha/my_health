@@ -140,7 +140,7 @@ class _AddMedicineState extends State<AddMedicine> {
                       ),
                       iconSize: 30.0,
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pushNamed(context,  MedicinePage.id);
                       }),
                 ],
               ),

@@ -87,7 +87,8 @@ class _NotePageState extends State<NotePage> {
                                       child: Container(
                                         margin: EdgeInsets.all(15.0),
                                         padding: EdgeInsets.all(15.0),
-                                        height: 150.0,
+                                        //removed this because causing rendex flex in text overflow
+                                        // height: 150.0,
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius:

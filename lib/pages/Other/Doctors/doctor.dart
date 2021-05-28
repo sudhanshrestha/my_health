@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_health/pageAssets.dart';
 import 'package:my_health/pages/Other/Doctors/addDoctor.dart';
 import 'package:my_health/pages/Other/Doctors/doctorInfo.dart';
+import 'package:my_health/pages/Other/Other.dart';
 
 class DoctorPage extends StatefulWidget {
   static const String id = 'DoctorPage';
@@ -46,7 +47,7 @@ class _DoctorPageState extends State<DoctorPage> {
                       ),
                       iconSize: 30.0,
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OtherPage()),);
                       }),
 
                 ],

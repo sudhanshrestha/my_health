@@ -162,11 +162,13 @@ class _OtherPageState extends State<OtherPage> {
                         onTap: () {
                           auth.signOut();
                           UserID = "";
-                          Navigator.pop(context, true);
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => Login()),
-                          );
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context) => Login()),
+                                  (Route<dynamic> route) => false);
+                          // Navigator.pushReplacement(
+                          //   context,
+                          //   MaterialPageRoute(builder: (BuildContext context) => Login()),
+                          // );
                         },
                       ),
                     ]),
